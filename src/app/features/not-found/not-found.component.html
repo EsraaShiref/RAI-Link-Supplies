@@ -1,0 +1,28 @@
+<main class="min-h-screen flex items-center justify-center bg-bg-light relative overflow-hidden">
+  <div class="text-center px-4 relative z-10 flex flex-col items-center">
+    <!-- Floating 404 text -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+      <div class="text-[15rem] md:text-[20rem] font-bold text-navy/5 animate-float select-none">
+        404
+      </div>
+    </div>
+    
+    <h1 class="text-6xl md:text-8xl font-bold text-navy animate-fade-up" style="animation-delay: 0ms">
+      {{ 'notfound.title' | translate }}
+    </h1>
+    
+    <p class="text-2xl text-text-secondary mt-4 animate-fade-up" style="animation-delay: 150ms">
+      {{ 'notfound.subtitle' | translate }}
+    </p>
+    
+    <p class="text-text-secondary mt-2 max-w-md animate-fade-up" style="animation-delay: 300ms">
+      {{ 'notfound.message' | translate }}
+    </p>
+    
+    <div class="mt-8 animate-fade-up" style="animation-delay: 450ms">
+      <a routerLink="/" class="inline-block bg-orange hover:bg-red-orange text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300 shadow-sm">
+        {{ 'notfound.backHome' | translate }}
+      </a>
+    </div>
+  </div>
+</main>

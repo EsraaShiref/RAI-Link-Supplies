@@ -1,0 +1,12 @@
+<div class="bg-white border border-border rounded-xl p-6 md:p-8 card-hover relative overflow-hidden group transition-all duration-300">
+  <div class="absolute top-0 start-0 end-0 h-[3px]" [class]="'bg-' + accentColor()"></div>
+  <div class="w-14 h-14 rounded-full bg-bg-light flex items-center justify-center text-3xl text-navy group-hover:text-orange transition-colors duration-300 mt-2 mx-auto md:mx-0">
+    {{ icon() }}
+  </div>
+  <h3 class="text-navy font-semibold text-lg mt-4 text-center md:text-start">
+    {{ titleKey() | translate }}
+  </h3>
+  <p class="text-text-secondary mt-2 text-sm leading-relaxed text-center md:text-start">
+    {{ bodyKey() | translate }}
+  </p>
+</div>

@@ -1,0 +1,57 @@
+<header 
+  [class.shadow-md]="isScrolled()" 
+  [class.bg-white]="isScrolled()" 
+  [class.bg-white-90]="!isScrolled()" 
+  [class.backdrop-blur-sm]="!isScrolled()" 
+  class="sticky top-0 z-50 transition-all duration-300">
+  
+  <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
+    <div class="inline-start">
+      <a routerLink="/" class="flex items-center gap-3 py-1 group" aria-label="RAI Link Supplies">
+        <img src="assets/images/logo.svg" alt="RAI Link Supplies" class="h-8 md:h-10 w-auto object-contain" />
+      </a>
+    </div>
+
+    <nav class="hidden md:flex gap-6 items-center">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="text-text-primary hover:text-orange font-medium text-sm nav-link-underline">{{ 'nav.home' | translate }}</a>
+      <a routerLink="/about" routerLinkActive="active" class="text-text-primary hover:text-orange font-medium text-sm nav-link-underline">{{ 'nav.about' | translate }}</a>
+      <a routerLink="/approach" routerLinkActive="active" class="text-text-primary hover:text-orange font-medium text-sm nav-link-underline">{{ 'nav.approach' | translate }}</a>
+      <a routerLink="/products" routerLinkActive="active" class="text-text-primary hover:text-orange font-medium text-sm nav-link-underline">{{ 'nav.products' | translate }}</a>
+      <a routerLink="/partners" routerLinkActive="active" class="text-text-primary hover:text-orange font-medium text-sm nav-link-underline">{{ 'nav.partners' | translate }}</a>
+      <a routerLink="/contact" routerLinkActive="active" class="text-text-primary hover:text-orange font-medium text-sm nav-link-underline">{{ 'nav.contact' | translate }}</a>
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <app-language-switcher class="hidden md:block"></app-language-switcher>
+      <button class="md:hidden p-2 text-text-primary" (click)="toggleMobileMenu()" [attr.aria-label]="'nav.menu' | translate">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+@if (isMobileMenuOpen()) {
+  <div class="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" (click)="closeMobileMenu()"></div>
+  <div class="fixed top-0 start-0 h-full w-72 bg-white shadow-xl z-50 animate-slide-in-start overflow-y-auto">
+    <div class="p-4 flex justify-end border-b border-border">
+      <button (click)="closeMobileMenu()" class="p-2 text-text-primary" [attr.aria-label]="'nav.close' | translate">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    <nav class="flex flex-col py-2">
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()" class="py-3 px-6 border-b border-border text-text-primary hover:text-orange">{{ 'nav.home' | translate }}</a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()" class="py-3 px-6 border-b border-border text-text-primary hover:text-orange">{{ 'nav.about' | translate }}</a>
+      <a routerLink="/approach" routerLinkActive="active" (click)="closeMobileMenu()" class="py-3 px-6 border-b border-border text-text-primary hover:text-orange">{{ 'nav.approach' | translate }}</a>
+      <a routerLink="/products" routerLinkActive="active" (click)="closeMobileMenu()" class="py-3 px-6 border-b border-border text-text-primary hover:text-orange">{{ 'nav.products' | translate }}</a>
+      <a routerLink="/partners" routerLinkActive="active" (click)="closeMobileMenu()" class="py-3 px-6 border-b border-border text-text-primary hover:text-orange">{{ 'nav.partners' | translate }}</a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()" class="py-3 px-6 border-b border-border text-text-primary hover:text-orange">{{ 'nav.contact' | translate }}</a>
+    </nav>
+    <div class="p-6">
+      <app-language-switcher></app-language-switcher>
+    </div>
+  </div>
+}

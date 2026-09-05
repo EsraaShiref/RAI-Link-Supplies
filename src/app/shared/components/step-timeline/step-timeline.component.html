@@ -1,0 +1,17 @@
+<div class="relative flex flex-col gap-12 ms-2 md:ms-6">
+  <!-- Connecting Vertical Line -->
+  <div class="absolute top-0 bottom-0 start-0 w-0.5 bg-orange/30 ms-6 -z-10"></div>
+  
+  <!-- Steps -->
+  @for (step of steps(); track step.number; let i = $index) {
+    <div class="relative flex items-start group" appRevealOnScroll [delay]="i * 100">
+      <div class="w-12 h-12 rounded-full bg-orange text-white font-bold text-lg flex items-center justify-center shrink-0 animate-pop-in z-10 shadow-md">
+        {{ step.number }}
+      </div>
+      <div class="ps-6 pt-2 pb-4">
+        <h3 class="font-semibold text-navy text-xl">{{ step.titleKey | translate }}</h3>
+        <p class="text-text-secondary text-sm mt-2 leading-relaxed max-w-lg">{{ step.bodyKey | translate }}</p>
+      </div>
+    </div>
+  }
+</div>

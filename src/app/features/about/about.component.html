@@ -1,0 +1,72 @@
+<main>
+  <!-- Page Header -->
+  <section class="bg-navy py-16 md:py-24 text-center">
+    <div class="container mx-auto px-4">
+      <span class="text-orange font-semibold tracking-wider uppercase text-sm mb-4 block animate-fade-up">{{ 'about.kicker' | translate }}</span>
+      <h1 class="text-4xl md:text-5xl font-bold text-text-inverse animate-fade-up" style="animation-delay: 100ms">
+        {{ 'about.title' | translate }}
+      </h1>
+    </div>
+  </section>
+
+  <!-- About Narrative -->
+  <section class="bg-white py-16">
+    <div class="container mx-auto px-4">
+      <div appRevealOnScroll class="max-w-4xl mx-auto text-lg leading-relaxed text-text-secondary">
+        <p [innerHTML]="'about.body' | translate"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision -->
+  <section class="bg-bg-light py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div appRevealOnScroll class="bg-white rounded-xl p-8 shadow-sm border border-border card-hover">
+          <div class="text-4xl mb-6 text-start">🎯</div>
+          <h3 class="text-2xl font-bold text-navy mb-4">{{ 'mission.title' | translate }}</h3>
+          <p class="text-text-secondary leading-relaxed" [innerHTML]="'mission.body' | translate"></p>
+        </div>
+        <div appRevealOnScroll style="animation-delay: 100ms" class="bg-white rounded-xl p-8 shadow-sm border border-border card-hover">
+          <div class="text-4xl mb-6 text-start">🔭</div>
+          <h3 class="text-2xl font-bold text-navy mb-4">{{ 'vision.title' | translate }}</h3>
+          <p class="text-text-secondary leading-relaxed" [innerHTML]="'vision.body' | translate"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Values -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <app-section-title titleKey="values.title" kickerKey="values.kicker"></app-section-title>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        @for (value of values; track value.titleKey; let i = $index) {
+          <div appRevealOnScroll [style.animation-delay]="i * 100 + 'ms'">
+            <app-card [titleKey]="value.titleKey" [bodyKey]="value.bodyKey" [icon]="value.icon"></app-card>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Goals -->
+  <section class="bg-bg-light py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <app-section-title titleKey="goals.title" kickerKey="goals.kicker"></app-section-title>
+      <div class="max-w-3xl mx-auto mt-12 space-y-6">
+        @for (goal of goals; track goal; let i = $index) {
+          <div appRevealOnScroll [style.animation-delay]="i * 100 + 'ms'" class="flex items-start gap-4">
+            <div class="flex-shrink-0 bg-orange text-white w-10 h-10 rounded-full flex items-center justify-center font-bold">
+              {{ i + 1 }}
+            </div>
+            <p class="text-text-secondary text-lg pt-1" [innerHTML]="goal | translate"></p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <app-cta-banner messageKey="home.ctaBanner.message" buttonLabelKey="home.ctaBanner.button" route="/contact"></app-cta-banner>
+</main>

@@ -1,0 +1,327 @@
+/* ============================================================
+   RAI Link Supplies — Global Styles
+   Tailwind CSS v4 + Brand Tokens + Animation Keyframes
+   ============================================================ */
+
+@use "tailwindcss";
+
+/* ============================================================
+   THEME — Brand Design Tokens (from logo analysis, Section 2)
+   ============================================================ */
+@theme {
+  /* Brand core */
+  --color-navy: #0B0C4E;
+  --color-orange: #EC6B2A;
+  --color-red-orange: #E8322C;
+  --color-charcoal: #3D3B3C;
+
+  /* Backgrounds */
+  --color-bg-white: #FFFFFF;
+  --color-bg-light: #F5F6FA;
+  --color-bg-navy-tint: #EDEEF6;
+
+  /* Text */
+  --color-text-primary: #1A1A2E;
+  --color-text-secondary: #5B5D6E;
+  --color-text-inverse: #FFFFFF;
+
+  /* Borders */
+  --color-border: #E2E3EC;
+
+  /* Font families */
+  --font-heading-en: 'Poppins', sans-serif;
+  --font-body-en: 'Inter', sans-serif;
+  --font-heading-ar: 'Cairo', sans-serif;
+  --font-body-ar: 'Tajawal', sans-serif;
+
+  /* Spacing extensions */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+
+  /* Animation tokens */
+  --transition-fast: 150ms;
+  --transition-base: 250ms;
+  --transition-slow: 450ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-overshoot: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   FONT FACE DECLARATIONS (self-hosted via Google Fonts CDN fallback)
+   Using CDN for now — swap to self-hosted woff2 files for production
+   ============================================================ */
+/* Western digits (0–9) are used throughout Arabic UI — standard Egyptian business convention */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&family=Cairo:wght@700;800&family=Tajawal:wght@400;500&display=swap');
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg-white text-text-primary antialiased;
+  line-height: 1.7;
+}
+
+/* Language-specific font application */
+html[lang="ar"] body {
+  font-family: var(--font-body-ar), sans-serif;
+}
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3,
+html[lang="ar"] h4,
+html[lang="ar"] h5,
+html[lang="ar"] h6 {
+  font-family: var(--font-heading-ar), sans-serif;
+}
+
+html[lang="en"] body {
+  font-family: var(--font-body-en), sans-serif;
+}
+html[lang="en"] h1,
+html[lang="en"] h2,
+html[lang="en"] h3,
+html[lang="en"] h4,
+html[lang="en"] h5,
+html[lang="en"] h6 {
+  font-family: var(--font-heading-en), sans-serif;
+}
+
+/* ============================================================
+   FOCUS STYLES — WCAG AA visible focus ring
+   ============================================================ */
+*:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   DIRECTIONAL ICON FLIP for RTL
+   ============================================================ */
+.icon-flip-rtl {
+  [dir="rtl"] & {
+    transform: scaleX(-1);
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION — respect user preference
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   ANIMATION KEYFRAMES
+   ============================================================ */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInStart {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+[dir="rtl"] .animate-slide-in-start {
+  animation-name: slideInEnd;
+}
+
+@keyframes slideInEnd {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes drawLine {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes checkmark {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes ambientDrift {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(10px, -5px) scale(1.02);
+  }
+  50% {
+    transform: translate(-5px, 10px) scale(0.98);
+  }
+  75% {
+    transform: translate(-10px, -5px) scale(1.01);
+  }
+}
+
+/* Utility classes for animations */
+.animate-fade-up {
+  animation: fadeUp 600ms var(--ease-out) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 400ms ease both;
+}
+
+.animate-pop-in {
+  animation: popIn 500ms var(--ease-overshoot) both;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-scale-in {
+  animation: scaleIn 500ms var(--ease-out) both;
+}
+
+.animate-ambient-drift {
+  animation: ambientDrift 30s ease-in-out infinite;
+}
+
+/* Reveal on scroll — initial hidden state */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+}
+
+/* Nav underline animation */
+.nav-link-underline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    inset-inline-start: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-orange);
+    transform: scaleX(0);
+    transform-origin: start;
+    transition: transform var(--transition-base) var(--ease-out);
+  }
+
+  &:hover::after,
+  &.active::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform var(--transition-base) var(--ease-out),
+              box-shadow var(--transition-base) var(--ease-out);
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(11, 12, 78, 0.12);
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-orange);
+}

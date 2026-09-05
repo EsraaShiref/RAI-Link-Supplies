@@ -1,0 +1,78 @@
+<main>
+  <!-- Hero Section -->
+  <section class="relative min-h-screen bg-navy flex items-center justify-center overflow-hidden pt-20">
+    <div class="absolute inset-0 z-0">
+      <div class="absolute top-1/4 start-1/4 w-96 h-96 bg-orange rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-ambient-drift"></div>
+      <div class="absolute bottom-1/4 end-1/4 w-96 h-96 bg-red-orange rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-ambient-drift" style="animation-delay: 2s;"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-7xl font-bold text-text-inverse animate-fade-up" style="animation-delay: 0ms">
+        {{ 'hero.title' | translate }}
+      </h1>
+      <p class="text-xl md:text-2xl text-text-inverse/80 mt-4 animate-fade-up max-w-3xl mx-auto" style="animation-delay: 150ms">
+        {{ 'hero.subtitle' | translate }}
+      </p>
+      <div class="mt-12 animate-fade-up" style="animation-delay: 300ms">
+        <a routerLink="/contact" class="inline-block bg-orange hover:bg-red-orange text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors duration-300">
+          {{ 'hero.cta' | translate }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview Section -->
+  <section class="bg-bg-light py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div appRevealOnScroll class="max-w-3xl mx-auto text-center">
+        <app-section-title titleKey="home.aboutPreview.title"></app-section-title>
+        <p class="text-text-secondary text-lg leading-relaxed mt-8 mb-8" [innerHTML]="'home.aboutPreview.body' | translate"></p>
+        <a routerLink="/about" class="text-orange hover:text-red-orange font-medium text-lg inline-flex items-center gap-2 nav-link-underline">
+          {{ 'home.aboutPreview.cta' | translate }}
+          <span class="icon-flip-rtl ms-2">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us Preview -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <app-section-title titleKey="whyus.title" kickerKey="whyus.kicker"></app-section-title>
+      <div class="flex flex-wrap justify-center gap-4 mt-12">
+        @for (badge of whyUsBadges; track badge; let i = $index) {
+          <div appRevealOnScroll [style.animation-delay]="i * 100 + 'ms'" class="bg-bg-navy-tint text-navy px-6 py-3 rounded-full font-medium text-sm border border-border/50 card-hover">
+            {{ badge | translate }}
+          </div>
+        }
+      </div>
+      <div class="text-center mt-12" appRevealOnScroll style="animation-delay: 500ms">
+        <a routerLink="/approach" class="text-orange hover:text-red-orange font-medium text-lg inline-flex items-center gap-2 nav-link-underline">
+          {{ 'home.aboutPreview.cta' | translate }}
+          <span class="icon-flip-rtl ms-2">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Preview -->
+  <section class="bg-bg-light py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <app-section-title titleKey="products.title" kickerKey="products.kicker"></app-section-title>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        @for (product of products; track product.id; let i = $index) {
+          <div appRevealOnScroll [style.animation-delay]="i * 100 + 'ms'">
+            <app-card [titleKey]="product.titleKey" [bodyKey]="product.bodyKey" [icon]="product.icon"></app-card>
+          </div>
+        }
+      </div>
+      <div class="text-center mt-12" appRevealOnScroll style="animation-delay: 400ms">
+        <a routerLink="/products" class="inline-block bg-white text-navy border border-border hover:border-orange hover:text-orange px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
+          {{ 'home.aboutPreview.cta' | translate }}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <app-cta-banner messageKey="home.ctaBanner.message" buttonLabelKey="home.ctaBanner.button" route="/contact"></app-cta-banner>
+</main>

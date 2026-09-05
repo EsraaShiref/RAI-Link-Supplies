@@ -1,0 +1,10 @@
+<section class="w-full bg-navy py-16 md:py-20" appRevealOnScroll>
+  <div class="max-w-3xl mx-auto px-4 text-center">
+    <h2 class="text-text-inverse text-2xl md:text-3xl font-bold">
+      {{ messageKey() | translate }}
+    </h2>
+    <a [routerLink]="route()" class="bg-orange hover:bg-red-orange text-white font-semibold px-8 py-3 rounded-lg mt-8 inline-block transition-colors duration-300">
+      {{ buttonLabelKey() | translate }}
+    </a>
+  </div>
+</section>

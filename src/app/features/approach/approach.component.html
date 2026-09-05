@@ -1,0 +1,39 @@
+<main>
+  <!-- Page Header -->
+  <section class="bg-navy py-16 md:py-24 text-center">
+    <div class="container mx-auto px-4">
+      <span class="text-orange font-semibold tracking-wider uppercase text-sm mb-4 block animate-fade-up">{{ 'approach.kicker' | translate }}</span>
+      <h1 class="text-4xl md:text-5xl font-bold text-text-inverse animate-fade-up" style="animation-delay: 100ms">
+        {{ 'approach.title' | translate }}
+      </h1>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="bg-white py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <app-section-title titleKey="whyus.title" kickerKey="whyus.kicker"></app-section-title>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-12">
+        @for (card of whyUsCards; track card.key; let i = $index) {
+          <div appRevealOnScroll [style.animation-delay]="i * 100 + 'ms'" class="bg-bg-light border border-border rounded-xl p-6 text-center card-hover">
+            <div class="text-4xl mb-4">{{ card.icon }}</div>
+            <p class="font-semibold text-navy">{{ card.key | translate }}</p>
+          </div>
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- How We Work -->
+  <section class="bg-bg-light py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <app-section-title titleKey="howwework.title" kickerKey="howwework.kicker"></app-section-title>
+      <div class="mt-16">
+        <app-step-timeline [steps]="steps"></app-step-timeline>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <app-cta-banner messageKey="home.ctaBanner.message" buttonLabelKey="home.ctaBanner.button" route="/contact"></app-cta-banner>
+</main>

@@ -1,0 +1,7 @@
+<button (click)="toggleLanguage()" class="border border-border rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-bg-light transition-colors duration-200">
+  @if (languageService.currentLang() === 'ar') {
+    <span>English</span>
+  } @else {
+    <span>العربية</span>
+  }
+</button>
