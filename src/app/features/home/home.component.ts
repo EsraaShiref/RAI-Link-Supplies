@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HeroComponent } from './sections/hero/hero.component';
 import { TextWithCollageComponent } from '../../shared/components/text-with-collage/text-with-collage.component';
 import { TwoCardRowComponent, CardItem } from '../../shared/components/two-card-row/two-card-row.component';
+import { CollageBannerComponent } from '../../shared/components/collage-banner/collage-banner.component';
 import { CardGridComponent, ValueCardItem } from '../../shared/components/card-grid/card-grid.component';
 
 @Component({
@@ -11,13 +12,14 @@ import { CardGridComponent, ValueCardItem } from '../../shared/components/card-g
     HeroComponent,
     TextWithCollageComponent,
     TwoCardRowComponent,
+    CollageBannerComponent,
     CardGridComponent,
   ],
   template: `
     <!-- 1. Hero Section -->
     <app-hero />
 
-    <!-- 2. About Us Narrative + Image Collage -->
+    <!-- 2. About Us Narrative + Cohesive Image Composition -->
     <app-text-with-collage
       [kickerKey]="'ABOUT.KICKER'"
       [titleKey]="'ABOUT.TITLE'"
@@ -31,7 +33,10 @@ import { CardGridComponent, ValueCardItem } from '../../shared/components/card-g
       [card2]="visionCard"
     />
 
-    <!-- 4. Our Values Grid (4 cards with semantic icons and hover lift) -->
+    <!-- 4. Decorative Panoramic Collage Banner -->
+    <app-collage-banner />
+
+    <!-- 5. Our Values Grid (4 uniform cards with semantic icons) -->
     <app-card-grid
       [titleKey]="'ABOUT.VALUES_TITLE'"
       [items]="valuesCards"

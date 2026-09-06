@@ -1,6 +1,6 @@
-<section class="about-collage-section py-16 md:py-24 bg-white overflow-hidden">
+<section class="about-section py-12 md:py-16 bg-white overflow-hidden">
   <div class="container mx-auto px-4 md:px-8 max-w-7xl">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
       <!-- Text Column -->
       <div
@@ -9,26 +9,28 @@
         [class.lg:order-2]="reverse()"
         [class.lg:order-1]="!reverse()"
       >
-        <span class="text-brand-orange font-bold tracking-wider uppercase text-xs md:text-sm mb-3 block">
+        <span class="text-brand-orange font-bold tracking-wider uppercase text-xs md:text-sm mb-2 block">
           {{ kickerKey() | translate }}
         </span>
 
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy leading-tight mb-6">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-navy leading-tight mb-4">
           {{ titleKey() | translate }}
         </h2>
 
-        <p class="text-brand-gray text-base sm:text-lg leading-relaxed mb-8">
+        <p class="text-brand-gray text-base leading-relaxed mb-6">
           {{ bodyKey() | translate }}
         </p>
 
         @if (readMoreRoute()) {
           <div>
-            <app-read-more-link [route]="readMoreRoute()" [labelKey]="readMoreLabelKey()" />
+            <a [routerLink]="readMoreRoute()" class="btn-solid-orange">
+              {{ readMoreLabelKey() | translate }}
+            </a>
           </div>
         }
       </div>
 
-      <!-- Collage Column -->
+      <!-- Unified Image Composition Column -->
       <div
         appRevealOnScroll
         [delay]="150"
@@ -36,45 +38,13 @@
         [class.lg:order-1]="reverse()"
         [class.lg:order-2]="!reverse()"
       >
-        <div class="collage-wrapper relative w-full max-w-lg">
-          <!-- Background Decorative Organic Blob / Gradient Box -->
-          <div class="collage-backdrop" aria-hidden="true"></div>
-
-          <!-- Image 1: Main Base Image (Organized Modern Warehouse & Supplies) -->
-          <div class="collage-card collage-card--main shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
-              alt="Procurement warehouse and organized supplies"
-              class="collage-img"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Image 2: Secondary Overlapping Card (Office & IT Equipment staging) -->
-          <div class="collage-card collage-card--secondary shadow-xl">
-            <img
-              src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=500&q=80"
-              alt="Office equipment and modern workplace supplies"
-              class="collage-img"
-              loading="lazy"
-            />
-          </div>
-
-          <!-- Overlapping Floating Accent Badge -->
-          <div class="collage-badge shadow-lg">
-            <div class="badge-icon" aria-hidden="true">
-              <!-- Checkmark / Shield line icon -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                   stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-            </div>
-            <div class="badge-text">
-              <span class="badge-title font-bold text-brand-navy">100%</span>
-              <span class="badge-desc text-xs text-brand-gray">Reliable Supply</span>
-            </div>
-          </div>
+        <div class="unified-image-container w-full max-w-lg">
+          <img
+            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80"
+            alt="RAI Link Supplies Procurement & Supply"
+            class="unified-image shadow-xl"
+            loading="lazy"
+          />
         </div>
       </div>
 

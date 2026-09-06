@@ -1,12 +1,12 @@
 import { Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ReadMoreLinkComponent } from '../read-more-link/read-more-link.component';
 import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-text-with-collage',
   standalone: true,
-  imports: [TranslatePipe, ReadMoreLinkComponent, RevealOnScrollDirective],
+  imports: [RouterLink, TranslatePipe, RevealOnScrollDirective],
   templateUrl: './text-with-collage.component.html',
   styleUrl: './text-with-collage.component.css',
 })

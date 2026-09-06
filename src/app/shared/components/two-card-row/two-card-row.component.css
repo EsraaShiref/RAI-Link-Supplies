@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════
-   TWO CARD ROW COMPONENT (Mission + Vision)
+   TWO CARD ROW COMPONENT (Mission + Vision) — Compact
 ═══════════════════════════════════════════════════════ */
 .two-card-section {
   position: relative;
@@ -8,37 +8,23 @@
 .card {
   position: relative;
   background-color: #ffffff;
-  border-radius: 20px;
+  border-radius: 14px;
   border: 1px solid #e5e7eb;
   overflow: hidden;
-  box-shadow: 0 4px 16px rgba(11, 12, 78, 0.04);
-  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+  box-shadow: 0 2px 10px rgba(11, 12, 78, 0.03);
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
   display: flex;
   flex-direction: column;
 }
 
 .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(11, 12, 78, 0.08);
-  border-color: #F97316;
-}
-
-/* Accent top strip */
-.card-accent-bar {
-  height: 5px;
-  width: 100%;
-}
-
-.card-accent-bar--orange {
-  background: linear-gradient(90deg, #F97316 0%, #EA6A00 100%);
-}
-
-.card-accent-bar--navy {
-  background: linear-gradient(90deg, #0B0C4E 0%, #F97316 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(11, 12, 78, 0.06);
+  border-color: #d1d5db;
 }
 
 .card-inner {
-  padding: 2.25rem 2.25rem;
+  padding: 1.75rem 1.75rem;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -46,57 +32,39 @@
 
 @media (max-width: 640px) {
   .card-inner {
-    padding: 1.75rem 1.5rem;
+    padding: 1.5rem 1.25rem;
   }
 }
 
-.card-header {
+.card-title-group {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-.card-icon {
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: transform 300ms ease;
-}
-
-.card:hover .card-icon {
-  transform: scale(1.08);
-}
-
-.card-icon--orange {
-  background: rgba(249, 115, 22, 0.12);
-  color: #F97316;
-}
-
-.card-icon--navy {
-  background: rgba(11, 12, 78, 0.1);
-  color: #0B0C4E;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .card-title {
   margin: 0;
-  font-weight: 800;
+  font-weight: 700;
   color: #0B0C4E;
 }
 
+/* Small orange underline under title */
+.title-underline {
+  width: 36px;
+  height: 3px;
+  background-color: #F97316;
+  border-radius: 2px;
+  margin-top: 6px;
+}
+
 .card-body {
-  margin-bottom: 1.75rem;
   flex: 1;
   color: #6B7280;
-  line-height: 1.75;
+  line-height: 1.7;
 }
 
 .card-footer {
-  padding-top: 1.25rem;
+  padding-top: 1rem;
   border-top: 1px solid #f3f4f6;
   margin-top: auto;
 }
