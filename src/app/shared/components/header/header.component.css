@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════
-   UTILITY BAR
+   UTILITY BAR (Dark Navy #0B0C4E)
 ═══════════════════════════════════════════════════════ */
 .utility-bar {
-  background-color: #f3f4f6;
-  border-bottom: 1px solid #e5e7eb;
-  padding: 6px 0;
+  background-color: #0B0C4E;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 7px 0;
 }
 
 .container-inner {
@@ -13,21 +13,54 @@
   padding-inline: 1.5rem;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  justify-content: flex-start;
+}
+
+.utility-contacts {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
 }
 
 .utility-link {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  font-size: 0.8rem;
-  color: #374151;
-  transition: color 150ms ease;
+  gap: 0.45rem;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: #FFFFFF;
   text-decoration: none;
+  transition: color 150ms ease, opacity 150ms ease;
+  letter-spacing: 0.01em;
 }
 
 .utility-link:hover {
   color: #F97316;
+}
+
+.utility-icon {
+  flex-shrink: 0;
+  stroke: rgba(255, 255, 255, 0.85);
+  transition: stroke 150ms ease;
+}
+
+.utility-link:hover .utility-icon {
+  stroke: #F97316;
+}
+
+/* RTL Phone number Bidirectional Isolation */
+.phone-number {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
+  font-feature-settings: "tnum";
+  font-variant-numeric: tabular-nums;
+}
+
+.email-address {
+  direction: ltr;
+  unicode-bidi: isolate;
+  display: inline-block;
 }
 
 /* ═══════════════════════════════════════════════════════
