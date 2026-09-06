@@ -7,10 +7,17 @@
     "partners": "Partners & Suppliers",
     "contact": "Contact"
   },
+  "header": {
+    "quoteCta": "Request a Quote",
+    "phone": "+20 10 4388 1766",
+    "email": "info@railinksupplies.com"
+  },
   "hero": {
     "title": "RAI Link Supplies",
-    "subtitle": "Integrated Procurement & Supply Solutions",
-    "cta": "Contact Us"
+    "subtitle": "Integrated Procurement & Supply Solutions for Enterprises & Institutions",
+    "cta": "Contact Us",
+    "quoteCta": "Request a Quote",
+    "learnMore": "Learn More"
   },
   "about": {
     "kicker": "About Us",
@@ -245,6 +252,8 @@
     }
   },
   "approach": {
+    "badge": "Trusted Partner",
+    "badgeSub": "Certified Quality & Timely Delivery",
     "pageMeta": {
       "title": "Our Approach | RAI Link Supplies",
       "description": "Learn about our approach and what sets us apart in procurement and supply solutions."

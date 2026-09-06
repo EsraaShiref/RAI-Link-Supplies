@@ -1,35 +1,37 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
 import { SeoService } from '../../core/services/seo.service';
-import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
+import { PageHeaderBannerComponent } from '../../shared/components/page-header-banner/page-header-banner.component';
+import { IconListWithImageComponent, IconListItem } from '../../shared/components/icon-list-with-image/icon-list-with-image.component';
 import { StepTimelineComponent } from '../../shared/components/step-timeline/step-timeline.component';
 import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banner.component';
-import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
+import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 import { ProcessStep } from '../../core/models/process-step.model';
 
 @Component({
   selector: 'app-approach',
   standalone: true,
   imports: [
-    TranslatePipe,
-    SectionTitleComponent,
+    PageHeaderBannerComponent,
+    IconListWithImageComponent,
     StepTimelineComponent,
-    CtaBannerComponent,
-    RevealOnScrollDirective,
+    SectionTitleComponent,
+    CtaBannerComponent
   ],
   templateUrl: './approach.component.html'
 })
 export class ApproachComponent implements OnInit {
   private seoService = inject(SeoService);
 
-  whyUsCards = [
-    { key: 'whyus.badge1', icon: '🏆' },
-    { key: 'whyus.badge2', icon: '⚡' },
-    { key: 'whyus.badge3', icon: '📦' },
-    { key: 'whyus.badge4', icon: '✅' },
-    { key: 'whyus.badge5', icon: '🎯' }
+  // Full 5 Why-Choose-Us Differentiators for IconListWithImageComponent
+  whyUsFullList: IconListItem[] = [
+    { icon: '💰', titleKey: 'whyus.badge1', bodyKey: 'goals.goal2' },
+    { icon: '⚡', titleKey: 'whyus.badge2', bodyKey: 'values.speed.body' },
+    { icon: '📦', titleKey: 'whyus.badge3', bodyKey: 'values.reliability.body' },
+    { icon: '✅', titleKey: 'whyus.badge4', bodyKey: 'values.quality.body' },
+    { icon: '🎯', titleKey: 'whyus.badge5', bodyKey: 'values.flexibility.body' }
   ];
 
+  // 6-step How We Work Process
   steps: ProcessStep[] = [
     { number: 1, titleKey: 'howwework.step1.title', bodyKey: 'howwework.step1.body', icon: '📝' },
     { number: 2, titleKey: 'howwework.step2.title', bodyKey: 'howwework.step2.body', icon: '🔍' },

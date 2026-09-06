@@ -1,10 +1,11 @@
 import { Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { TranslatePipe } from '@ngx-translate/core';
 import { SeoService } from '../../core/services/seo.service';
-import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 import { ContactService } from '../../core/services/contact.service';
+import { PageHeaderBannerComponent } from '../../shared/components/page-header-banner/page-header-banner.component';
+import { DecorativeOrnamentComponent } from '../../shared/components/decorative-ornament/decorative-ornament.component';
 
 @Component({
   selector: 'app-contact',
@@ -13,13 +14,14 @@ import { ContactService } from '../../core/services/contact.service';
     ReactiveFormsModule,
     TranslatePipe,
     RevealOnScrollDirective,
+    PageHeaderBannerComponent,
+    DecorativeOrnamentComponent
   ],
   templateUrl: './contact.component.html'
 })
 export class ContactComponent implements OnInit {
   private fb = inject(FormBuilder);
   private seoService = inject(SeoService);
-  private translate = inject(TranslateService);
   private contactService = inject(ContactService);
 
   contactForm: FormGroup;
@@ -57,5 +59,10 @@ export class ContactComponent implements OnInit {
         this.isSubmitting.set(false);
       }
     });
+  }
+
+  resetForm(): void {
+    this.contactForm.reset();
+    this.isSuccess.set(false);
   }
 }

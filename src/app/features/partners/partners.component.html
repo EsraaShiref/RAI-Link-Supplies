@@ -1,38 +1,29 @@
-<main>
-  <!-- Page Header -->
-  <section class="bg-navy py-16 md:py-24 text-center">
-    <div class="container mx-auto px-4">
-      <span class="text-orange font-semibold tracking-wider uppercase text-sm mb-4 block animate-fade-up">{{ 'partners.kicker' | translate }}</span>
-      <h1 class="text-4xl md:text-5xl font-bold text-text-inverse animate-fade-up" style="animation-delay: 100ms">
-        {{ 'partners.title' | translate }}
-      </h1>
-    </div>
-  </section>
+<!-- 1. PageHeaderBannerComponent -->
+<app-page-header-banner
+  [titleKey]="'partners.title'"
+  [kickerKey]="'nav.partners'"
+  [subtitleKey]="'hero.subtitle'" />
 
-  <!-- Partners & Suppliers -->
-  <section class="bg-white py-16">
-    <div class="container mx-auto px-4">
-      <app-section-title titleKey="partners.title" kickerKey="partners.kicker"></app-section-title>
-      <div appRevealOnScroll class="max-w-4xl mx-auto mt-8 text-center text-text-secondary text-lg leading-relaxed">
-        <p [innerHTML]="'partners.body' | translate"></p>
-      </div>
-    </div>
-  </section>
+<!-- 2. TextWithCollageComponent (Partners & Suppliers narrative) -->
+<app-text-with-collage
+  [kickerKey]="'partners.kicker'"
+  [titleKey]="'partners.title'"
+  [bodyKey]="'partners.body'"
+  [bullets]="partnerBullets"
+  [icon]="'🤝'"
+  [collageCardTitleKey]="'partners.title'"
+  [collageCardBodyKey]="'partners.body'" />
 
-  <!-- Target Audience -->
-  <section class="bg-bg-light py-16 md:py-24">
-    <div class="container mx-auto px-4">
-      <app-section-title titleKey="audience.title" kickerKey="audience.kicker"></app-section-title>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-        @for (aud of audiences; track aud.titleKey; let i = $index) {
-          <div appRevealOnScroll [style.animation-delay]="i * 100 + 'ms'">
-            <app-card [titleKey]="aud.titleKey" [bodyKey]="aud.bodyKey" [icon]="aud.icon"></app-card>
-          </div>
-        }
-      </div>
-    </div>
-  </section>
+<!-- 3. CardGridComponent (3 Columns: Target Audience Segments) -->
+<app-card-grid
+  [kickerKey]="'audience.kicker'"
+  [titleKey]="'audience.title'"
+  [items]="audiencesList"
+  [columns]="3"
+  [bgLight]="true" />
 
-  <!-- CTA Banner -->
-  <app-cta-banner messageKey="home.ctaBanner.message" buttonLabelKey="home.ctaBanner.button" route="/contact"></app-cta-banner>
-</main>
+<!-- 4. CtaBannerComponent -->
+<app-cta-banner
+  [messageKey]="'home.ctaBanner.message'"
+  [buttonLabelKey]="'home.ctaBanner.button'"
+  [route]="'/contact'" />

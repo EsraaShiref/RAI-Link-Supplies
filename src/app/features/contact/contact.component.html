@@ -1,102 +1,245 @@
-<main>
-  <!-- Page Header -->
-  <section class="bg-navy py-16 md:py-24 text-center">
-    <div class="container mx-auto px-4">
-      <span class="text-orange font-semibold tracking-wider uppercase text-sm mb-4 block animate-fade-up">{{ 'contact.kicker' | translate }}</span>
-      <h1 class="text-4xl md:text-5xl font-bold text-text-inverse animate-fade-up" style="animation-delay: 100ms">
-        {{ 'contact.title' | translate }}
-      </h1>
-    </div>
-  </section>
+<!-- 1. PageHeaderBannerComponent -->
+<app-page-header-banner
+  [titleKey]="'contact.title'"
+  [kickerKey]="'nav.contact'"
+  [subtitleKey]="'hero.subtitle'" />
 
-  <!-- Contact Section -->
-  <section class="bg-white py-16 md:py-24">
-    <div class="container mx-auto px-4">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-        <!-- Contact Info -->
-        <div appRevealOnScroll class="flex flex-col">
-          <p class="text-lg text-text-secondary mb-8">{{ 'contact.cta' | translate }}</p>
-          
-          <div class="space-y-2 mb-8">
-            <div class="flex items-center gap-3 py-3 border-b border-border">
-              <span class="text-xl">📞</span>
-              <span class="text-navy font-medium">{{ 'contact.phone' | translate }}</span>
+<!-- 2. Main Contact Section (Two Columns: Details + Dark Navy Form Card) -->
+<section class="relative py-16 md:py-24 bg-bg-light overflow-hidden">
+  <app-decorative-ornament [type]="'rings'" [position]="'top-start'" />
+  <app-decorative-ornament [type]="'dots'" [position]="'bottom-end'" />
+
+  <div class="container relative z-10 mx-auto px-4 md:px-8 max-w-7xl">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      <!-- Column 1: Contact Details & Info (lg:col-span-5) -->
+      <div appRevealOnScroll class="lg:col-span-5 space-y-8">
+        <div>
+          <span class="text-orange font-bold uppercase tracking-wider text-xs md:text-sm mb-3 block">
+            {{ 'contact.kicker' | translate }}
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-bold text-navy leading-tight mb-4">
+            {{ 'contact.title' | translate }}
+          </h2>
+          <p class="text-text-secondary text-base leading-relaxed">
+            {{ 'contact.cta' | translate }}
+          </p>
+        </div>
+
+        <!-- Contact Cards Stack -->
+        <div class="space-y-4">
+          <!-- Phone -->
+          <div class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-border shadow-xs card-hover">
+            <div class="w-12 h-12 rounded-xl bg-orange/10 text-orange flex items-center justify-center text-2xl shrink-0 font-bold icon-flip-rtl">
+              📞
             </div>
-            <div class="flex items-center gap-3 py-3 border-b border-border">
-              <span class="text-xl">✉️</span>
-              <a [href]="'mailto:' + ('contact.email' | translate)" class="text-orange hover:text-red-orange transition-colors">{{ 'contact.email' | translate }}</a>
-            </div>
-            <div class="flex items-center gap-3 py-3 border-b border-border">
-              <span class="text-xl">📍</span>
-              <span class="text-navy font-medium">{{ 'contact.address' | translate }}</span>
+            <div>
+              <div class="text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                {{ 'contact.phoneLabel' | translate }}
+              </div>
+              <a href="tel:+201043881766" class="text-base sm:text-lg font-bold text-navy hover:text-orange transition-colors" dir="ltr">
+                {{ 'contact.phone' | translate }}
+              </a>
             </div>
           </div>
-          
-          <div class="bg-bg-light rounded-xl h-48 flex items-center justify-center text-text-secondary w-full mt-auto">
-            <span>{{ 'contact.mapPlaceholder' | translate }}</span>
+
+          <!-- Email -->
+          <div class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-border shadow-xs card-hover">
+            <div class="w-12 h-12 rounded-xl bg-orange/10 text-orange flex items-center justify-center text-2xl shrink-0 font-bold">
+              ✉️
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                {{ 'contact.emailLabel' | translate }}
+              </div>
+              <a href="mailto:info@railinksupplies.com" class="text-base sm:text-lg font-bold text-navy hover:text-orange transition-colors">
+                {{ 'contact.email' | translate }}
+              </a>
+            </div>
+          </div>
+
+          <!-- Address -->
+          <div class="flex items-start gap-4 p-5 rounded-2xl bg-white border border-border shadow-xs card-hover">
+            <div class="w-12 h-12 rounded-xl bg-orange/10 text-orange flex items-center justify-center text-2xl shrink-0 font-bold">
+              📍
+            </div>
+            <div>
+              <div class="text-xs font-semibold text-text-secondary uppercase tracking-wider">
+                {{ 'contact.addressLabel' | translate }}
+              </div>
+              <p class="text-base font-bold text-navy leading-snug">
+                {{ 'contact.address' | translate }}
+              </p>
+            </div>
           </div>
         </div>
 
-        <!-- Contact Form -->
-        <div appRevealOnScroll style="animation-delay: 100ms">
-          @if (isSuccess()) {
-            <div class="bg-bg-navy-tint border border-navy/10 rounded-xl p-8 text-center animate-scale-in flex flex-col items-center justify-center h-full">
-              <div class="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center text-3xl mb-4 mx-auto">
-                ✓
-              </div>
-              <h3 class="text-2xl font-bold text-navy mb-2">{{ 'contact.form.success' | translate }}</h3>
-            </div>
-          } @else {
-            <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="bg-white rounded-xl p-6 md:p-8 shadow-sm border border-border">
-              
-              <div class="mb-5">
-                <label for="name" class="block text-sm font-medium text-text-primary mb-1">{{ 'contact.form.name' | translate }}</label>
-                <input type="text" id="name" formControlName="name" class="w-full border border-border rounded-lg px-4 py-3 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition" [class.border-red-orange]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
-                @if (contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
-                  <p class="text-red-orange text-xs mt-1">{{ 'contact.form.nameError' | translate }}</p>
-                }
-              </div>
-
-              <div class="mb-5">
-                <label for="email" class="block text-sm font-medium text-text-primary mb-1">{{ 'contact.form.email' | translate }}</label>
-                <input type="email" id="email" formControlName="email" class="w-full border border-border rounded-lg px-4 py-3 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition" [class.border-red-orange]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
-                @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
-                  <p class="text-red-orange text-xs mt-1">{{ 'contact.form.emailError' | translate }}</p>
-                }
-              </div>
-
-              <div class="mb-5">
-                <label for="phone" class="block text-sm font-medium text-text-primary mb-1">{{ 'contact.form.phone' | translate }}</label>
-                <input type="tel" id="phone" formControlName="phone" class="w-full border border-border rounded-lg px-4 py-3 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition">
-              </div>
-
-              <div class="mb-5">
-                <label for="subject" class="block text-sm font-medium text-text-primary mb-1">{{ 'contact.form.subject' | translate }}</label>
-                <input type="text" id="subject" formControlName="subject" class="w-full border border-border rounded-lg px-4 py-3 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition">
-              </div>
-
-              <div class="mb-5">
-                <label for="message" class="block text-sm font-medium text-text-primary mb-1">{{ 'contact.form.message' | translate }}</label>
-                <textarea id="message" formControlName="message" rows="5" class="w-full border border-border rounded-lg px-4 py-3 focus:border-orange focus:ring-2 focus:ring-orange/20 outline-none transition resize-none" [class.border-red-orange]="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"></textarea>
-                @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
-                  <p class="text-red-orange text-xs mt-1">{{ 'contact.form.messageError' | translate }}</p>
-                }
-              </div>
-
-              <button type="submit" [disabled]="isSubmitting()" class="w-full bg-orange hover:bg-red-orange text-white font-semibold py-3 rounded-lg transition disabled:opacity-70 disabled:cursor-not-allowed">
-                @if (isSubmitting()) {
-                  <span class="flex items-center justify-center gap-2">
-                    <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
-                    {{ 'contact.form.sending' | translate }}
-                  </span>
-                } @else {
-                  <span>{{ 'contact.form.submit' | translate }}</span>
-                }
-              </button>
-            </form>
-          }
+        <!-- Working Hours / Trust Note -->
+        <div class="p-6 rounded-2xl bg-bg-navy-tint border border-navy/10">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-orange animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-navy">
+              {{ 'approach.badge' | translate }}
+            </span>
+          </div>
+          <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+            {{ 'about.body' | translate }}
+          </p>
         </div>
       </div>
+
+      <!-- Column 2: Dark Navy Card Containing the Form (lg:col-span-7) -->
+      <div appRevealOnScroll [delay]="150" class="lg:col-span-7">
+        <div class="bg-navy rounded-3xl p-8 sm:p-12 text-white shadow-2xl border-4 border-white/10 relative overflow-hidden">
+          
+          <!-- Background Glow Elements -->
+          <div class="absolute -top-16 -end-16 w-48 h-48 bg-orange/20 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="absolute -bottom-16 -start-16 w-48 h-48 bg-red-orange/15 rounded-full blur-3xl pointer-events-none"></div>
+
+          <div class="relative z-10">
+            <!-- Header on Dark Card -->
+            <div class="mb-8">
+              <span class="text-orange font-bold uppercase tracking-wider text-xs block mb-2">
+                {{ 'header.quoteCta' | translate }}
+              </span>
+              <h3 class="text-2xl sm:text-3xl font-bold text-white">
+                {{ 'contact.form.submit' | translate }}
+              </h3>
+            </div>
+
+            <!-- Animated Success State -->
+            @if (isSuccess()) {
+              <div class="bg-white/10 border border-white/20 rounded-2xl p-8 sm:p-10 text-center animate-scale-in flex flex-col items-center justify-center my-8">
+                <div class="w-16 h-16 bg-orange text-white rounded-full flex items-center justify-center text-3xl mb-4 shadow-lg animate-pop-in">
+                  ✓
+                </div>
+                <h4 class="text-2xl font-bold text-white mb-2">{{ 'contact.form.success' | translate }}</h4>
+                <p class="text-text-inverse/80 text-sm mb-6 max-w-sm">
+                  {{ 'mission.body' | translate }}
+                </p>
+                <button 
+                  type="button" 
+                  (click)="resetForm()" 
+                  class="bg-orange hover:bg-red-orange text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-lg transition-colors">
+                  {{ 'header.quoteCta' | translate }}
+                </button>
+              </div>
+            } @else {
+              <!-- The Form -->
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-5">
+                
+                <!-- Name & Email Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="contact-name" class="block text-xs font-semibold uppercase tracking-wider text-text-inverse/90 mb-2">
+                      {{ 'contact.form.name' | translate }} <span class="text-orange">*</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      id="contact-name" 
+                      formControlName="name" 
+                      class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-orange focus:bg-white/15 focus:ring-2 focus:ring-orange/30 transition-all duration-200"
+                      [class.border-red-orange]="contactForm.get('name')?.touched && contactForm.get('name')?.invalid">
+                    @if (contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
+                      <p class="text-red-orange text-xs mt-1 animate-fade-in">{{ 'contact.form.errors.nameRequired' | translate }}</p>
+                    }
+                  </div>
+
+                  <div>
+                    <label for="contact-email" class="block text-xs font-semibold uppercase tracking-wider text-text-inverse/90 mb-2">
+                      {{ 'contact.form.email' | translate }} <span class="text-orange">*</span>
+                    </label>
+                    <input 
+                      type="email" 
+                      id="contact-email" 
+                      formControlName="email" 
+                      class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-orange focus:bg-white/15 focus:ring-2 focus:ring-orange/30 transition-all duration-200"
+                      [class.border-red-orange]="contactForm.get('email')?.touched && contactForm.get('email')?.invalid">
+                    @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
+                      <p class="text-red-orange text-xs mt-1 animate-fade-in">{{ 'contact.form.errors.emailInvalid' | translate }}</p>
+                    }
+                  </div>
+                </div>
+
+                <!-- Phone & Subject Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label for="contact-phone" class="block text-xs font-semibold uppercase tracking-wider text-text-inverse/90 mb-2">
+                      {{ 'contact.form.phone' | translate }}
+                    </label>
+                    <input 
+                      type="tel" 
+                      id="contact-phone" 
+                      formControlName="phone" 
+                      class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-orange focus:bg-white/15 focus:ring-2 focus:ring-orange/30 transition-all duration-200">
+                  </div>
+
+                  <div>
+                    <label for="contact-subject" class="block text-xs font-semibold uppercase tracking-wider text-text-inverse/90 mb-2">
+                      {{ 'contact.form.subject' | translate }}
+                    </label>
+                    <input 
+                      type="text" 
+                      id="contact-subject" 
+                      formControlName="subject" 
+                      class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-orange focus:bg-white/15 focus:ring-2 focus:ring-orange/30 transition-all duration-200">
+                  </div>
+                </div>
+
+                <!-- Message Field -->
+                <div>
+                  <label for="contact-message" class="block text-xs font-semibold uppercase tracking-wider text-text-inverse/90 mb-2">
+                    {{ 'contact.form.message' | translate }} <span class="text-orange">*</span>
+                  </label>
+                  <textarea 
+                    id="contact-message" 
+                    formControlName="message" 
+                    rows="5" 
+                    class="w-full bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-sm text-white placeholder-white/40 focus:outline-none focus:border-orange focus:bg-white/15 focus:ring-2 focus:ring-orange/30 transition-all duration-200 resize-none"
+                    [class.border-red-orange]="contactForm.get('message')?.touched && contactForm.get('message')?.invalid"></textarea>
+                  @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
+                    <p class="text-red-orange text-xs mt-1 animate-fade-in">{{ 'contact.form.errors.messageTooShort' | translate }}</p>
+                  }
+                </div>
+
+                <!-- Solid Orange Submit Button -->
+                <div>
+                  <button 
+                    type="submit" 
+                    [disabled]="isSubmitting()"
+                    class="w-full bg-orange hover:bg-red-orange text-white font-bold text-base py-4 rounded-xl shadow-lg hover:shadow-orange/30 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3">
+                    @if (isSubmitting()) {
+                      <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      <span>{{ 'contact.form.sending' | translate }}</span>
+                    } @else {
+                      <span>{{ 'contact.form.submit' | translate }}</span>
+                      <span class="icon-flip-rtl">→</span>
+                    }
+                  </button>
+                </div>
+
+              </form>
+            }
+
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
-</main>
+  </div>
+</section>
+
+<!-- 3. Full-Width Interactive Map Embed Below -->
+<section class="relative w-full h-80 md:h-96 bg-navy/10 overflow-hidden border-t-2 border-border" aria-label="Location Map">
+  <!-- Google Maps Interactive Embed centered on Heliopolis, Cairo -->
+  <iframe 
+    title="RAI Link Supplies Location - Heliopolis, Cairo, Egypt"
+    src="https://maps.google.com/maps?q=100%20Al-Sayed%20Al-Mirghani%20Street,%20Heliopolis,%20Cairo,%20Egypt&t=&z=15&ie=UTF8&iwloc=&output=embed"
+    class="w-full h-full border-0 filter saturate-[1.1] contrast-[1.05]"
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</section>

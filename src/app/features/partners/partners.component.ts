@@ -1,30 +1,36 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { TranslatePipe } from '@ngx-translate/core';
 import { SeoService } from '../../core/services/seo.service';
-import { SectionTitleComponent } from '../../shared/components/section-title/section-title.component';
-import { CardComponent } from '../../shared/components/card/card.component';
+import { PageHeaderBannerComponent } from '../../shared/components/page-header-banner/page-header-banner.component';
+import { TextWithCollageComponent } from '../../shared/components/text-with-collage/text-with-collage.component';
+import { CardGridComponent, GridCardItem } from '../../shared/components/card-grid/card-grid.component';
 import { CtaBannerComponent } from '../../shared/components/cta-banner/cta-banner.component';
-import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-partners',
   standalone: true,
   imports: [
-    TranslatePipe,
-    SectionTitleComponent,
-    CardComponent,
-    CtaBannerComponent,
-    RevealOnScrollDirective,
+    PageHeaderBannerComponent,
+    TextWithCollageComponent,
+    CardGridComponent,
+    CtaBannerComponent
   ],
   templateUrl: './partners.component.html'
 })
 export class PartnersComponent implements OnInit {
   private seoService = inject(SeoService);
 
-  audiences = [
-    { titleKey: 'audience.government.title', bodyKey: 'audience.government.body', icon: '🏛️' },
-    { titleKey: 'audience.corporate.title', bodyKey: 'audience.corporate.body', icon: '🏢' },
-    { titleKey: 'audience.education.title', bodyKey: 'audience.education.body', icon: '🏥' }
+  // Audience highlights
+  partnerBullets = [
+    'audience.government.title',
+    'audience.corporate.title',
+    'audience.education.title'
+  ];
+
+  // 3 Target Audience segments for 3-column CardGridComponent
+  audiencesList: GridCardItem[] = [
+    { icon: '🏛️', titleKey: 'audience.government.title', bodyKey: 'audience.government.body', route: '/contact' },
+    { icon: '🏢', titleKey: 'audience.corporate.title', bodyKey: 'audience.corporate.body', route: '/contact' },
+    { icon: '🏥', titleKey: 'audience.education.title', bodyKey: 'audience.education.body', route: '/contact' }
   ];
 
   ngOnInit(): void {
