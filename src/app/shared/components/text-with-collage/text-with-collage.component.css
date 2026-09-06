@@ -1,8 +1,33 @@
 /* ═══════════════════════════════════════════════════════
-   ABOUT US SECTION — Compact & Clean
+   ABOUT US SECTION — Pixel-matched to reference
 ═══════════════════════════════════════════════════════ */
 .about-section {
   position: relative;
+  background-color: #F7F8FA;
+}
+
+.heading-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.heading-underline {
+  width: 44px;
+  height: 3px;
+  background-color: #EC6B2A;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.text-column-content {
+  max-width: 540px;
+}
+
+.text-column-content p {
+  color: #3D3B3C;
+  font-size: 0.9375rem;
+  line-height: 1.65;
 }
 
 /* Solid Orange Button matching reference */
@@ -10,48 +35,44 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.65rem 1.75rem;
+  padding: 0.55rem 1.6rem;
   font-family: inherit;
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: #F97316;
-  border: 2px solid #F97316;
-  border-radius: 8px;
+  background-color: #EC6B2A;
+  border: 1px solid #EC6B2A;
+  border-radius: 6px;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 200ms ease, border-color 200ms ease, transform 150ms ease;
+  transition: background-color 200ms ease, transform 150ms ease, box-shadow 200ms ease;
   white-space: nowrap;
 }
 
 .btn-solid-orange:hover {
-  background-color: #EA6A00;
-  border-color: #EA6A00;
-  transform: translateY(-1px);
+  background-color: #D85A1B;
+  border-color: #D85A1B;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(236, 107, 42, 0.25);
 }
 
-/* Unified Image Container */
-.unified-image-container {
+/* Image Wrapper */
+.image-wrapper {
   position: relative;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
-  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(11, 12, 78, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.unified-image {
+.about-main-img {
   width: 100%;
-  height: 340px;
-  object-fit: cover;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
   display: block;
-  transition: transform 500ms ease;
-}
-
-@media (max-width: 640px) {
-  .unified-image {
-    height: 240px;
-  }
-}
-
-.unified-image-container:hover .unified-image {
-  transform: scale(1.02);
+  border-radius: 14px;
 }

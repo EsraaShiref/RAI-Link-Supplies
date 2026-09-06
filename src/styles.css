@@ -2,12 +2,12 @@
 
 /* ─── Brand Tokens ─────────────────────────────────────── */
 @theme {
-  --color-brand-navy:       #0A1628;
+  --color-brand-navy:       #0B0C4E;
   --color-brand-navy-light: #112240;
-  --color-brand-orange:     #F97316;
-  --color-brand-orange-dark:#EA6A00;
-  --color-brand-gray:       #6B7280;
-  --color-brand-light:      #F9FAFB;
+  --color-brand-orange:     #EC6B2A;
+  --color-brand-orange-dark:#D85A1B;
+  --color-brand-gray:       #3D3B3C;
+  --color-brand-light:      #F7F8FA;
 
   --font-family-sans: "Cairo", "Segoe UI", system-ui, sans-serif;
 }
@@ -41,7 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin: 0;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 a {
@@ -78,11 +78,46 @@ img {
 
 .reveal-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) translateX(0);
+}
+
+/* Side-in animations with logical inline direction awareness */
+[dir="ltr"] .reveal-hidden-start {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[dir="rtl"] .reveal-hidden-start {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[dir="ltr"] .reveal-hidden-end {
+  opacity: 0;
+  transform: translateX(36px);
+  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+[dir="rtl"] .reveal-hidden-end {
+  opacity: 0;
+  transform: translateX(-36px);
+  transition: opacity 550ms cubic-bezier(0.16, 1, 0.3, 1),
+              transform 550ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-hidden {
+  .reveal-hidden,
+  .reveal-hidden-start,
+  .reveal-hidden-end {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;

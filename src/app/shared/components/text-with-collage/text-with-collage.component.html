@@ -1,48 +1,50 @@
-<section class="about-section py-12 md:py-16 bg-white overflow-hidden">
+<section class="about-section py-12 md:py-16 bg-brand-light overflow-hidden">
   <div class="container mx-auto px-4 md:px-8 max-w-7xl">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
 
-      <!-- Text Column -->
+      <!-- Text Column (Animates from inline-start side) -->
       <div
         appRevealOnScroll
+        [direction]="'start'"
         class="lg:col-span-6 flex flex-col justify-center"
         [class.lg:order-2]="reverse()"
         [class.lg:order-1]="!reverse()"
       >
-        <span class="text-brand-orange font-bold tracking-wider uppercase text-xs md:text-sm mb-2 block">
-          {{ kickerKey() | translate }}
-        </span>
+        <div class="heading-group mb-5">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-navy leading-tight">
+            {{ titleKey() | translate }}
+          </h2>
+          <div class="heading-underline"></div>
+        </div>
 
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-navy leading-tight mb-4">
-          {{ titleKey() | translate }}
-        </h2>
+        <div class="text-column-content">
+          <p class="text-brand-gray text-sm sm:text-base leading-relaxed mb-6">
+            {{ bodyKey() | translate }}
+          </p>
 
-        <p class="text-brand-gray text-base leading-relaxed mb-6">
-          {{ bodyKey() | translate }}
-        </p>
-
-        @if (readMoreRoute()) {
-          <div>
-            <a [routerLink]="readMoreRoute()" class="btn-solid-orange">
-              {{ readMoreLabelKey() | translate }}
-            </a>
-          </div>
-        }
+          @if (readMoreRoute()) {
+            <div>
+              <a [routerLink]="readMoreRoute()" class="btn-solid-orange">
+                {{ readMoreLabelKey() | translate }}
+              </a>
+            </div>
+          }
+        </div>
       </div>
 
-      <!-- Unified Image Composition Column -->
+      <!-- Single Cohesive Image Column (Animates from inline-end side) -->
       <div
         appRevealOnScroll
-        [delay]="150"
+        [direction]="'end'"
         class="lg:col-span-6 relative flex justify-center"
         [class.lg:order-1]="reverse()"
         [class.lg:order-2]="!reverse()"
       >
-        <div class="unified-image-container w-full max-w-lg">
+        <div class="image-wrapper w-full max-w-lg">
           <img
-            src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80"
-            alt="RAI Link Supplies Procurement & Supply"
-            class="unified-image shadow-xl"
+            src="/assets/images/about.jpg"
+            alt="RAI Link Supplies Procurement & Supply Solutions"
+            class="about-main-img"
             loading="lazy"
           />
         </div>

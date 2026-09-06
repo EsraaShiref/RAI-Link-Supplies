@@ -1,12 +1,15 @@
 import { Directive, ElementRef, Input, OnInit, OnDestroy, inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
+export type RevealAnimationDirection = 'up' | 'start' | 'end';
+
 @Directive({
   selector: '[appRevealOnScroll]',
   standalone: true,
 })
 export class RevealOnScrollDirective implements OnInit, OnDestroy {
   @Input() delay: number = 0;
+  @Input() direction: RevealAnimationDirection = 'up';
 
   private elementRef = inject(ElementRef);
   private platformId = inject(PLATFORM_ID);
@@ -24,14 +27,21 @@ export class RevealOnScrollDirective implements OnInit, OnDestroy {
       return;
     }
 
-    el.classList.add('reveal-hidden');
+    const hiddenClass =
+      this.direction === 'start'
+        ? 'reveal-hidden-start'
+        : this.direction === 'end'
+          ? 'reveal-hidden-end'
+          : 'reveal-hidden';
+
+    el.classList.add(hiddenClass);
 
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             el.style.transitionDelay = `${this.delay}ms`;
-            el.classList.remove('reveal-hidden');
+            el.classList.remove(hiddenClass);
             el.classList.add('reveal-visible');
 
             if (this.observer) {

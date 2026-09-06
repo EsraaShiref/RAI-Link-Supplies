@@ -1,8 +1,18 @@
 /* ═══════════════════════════════════════════════════════
-   CARD GRID COMPONENT (Our Values) — Compact & Uniform
+   CARD GRID COMPONENT (Our Values) — Pixel-Matched
 ═══════════════════════════════════════════════════════ */
 .values-section {
   position: relative;
+  background-color: #ffffff;
+}
+
+/* Faint concentric circular doodle in bottom corner */
+.decorative-doodle {
+  position: absolute;
+  bottom: -20px;
+  inset-inline-start: -20px;
+  pointer-events: none;
+  z-index: 1;
 }
 
 .section-header {
@@ -12,9 +22,9 @@
 }
 
 .header-underline {
-  width: 42px;
+  width: 38px;
   height: 3px;
-  background-color: #F97316;
+  background-color: #EC6B2A;
   border-radius: 2px;
   margin-top: 8px;
 }
@@ -22,9 +32,8 @@
 .value-card {
   position: relative;
   background-color: #ffffff;
-  border-radius: 14px;
-  border: 1px solid #e5e7eb;
-  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid #EDEDF2;
   box-shadow: 0 2px 8px rgba(11, 12, 78, 0.02);
   transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
   display: flex;
@@ -34,43 +43,64 @@
 }
 
 .value-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(11, 12, 78, 0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(11, 12, 78, 0.06);
   border-color: #d1d5db;
 }
 
-/* Uniform Neutral Circle Icon Container for all 4 cards */
+/* Icon Circle Badges with varied pastel tints */
 .value-icon-circle {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
-  background-color: #F3F4F6;
-  color: #0B0C4E;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.25rem;
-  transition: background-color 250ms ease, color 250ms ease, transform 250ms ease;
+  margin-bottom: 1.15rem;
+  transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
 .value-card:hover .value-icon-circle {
-  background-color: rgba(249, 115, 22, 0.12);
-  color: #F97316;
-  transform: scale(1.06);
+  transform: scale(1.08);
+}
+
+/* Reliability: soft lavender/blue tint with navy icon */
+.value-icon-circle--reliability {
+  background-color: #ECEEF8;
+  color: #0B0C4E;
+}
+
+/* Quality: soft peach/orange tint with orange icon */
+.value-icon-circle--quality {
+  background-color: #FDF1EA;
+  color: #EC6B2A;
+}
+
+/* Speed: soft light blue tint with navy/blue icon */
+.value-icon-circle--speed {
+  background-color: #EAF4FD;
+  color: #0B0C4E;
+}
+
+/* Flexibility: soft light orange/amber tint with orange icon */
+.value-icon-circle--flexibility {
+  background-color: #FDF4E7;
+  color: #EC6B2A;
 }
 
 .value-title {
   margin: 0;
   font-weight: 700;
+  color: #0B0C4E;
 }
 
 .value-body {
-  color: #6B7280;
-  line-height: 1.65;
+  color: #3D3B3C;
+  font-size: 0.8125rem;
+  line-height: 1.6;
 }
 
 .value-card-footer {
-  padding-top: 1rem;
-  border-top: 1px solid #f3f4f6;
+  padding-top: 0.85rem;
   margin-top: auto;
 }

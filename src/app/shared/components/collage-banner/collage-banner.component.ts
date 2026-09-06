@@ -6,25 +6,29 @@ import { Component } from '@angular/core';
   template: `
     <section class="collage-banner-section overflow-hidden" aria-hidden="true">
       <div class="banner-image-container">
-        <!-- Panoramic composite image banner -->
+        <!-- Panoramic composite image banner using placed afterabout.jpg -->
         <img
-          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
+          src="/assets/images/afterabout.jpg"
           alt=""
           class="banner-img"
           loading="lazy"
         />
-        <!-- Subtle dark navy overlay to match brand tone -->
-        <div class="banner-overlay"></div>
       </div>
     </section>
   `,
   styles: [`
     .collage-banner-section {
       width: 100%;
-      height: 180px;
+      height: 140px;
       position: relative;
+      background-color: #ffffff;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 640px) {
+      .collage-banner-section {
+        height: 180px;
+      }
+    }
+    @media (min-width: 1024px) {
       .collage-banner-section {
         height: 220px;
       }
@@ -38,19 +42,8 @@ import { Component } from '@angular/core';
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 40%;
+      object-position: center center;
       display: block;
-    }
-    .banner-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(11, 12, 78, 0.4) 0%,
-        rgba(11, 12, 78, 0.25) 50%,
-        rgba(11, 12, 78, 0.45) 100%
-      );
-      pointer-events: none;
     }
   `]
 })
