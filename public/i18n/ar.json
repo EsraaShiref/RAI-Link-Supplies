@@ -1,0 +1,43 @@
+{
+  "NAV": {
+    "HOME": "الرئيسية",
+    "ABOUT": "من نحن",
+    "SERVICES": "خدماتنا",
+    "PARTNERS": "شركاؤنا",
+    "CONTACT": "اتصل بنا",
+    "CTA": "اطلب عرض سعر",
+    "LANG_SWITCH": "English"
+  },
+  "UTILITY_BAR": {
+    "PHONE": "+20 100 000 0000",
+    "EMAIL": "info@railinksupp.com"
+  },
+  "HERO": {
+    "HEADLINE": "شريكك الموثوق في التوريد والمشتريات",
+    "SUBTEXT": "نوفر حلولاً متكاملة للمشتريات والتوريد لقطاعات الأعمال في مصر",
+    "CTA_PRIMARY": "اطلب عرض سعر",
+    "CTA_SECONDARY": "تعرف علينا"
+  },
+  "ABOUT": {
+    "TITLE": "من نحن",
+    "MISSION_TITLE": "رسالتنا",
+    "VISION_TITLE": "رؤيتنا",
+    "VALUES_TITLE": "قيمنا"
+  },
+  "SERVICES": {
+    "TITLE": "خدماتنا"
+  },
+  "PARTNERS": {
+    "TITLE": "شركاؤنا"
+  },
+  "CONTACT": {
+    "TITLE": "اتصل بنا",
+    "NAME": "الاسم",
+    "EMAIL": "البريد الإلكتروني",
+    "MESSAGE": "رسالتك",
+    "SEND": "إرسال"
+  },
+  "FOOTER": {
+    "RIGHTS": "جميع الحقوق محفوظة"
+  }
+}

@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+/* ─── Brand Tokens ─────────────────────────────────────── */
+@theme {
+  --color-brand-navy:       #0A1628;
+  --color-brand-navy-light: #112240;
+  --color-brand-orange:     #F97316;
+  --color-brand-orange-dark:#EA6A00;
+  --color-brand-gray:       #6B7280;
+  --color-brand-light:      #F9FAFB;
+
+  --font-family-sans: "Cairo", "Segoe UI", system-ui, sans-serif;
+}
+
+/* ─── Base ─────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  color: var(--color-brand-navy);
+  background-color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Typography helpers ────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ─── RTL / LTR logical transitions ────────────────────── */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="ltr"] {
+  text-align: left;
+}

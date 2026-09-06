@@ -1,0 +1,43 @@
+{
+  "NAV": {
+    "HOME": "Home",
+    "ABOUT": "About Us",
+    "SERVICES": "Services",
+    "PARTNERS": "Partners",
+    "CONTACT": "Contact Us",
+    "CTA": "Request a Quote",
+    "LANG_SWITCH": "العربية"
+  },
+  "UTILITY_BAR": {
+    "PHONE": "+20 100 000 0000",
+    "EMAIL": "info@railinksupp.com"
+  },
+  "HERO": {
+    "HEADLINE": "Your Trusted Partner in Procurement & Supply",
+    "SUBTEXT": "Delivering integrated procurement and supply solutions for businesses across Egypt",
+    "CTA_PRIMARY": "Request a Quote",
+    "CTA_SECONDARY": "About Us"
+  },
+  "ABOUT": {
+    "TITLE": "About Us",
+    "MISSION_TITLE": "Our Mission",
+    "VISION_TITLE": "Our Vision",
+    "VALUES_TITLE": "Our Values"
+  },
+  "SERVICES": {
+    "TITLE": "Our Services"
+  },
+  "PARTNERS": {
+    "TITLE": "Our Partners"
+  },
+  "CONTACT": {
+    "TITLE": "Contact Us",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "MESSAGE": "Your Message",
+    "SEND": "Send"
+  },
+  "FOOTER": {
+    "RIGHTS": "All rights reserved"
+  }
+}
