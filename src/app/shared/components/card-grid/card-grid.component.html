@@ -1,0 +1,90 @@
+<section class="values-section py-16 md:py-24 bg-white">
+  <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+
+    <!-- Section Heading -->
+    <div
+      appRevealOnScroll
+      class="text-center max-w-2xl mx-auto mb-14 sm:mb-16"
+    >
+      <span class="text-brand-orange font-bold tracking-wider uppercase text-xs md:text-sm mb-3 block">
+        RAI LINK SUPPLIES
+      </span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-navy">
+        {{ titleKey() | translate }}
+      </h2>
+      <div class="w-16 h-1 bg-brand-orange mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <!-- 4-Column Grid with Staggered Scroll Reveal -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+      @for (card of items(); track card.key; let i = $index) {
+        <div
+          appRevealOnScroll
+          [delay]="i * 100"
+          class="value-card group"
+        >
+          <!-- Accent Top Highlight on hover -->
+          <div class="value-card-highlight" aria-hidden="true"></div>
+
+          <div class="value-card-content">
+            <!-- Icon Container (shifts navy -> orange on hover) -->
+            <div class="value-icon-container">
+              @switch (card.icon) {
+                @case ('reliability') {
+                  <!-- Reliability: Shield with checkmark -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                }
+                @case ('quality') {
+                  <!-- Quality: Verified Badge / Rosette with star -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/>
+                    <path d="m9 12 2 2 4-4"/>
+                  </svg>
+                }
+                @case ('speed') {
+                  <!-- Speed & Agility: Lightning bolt -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                }
+                @case ('flexibility') {
+                  <!-- Flexibility: Adaptive rotating / continuous arrows -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                    <path d="M3 3v5h5" />
+                    <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                    <path d="M16 16h5v5" />
+                  </svg>
+                }
+              }
+            </div>
+
+            <!-- Title -->
+            <h3 class="value-title text-xl font-bold text-brand-navy mb-3 transition-colors duration-200 group-hover:text-brand-orange">
+              {{ card.titleKey | translate }}
+            </h3>
+
+            <!-- Description -->
+            <p class="value-body text-brand-gray text-sm leading-relaxed mb-6">
+              {{ card.bodyKey | translate }}
+            </p>
+          </div>
+
+          <!-- Micro-CTA Footer -->
+          <div class="value-card-footer">
+            <app-read-more-link [route]="card.route || defaultRoute()" />
+          </div>
+
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

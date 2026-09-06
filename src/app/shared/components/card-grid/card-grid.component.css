@@ -1,0 +1,79 @@
+/* ═══════════════════════════════════════════════════════
+   CARD GRID COMPONENT (Our Values)
+═══════════════════════════════════════════════════════ */
+.values-section {
+  position: relative;
+}
+
+.value-card {
+  position: relative;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(11, 12, 78, 0.03);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 300ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 1.75rem 1.5rem;
+}
+
+.value-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px rgba(11, 12, 78, 0.08);
+  border-color: #F97316;
+}
+
+/* Accent top highlight bar */
+.value-card-highlight {
+  position: absolute;
+  top: 0;
+  inset-inline: 0;
+  height: 4px;
+  background: #F97316;
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+.value-card:hover .value-card-highlight {
+  opacity: 1;
+}
+
+/* Icon Container */
+.value-icon-container {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background-color: #F9FAFB;
+  color: #0B0C4E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: background-color 300ms ease, color 300ms ease, transform 300ms ease;
+}
+
+.value-card:hover .value-icon-container {
+  background-color: rgba(249, 115, 22, 0.12);
+  color: #F97316;
+  transform: scale(1.05);
+}
+
+.value-title {
+  margin: 0;
+  font-weight: 800;
+}
+
+.value-body {
+  color: #6B7280;
+  line-height: 1.7;
+}
+
+.value-card-footer {
+  padding-top: 1.25rem;
+  border-top: 1px solid #f3f4f6;
+  margin-top: auto;
+}

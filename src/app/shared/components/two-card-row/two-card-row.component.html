@@ -1,0 +1,71 @@
+<section class="two-card-section py-16 md:py-20" [class.bg-brand-light]="bgLight()" [class.bg-white]="!bgLight()">
+  <div class="container mx-auto px-4 md:px-8 max-w-7xl">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+
+      <!-- Card 1: Mission (First in source order, sits at inline-start) -->
+      <div
+        appRevealOnScroll
+        class="card card--mission"
+      >
+        <div class="card-accent-bar card-accent-bar--orange"></div>
+        <div class="card-inner">
+          <div class="card-header">
+            <!-- Target / Bullseye icon for Mission -->
+            <div class="card-icon card-icon--orange" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <h3 class="card-title text-2xl font-bold text-brand-navy">
+              {{ card1().titleKey | translate }}
+            </h3>
+          </div>
+
+          <p class="card-body text-brand-gray text-base leading-relaxed">
+            {{ card1().bodyKey | translate }}
+          </p>
+
+          <div class="card-footer">
+            <app-read-more-link [route]="card1().route || '/about'" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Vision (Second in source order, sits at inline-end) -->
+      <div
+        appRevealOnScroll
+        [delay]="150"
+        class="card card--vision"
+      >
+        <div class="card-accent-bar card-accent-bar--navy"></div>
+        <div class="card-inner">
+          <div class="card-header">
+            <!-- Eye / Horizon icon for Vision -->
+            <div class="card-icon card-icon--navy" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </div>
+            <h3 class="card-title text-2xl font-bold text-brand-navy">
+              {{ card2().titleKey | translate }}
+            </h3>
+          </div>
+
+          <p class="card-body text-brand-gray text-base leading-relaxed">
+            {{ card2().bodyKey | translate }}
+          </p>
+
+          <div class="card-footer">
+            <app-read-more-link [route]="card2().route || '/about'" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
