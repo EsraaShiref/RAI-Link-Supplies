@@ -65,6 +65,19 @@
   text-decoration: none;
 }
 
+.logo-img {
+  height: 40px;
+  width: auto;
+  max-width: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+.logo-img--drawer {
+  height: 34px;
+  max-width: 170px;
+}
+
 /* Desktop Nav */
 .desktop-nav {
   display: none;

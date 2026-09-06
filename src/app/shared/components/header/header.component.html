@@ -3,16 +3,16 @@
 ═══════════════════════════════════════════════════════ -->
 <div class="utility-bar">
   <div class="container-inner">
-    <a href="tel:+201000000000" class="utility-link">
+    <a href="tel:+201043881766" class="utility-link">
       <!-- Phone Icon -->
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
            aria-hidden="true">
         <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67 2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 9.91a16 16 0 0 0 5.93 5.93l1.17-1.17a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 17z"/>
       </svg>
-      <span>{{ 'UTILITY_BAR.PHONE' | translate }}</span>
+      <span dir="ltr">{{ 'CONTACT_INFO.PHONE' | translate }}</span>
     </a>
-    <a href="mailto:info@railinksupp.com" class="utility-link">
+    <a href="mailto:info@railinksupplies.com" class="utility-link">
       <!-- Email Icon -->
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none"
            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -20,7 +20,7 @@
         <rect width="20" height="16" x="2" y="4" rx="2"/>
         <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
       </svg>
-      <span>{{ 'UTILITY_BAR.EMAIL' | translate }}</span>
+      <span>{{ 'CONTACT_INFO.EMAIL' | translate }}</span>
     </a>
   </div>
 </div>
@@ -33,14 +33,13 @@
 
     <!-- Logo -->
     <a routerLink="/" class="logo" aria-label="RAI Link Supplies - Home">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" width="160" height="36" aria-hidden="true">
-        <!-- Orange accent bar -->
-        <rect x="0" y="8" width="5" height="24" rx="2" fill="#F97316"/>
-        <!-- RAI text mark -->
-        <text x="13" y="29" font-family="Cairo, sans-serif" font-size="22" font-weight="800" fill="#0A1628">RAI</text>
-        <!-- Link Supplies in lighter weight -->
-        <text x="57" y="29" font-family="Cairo, sans-serif" font-size="14" font-weight="500" fill="#6B7280">Link Supplies</text>
-      </svg>
+      <img
+        src="/assets/images/logo.svg"
+        alt="RAI Link Supplies"
+        class="logo-img"
+        width="187"
+        height="40"
+      />
     </a>
 
     <!-- Desktop Nav Links -->
@@ -132,12 +131,14 @@
   aria-label="Mobile navigation"
 >
   <div class="drawer-header">
-    <a routerLink="/" class="logo" (click)="closeDrawer()">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 40" width="140" height="32">
-        <rect x="0" y="8" width="5" height="24" rx="2" fill="#F97316"/>
-        <text x="13" y="29" font-family="Cairo, sans-serif" font-size="22" font-weight="800" fill="#0A1628">RAI</text>
-        <text x="57" y="29" font-family="Cairo, sans-serif" font-size="14" font-weight="500" fill="#6B7280">Link Supplies</text>
-      </svg>
+    <a routerLink="/" class="logo" (click)="closeDrawer()" aria-label="RAI Link Supplies - Home">
+      <img
+        src="/assets/images/logo.svg"
+        alt="RAI Link Supplies"
+        class="logo-img logo-img--drawer"
+        width="150"
+        height="32"
+      />
     </a>
     <button type="button" (click)="closeDrawer()" class="drawer-close" aria-label="Close menu">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
