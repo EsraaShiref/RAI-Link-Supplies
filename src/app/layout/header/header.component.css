@@ -42,6 +42,10 @@
 }
 
 .app-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  width: 100%;
   backdrop-filter: blur(0);
 }
 

@@ -1,6 +1,6 @@
 import { Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ChevronRight, LucideAngularModule } from 'lucide-angular';
+import { ChevronDown, ChevronRight, LucideAngularModule } from 'lucide-angular';
 
 import { TranslationService } from '../../../core/services';
 
@@ -9,56 +9,54 @@ import { TranslationService } from '../../../core/services';
   selector: 'app-page-header',
   imports: [RouterLink, LucideAngularModule],
   host: { class: 'block' },
+  styleUrls: ['./page-header.component.css'],
   template: `
     <section
-      class="bg-navy dot-grid relative overflow-hidden text-white"
+      class="page-hero"
       [attr.aria-labelledby]="headingId"
     >
-      <div class="shell relative z-10 py-12 sm:py-16 lg:py-20">
-        <nav [attr.aria-label]="t('a11y.breadcrumb')">
-          <ol class="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
-            <li>
-              <a
-                routerLink="/"
-                class="text-white/70 underline-offset-4 transition-colors hover:text-white hover:underline"
-              >
-                {{ t('nav.home') }}
-              </a>
-            </li>
-            <li class="flex items-center gap-1.5">
-              <lucide-icon
-                [img]="ChevronRightIcon"
-                [size]="14"
-                class="rtl-flip text-white/45"
-                aria-hidden="true"
-              />
-              <span class="font-semibold text-white" aria-current="page">
-                {{ t(titleKey()) }}
-              </span>
-            </li>
-          </ol>
-        </nav>
-
+      <div class="page-hero__inner shell">
         @if (eyebrowKey()) {
-          <p class="mt-8 text-xs font-bold tracking-[0.18em] text-white/70 uppercase sm:text-sm">
+          <p class="hero-badge">
+            <span class="hero-badge__dot" aria-hidden="true"></span>
             {{ t(eyebrowKey()) }}
           </p>
         }
 
-        <h1
-          [id]="headingId"
-          class="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[2.75rem]"
-        >
+        <h1 [id]="headingId" class="hero-title">
           {{ t(headlineKey() || titleKey()) }}
         </h1>
 
         @if (leadKey()) {
-          <p class="mt-5 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
-            {{ t(leadKey()) }}
-          </p>
+          <p class="hero-subtitle">{{ t(leadKey()) }}</p>
         }
 
-        <span class="bg-brand-gradient mt-8 block h-[3px] w-24 rounded-full" aria-hidden="true"></span>
+        <div class="hero-divider" aria-hidden="true">
+          <span></span>
+          <i></i>
+          <span></span>
+        </div>
+
+        <nav class="hero-breadcrumb" [attr.aria-label]="t('a11y.breadcrumb')">
+          <ol>
+            <li>
+              <a routerLink="/">{{ t('nav.home') }}</a>
+            </li>
+            <li>
+              <lucide-icon
+                [img]="ChevronRightIcon"
+                [size]="14"
+                class="rtl-flip"
+                aria-hidden="true"
+              />
+              <span aria-current="page">{{ t(titleKey()) }}</span>
+            </li>
+          </ol>
+        </nav>
+
+        <span class="hero-scroll-indicator" aria-hidden="true">
+          <lucide-icon [img]="ChevronDownIcon" [size]="16" />
+        </span>
       </div>
     </section>
   `,
@@ -67,6 +65,7 @@ export class PageHeaderComponent {
   private readonly i18n = inject(TranslationService);
   protected readonly t = this.i18n.t;
   protected readonly ChevronRightIcon = ChevronRight;
+  protected readonly ChevronDownIcon = ChevronDown;
   protected readonly headingId = 'page-heading';
 
   /** Key under `nav.*` — drives both the breadcrumb leaf and the default H1. */

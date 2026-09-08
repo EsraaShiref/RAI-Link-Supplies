@@ -1,0 +1,244 @@
+:host {
+  display: block;
+}
+
+.page-hero {
+  position: relative;
+  display: flex;
+  min-height: 50vh;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 110px 0 80px;
+  background-color: #0b1938;
+  background-image:
+    radial-gradient(circle at 50% 30%, rgb(243 108 33 / 0.15) 0%, transparent 60%),
+    linear-gradient(to bottom, rgb(11 25 56 / 0.6), #0b1938);
+  color: #fff;
+  text-align: center;
+}
+
+.page-hero::before {
+  position: absolute;
+  inset: 0;
+  content: '';
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.page-hero::after {
+  position: absolute;
+  inset: auto 0 0;
+  height: 35%;
+  content: '';
+  background: linear-gradient(to top, rgb(8 14 30 / 0.3), transparent);
+  pointer-events: none;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  max-width: 780px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 16px;
+  border: 1px solid rgb(243 108 33 / 0.35);
+  border-radius: 100px;
+  padding: 7px 18px;
+  background: rgb(243 108 33 / 0.12);
+  color: #f36c21;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+  animation: hero-float 4s ease-in-out infinite;
+}
+
+.hero-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f36c21;
+  box-shadow: 0 0 0 4px rgb(243 108 33 / 0.1);
+}
+
+.hero-title {
+  max-width: 780px;
+  margin: 0 0 16px;
+  color: #fff;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.25;
+  text-wrap: balance;
+  animation: slide-up 0.8s ease both;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #f36c21 0%, #ff9248 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+  max-width: 580px;
+  margin: 0 auto 28px;
+  color: rgb(255 255 255 / 0.75);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  line-height: 1.75;
+  animation: slide-up 0.8s 100ms ease both;
+}
+
+.hero-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0 auto;
+  animation: slide-up 0.8s 180ms ease both;
+}
+
+.hero-divider span {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(243 108 33 / 0.8));
+}
+
+.hero-divider span:last-child {
+  background: linear-gradient(90deg, rgb(243 108 33 / 0.8), transparent);
+}
+
+.hero-divider i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #f36c21;
+  box-shadow: 0 0 14px rgb(243 108 33 / 0.65);
+}
+
+.hero-breadcrumb {
+  margin-top: 18px;
+}
+
+.hero-breadcrumb ol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  color: rgb(255 255 255 / 0.55);
+  font-size: 0.8rem;
+  list-style: none;
+}
+
+.hero-breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.hero-breadcrumb a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 200ms ease;
+}
+
+.hero-breadcrumb a:hover,
+.hero-breadcrumb a:focus-visible {
+  color: #ff9248;
+}
+
+.hero-breadcrumb span {
+  color: rgb(255 255 255 / 0.82);
+  font-weight: 700;
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  inset-block-end: -2rem;
+  display: inline-flex;
+  color: rgb(255 255 255 / 0.65);
+  animation: scroll-bob 2s ease-in-out infinite;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scroll-bob {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(6px);
+  }
+}
+
+@media (width < 40rem) {
+  .page-hero {
+    min-height: 44vh;
+    padding: 92px 0 64px;
+  }
+
+  .page-hero__inner {
+    max-width: calc(100% - 2rem);
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero-divider span {
+    width: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-badge,
+  .hero-title,
+  .hero-subtitle,
+  .hero-divider,
+  .hero-scroll-indicator {
+    animation: none;
+  }
+}
