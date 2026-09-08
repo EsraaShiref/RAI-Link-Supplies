@@ -34,11 +34,6 @@
           var storedTheme = localStorage.getItem('rai-theme');
           if (storedTheme === 'light' || storedTheme === 'dark') {
             theme = storedTheme;
-          } else if (
-            window.matchMedia &&
-            window.matchMedia('(prefers-color-scheme: dark)').matches
-          ) {
-            theme = 'dark';
           }
         } catch (e) {
           /* storage unavailable (private mode) — fall through to defaults */

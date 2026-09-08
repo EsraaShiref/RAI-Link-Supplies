@@ -14,8 +14,8 @@ const THEME_COLORS: Record<AppTheme, string> = {
 /**
  * Colour-scheme store.
  *
- * Light is the default; the OS preference is consulted only when the visitor
- * has never chosen a theme (spec 1.4). The same resolution runs in the
+ * Light is the default; the OS preference is ignored unless the visitor has
+ * explicitly chosen a theme. The same resolution runs in the
  * pre-paint script in `index.html`, so the first paint already matches and the
  * effect below is a no-op on load rather than a visible repaint.
  */
@@ -63,7 +63,7 @@ function resolveInitialTheme(): AppTheme {
     return DEFAULT_THEME;
   }
 
-  return globalThis.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : DEFAULT_THEME;
+  return DEFAULT_THEME;
 }
 
 function persistTheme(theme: AppTheme): void {
