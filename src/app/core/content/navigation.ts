@@ -7,7 +7,6 @@ export const NAV_ITEMS: readonly NavItem[] = [
   { path: '/services-scope', labelKey: 'nav.servicesScope' },
   { path: '/products', labelKey: 'nav.products' },
   { path: '/partners', labelKey: 'nav.partners' },
-  { path: '/target-audience', labelKey: 'nav.targetAudience' },
   { path: '/contact', labelKey: 'nav.contact' },
 ] as const;
 

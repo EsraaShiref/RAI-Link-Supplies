@@ -63,25 +63,16 @@ export const routes: Routes = [
     data: {
       seo: {
         titleKey: 'nav.partners',
-        descriptionKeys: ['partners.points.0', 'partners.points.1'],
+        descriptionKeys: [
+          'partners.points.0',
+          'targetAudience.items.government.body',
+        ],
       } satisfies RouteSeoData,
     },
   },
   {
     path: 'target-audience',
-    loadComponent: () =>
-      import('./features/target-audience/target-audience.component').then(
-        (m) => m.TargetAudienceComponent,
-      ),
-    data: {
-      seo: {
-        titleKey: 'nav.targetAudience',
-        descriptionKeys: [
-          'targetAudience.items.government.body',
-          'targetAudience.items.corporate.body',
-        ],
-      } satisfies RouteSeoData,
-    },
+    redirectTo: 'partners',
   },
   {
     path: 'contact',

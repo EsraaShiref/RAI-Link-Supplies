@@ -424,3 +424,10 @@
     animation: none !important;
   }
 }
+
+@media (width < 40rem) {
+  .reveal-start,
+  .reveal-end {
+    transform: translate3d(0, 1.25rem, 0);
+  }
+}

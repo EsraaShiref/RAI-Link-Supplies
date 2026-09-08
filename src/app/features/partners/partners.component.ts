@@ -77,6 +77,52 @@ import { RevealOnScrollDirective } from '../../shared/directives';
       </div>
     </section>
 
+    <section class="bg-bg" aria-labelledby="audience-heading">
+      <div class="shell py-16 sm:py-20">
+        <app-section-heading
+          eyebrowKey="targetAudience.eyebrow"
+          titleKey="targetAudience.title"
+          headingId="audience-heading"
+        />
+
+        <div class="mt-14 flex flex-col gap-16 sm:gap-20 lg:gap-28">
+          @for (audience of audienceSections; track audience.id; let index = $index) {
+            <article class="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+              <div
+                [revealDelay]="index * 100"
+                [appReveal]="index % 2 === 0 ? 'start' : 'end'"
+                [class.lg:order-2]="index % 2 === 0"
+              >
+                <p class="text-orange-ink text-xs font-bold tracking-[0.16em] uppercase">
+                  {{ audience.number }}
+                </p>
+                <h3 class="text-text mt-3 text-2xl font-extrabold sm:text-3xl">
+                  {{ t(audience.titleKey) }}
+                </h3>
+                <p class="text-text-muted mt-5 max-w-xl text-sm leading-relaxed sm:text-base">
+                  {{ t(audience.bodyKey) }}
+                </p>
+              </div>
+
+              <div
+                [revealDelay]="index * 100 + 80"
+                [appReveal]="index % 2 === 0 ? 'end' : 'start'"
+                [class.lg:order-1]="index % 2 === 0"
+                class="border-border bg-bg-subtle overflow-hidden rounded-xl border"
+              >
+                <img
+                  [src]="audience.image"
+                  [alt]="t(audience.titleKey)"
+                  class="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
+
     <app-cta-banner />
   `,
 })
@@ -91,6 +137,30 @@ export class PartnersComponent {
    * supplier marks would misrepresent real commercial relationships.
    */
   protected readonly logoSlots = [1, 2, 3, 4, 5, 6] as const;
+
+  protected readonly audienceSections = [
+    {
+      id: 'government',
+      number: '01',
+      titleKey: 'targetAudience.items.government.title',
+      bodyKey: 'targetAudience.items.government.body',
+      image: 'assets/images/Government%20%26%20Public%20Sector.jpg',
+    },
+    {
+      id: 'corporate',
+      number: '02',
+      titleKey: 'targetAudience.items.corporate.title',
+      bodyKey: 'targetAudience.items.corporate.body',
+      image: 'assets/images/Corporate%20%26%20Private%20Enterprise.jpg',
+    },
+    {
+      id: 'education',
+      number: '03',
+      titleKey: 'targetAudience.items.education.title',
+      bodyKey: 'targetAudience.items.education.body',
+      image: 'assets/images/Educational%20%26%20Healthcare%20Institutions.jpg',
+    },
+  ] as const;
 
   protected readonly points = computed(() => this.i18n.tList('partners.points'));
 }
