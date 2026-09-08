@@ -14,7 +14,6 @@ import { RevealOnScrollDirective } from '../../shared/directives';
   selector: 'app-partners',
   imports: [
     LucideAngularModule,
-    CtaBannerComponent,
     NetworkVisualComponent,
     PageHeaderComponent,
     SectionHeadingComponent,

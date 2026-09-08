@@ -12,7 +12,6 @@ import { ProcessTimelineComponent } from './components/process-timeline.componen
   selector: 'app-services-scope',
   imports: [
     LucideAngularModule,
-    CtaBannerComponent,
     CardSkeletonComponent,
     PageHeaderComponent,
     SectionHeadingComponent,

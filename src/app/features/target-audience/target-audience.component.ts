@@ -16,7 +16,6 @@ import { RevealOnScrollDirective } from '../../shared/directives';
   selector: 'app-target-audience',
   imports: [
     LucideAngularModule,
-    CtaBannerComponent,
     NumberedBlockComponent,
     PageHeaderComponent,
     SectionHeadingComponent,

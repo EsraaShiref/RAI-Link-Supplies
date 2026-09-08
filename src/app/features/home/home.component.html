@@ -150,10 +150,8 @@
   <div class="shell py-16 sm:py-20">
     <div class="flex flex-wrap items-end justify-between gap-6">
       <app-section-heading
-        eyebrowKey="products.eyebrow"
         titleKey="products.title"
         headingId="home-products-heading"
-        [centered]="false"
       />
 
       <a
@@ -191,41 +189,51 @@
 </section>
 
 <!-- ──────────────────────  7. Target audience strip  ───────────────────── -->
-<section class="bg-bg-subtle" aria-labelledby="home-audience-heading">
-  <div class="shell py-16 sm:py-20">
-    <app-section-heading
-      eyebrowKey="targetAudience.eyebrow"
-      titleKey="targetAudience.title"
-      headingId="home-audience-heading"
-    />
+<section class="bg-bg" aria-labelledby="audience-heading">
+      <div class="shell py-16 sm:py-20">
+        <app-section-heading
+          eyebrowKey="targetAudience.eyebrow"
+          titleKey="targetAudience.title"
+          headingId="audience-heading"
+        />
 
-    <ul class="mt-12 grid gap-6 md:grid-cols-3">
-      @for (segment of audienceSegments; track segment.id; let index = $index) {
-        <li appReveal [revealDelay]="index * 80">
-          <a
-            routerLink="/target-audience"
-            class="group border-border bg-surface shadow-card hover:border-orange hover:shadow-card-hover flex h-full items-center gap-4 rounded-xl border p-5 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1"
-          >
-            <span
-              class="bg-brand-gradient inline-flex size-11 shrink-0 items-center justify-center rounded-xl text-white"
-            >
-              <lucide-icon [img]="segment.icon" [size]="20" aria-hidden="true" />
-            </span>
-            <span class="text-text text-sm font-bold sm:text-[0.9375rem]">
-              {{ t(segment.titleKey) }}
-            </span>
-            <lucide-icon
-              [img]="ArrowRightIcon"
-              [size]="17"
-              class="rtl-flip text-text-muted group-hover:text-orange-ink ms-auto shrink-0 transition-colors"
-              aria-hidden="true"
-            />
-          </a>
-        </li>
-      }
-    </ul>
-  </div>
-</section>
+        <div class="mt-14 flex flex-col gap-16 sm:gap-20 lg:gap-28">
+          @for (audience of audienceSections; track audience.id; let index = $index) {
+            <article class="grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+              <div
+                [revealDelay]="index * 100"
+                [appReveal]="index % 2 === 0 ? 'start' : 'end'"
+                [class.lg:order-2]="index % 2 === 0"
+              >
+                <p class="text-orange-ink text-xs font-bold tracking-[0.16em] uppercase">
+                  {{ audience.number }}
+                </p>
+                <h3 class="text-text mt-3 text-2xl font-extrabold sm:text-3xl">
+                  {{ t(audience.titleKey) }}
+                </h3>
+                <p class="text-text-muted mt-5 max-w-xl text-sm leading-relaxed sm:text-base">
+                  {{ t(audience.bodyKey) }}
+                </p>
+              </div>
+
+              <div
+                [revealDelay]="index * 100 + 80"
+                [appReveal]="index % 2 === 0 ? 'end' : 'start'"
+                [class.lg:order-1]="index % 2 === 0"
+                class="border-border bg-bg-subtle overflow-hidden rounded-xl border"
+              >
+                <img
+                  [src]="audience.image"
+                  [alt]="t(audience.titleKey)"
+                  class="aspect-[4/3] w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </article>
+          }
+        </div>
+      </div>
+    </section>
 
 <!-- ───────────────────────────  8. CTA banner  ─────────────────────────── -->
 <!-- <app-cta-banner /> -->

@@ -25,7 +25,6 @@ import { firstSentences } from '../../shared/utils/text';
   imports: [
     RouterLink,
     LucideAngularModule,
-    CtaBannerComponent,
     BrandArrowComponent,
     CardSkeletonComponent,
     IconCardComponent,
@@ -50,4 +49,27 @@ export class HomeComponent {
 
   /** Snapshot of the About copy; the full text lives on `/about`. */
   protected readonly aboutSnapshot = computed(() => firstSentences(this.t('about.body'), 2));
+  protected readonly audienceSections = [
+    {
+      id: 'government',
+      number: '01',
+      titleKey: 'targetAudience.items.government.title',
+      bodyKey: 'targetAudience.items.government.body',
+      image: 'assets/images/Government%20%26%20Public%20Sector.jpg',
+    },
+    {
+      id: 'corporate',
+      number: '02',
+      titleKey: 'targetAudience.items.corporate.title',
+      bodyKey: 'targetAudience.items.corporate.body',
+      image: 'assets/images/Corporate%20%26%20Private%20Enterprise.jpg',
+    },
+    {
+      id: 'education',
+      number: '03',
+      titleKey: 'targetAudience.items.education.title',
+      bodyKey: 'targetAudience.items.education.body',
+      image: 'assets/images/Educational%20%26%20Healthcare%20Institutions.jpg',
+    },
+  ] as const;
 }
