@@ -154,7 +154,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
                     
                     <!-- Phase Badge Tag -->
                     <div class="inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/10 px-3 py-1 text-xs font-bold tracking-widest text-orange-ink">
-                      <span>محطة 0{{ goal.number }}</span>
+                      <span>{{ t('goals.stationLabel') }} 0{{ goal.number }}</span>
                     </div>
 
                     <!-- Header with Icon & Number -->

@@ -17,7 +17,11 @@
     "headline": "The Link Between You and the Right Supplier",
     "subheadline": "RAI Link Supplies connects businesses, organizations, and institutions with trusted suppliers — delivering quality products, competitive sourcing, and dependable delivery.",
     "ctaPrimary": "Request a Quotation",
-    "ctaSecondary": "Explore Our Products"
+    "ctaSecondary": "Explore Our Products",
+    "stats": {
+    "quality": "Reliable Quality & Supply",
+    "support": "Fast Support & Consultation"
+  }
   },
   "about": {
     "eyebrow": "About Us",
@@ -82,6 +86,7 @@
   "goals": {
     "eyebrow": "Our Goals",
     "title": "Where We're Headed",
+    "stationLabel": "Station",
     "items": [
       {
         "number": "01",
