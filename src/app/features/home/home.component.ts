@@ -1,7 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ArrowRight, LucideAngularModule } from 'lucide-angular';
-
+import { ArrowRight, ShieldCheck, Truck, LucideAngularModule } from 'lucide-angular';
 import {
   AUDIENCE_SEGMENTS,
   BRAND_VALUES,
@@ -20,6 +19,7 @@ import { SupplyVisualComponent } from '../../shared/components/supply-visual/sup
 import { RevealOnScrollDirective } from '../../shared/directives';
 import { firstSentences } from '../../shared/utils/text';
 
+
 @Component({
   selector: 'app-home',
   imports: [
@@ -32,6 +32,7 @@ import { firstSentences } from '../../shared/utils/text';
     SectionHeadingComponent,
     RevealOnScrollDirective,
     SupplyVisualComponent,
+    CtaBannerComponent,
   ],
   templateUrl: './home.component.html',
 })
@@ -40,6 +41,8 @@ export class HomeComponent {
   protected readonly t = this.i18n.t;
 
   protected readonly ArrowRightIcon = ArrowRight;
+  protected readonly ShieldCheckIcon = ShieldCheck;
+  protected readonly TruckIcon = Truck;
 
   protected readonly expertiseAreas = EXPERTISE_AREAS;
   protected readonly brandValues = BRAND_VALUES;

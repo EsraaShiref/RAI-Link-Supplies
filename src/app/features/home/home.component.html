@@ -1,43 +1,106 @@
 <!-- ─────────────────────────────  1. Hero  ───────────────────────────── -->
-<section class="bg-navy dot-grid relative text-white" aria-labelledby="hero-heading">
-  <div
-    class="shell relative z-10 grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-28"
-  >
-    <div>
-      <p class="text-xs font-bold tracking-[0.16em] text-white/70 uppercase sm:text-sm">
-        {{ t('hero.eyebrow') }}
-      </p>
+<!-- ─────────────────────────────  1. Hero  ───────────────────────────── -->
+<section class="bg-navy dot-grid relative overflow-hidden py-16 text-white sm:py-24 lg:py-32" aria-labelledby="hero-heading">
+  
+  <!-- Glowing Background Orbs (Visual Depth) -->
+  <div class="pointer-events-none absolute -top-24 start-1/4 size-96 rounded-full bg-orange/15 blur-[120px]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -bottom-20 end-10 size-80 rounded-full bg-blue-600/15 blur-[100px]" aria-hidden="true"></div>
 
+  <div class="shell relative z-10 grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12">
+    
+    <!-- Left Column: Typography & CTAs -->
+    <div class="relative z-10">
+      
+      <!-- Top Pill Tag -->
+      <div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 backdrop-blur-md">
+        <span class="size-2 animate-ping rounded-full bg-orange"></span>
+        <span class="size-2 rounded-full bg-orange"></span>
+        <p class="text-xs font-bold uppercase tracking-[0.16em] text-white/80 sm:text-sm">
+          {{ t('hero.eyebrow') }}
+        </p>
+      </div>
+
+      <!-- Main Heading -->
       <h1
         id="hero-heading"
-        class="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[3.25rem] lg:leading-[1.08]"
+        class="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[3.35rem] lg:leading-[1.12]"
       >
         {{ t('hero.headline') }}
       </h1>
 
-      <p class="mt-6 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base lg:text-lg">
+      <!-- Subheadline -->
+      <p class="mt-6 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base lg:text-lg">
         {{ t('hero.subheadline') }}
       </p>
 
-      <div class="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
+      <!-- Action Buttons -->
+      <div class="mt-9 flex flex-wrap items-center gap-4">
         <a
           routerLink="/contact"
-          class="bg-cta text-cta-fg inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold transition-[filter,transform] duration-200 hover:brightness-110 active:scale-[0.98] sm:text-base"
+          class="bg-cta text-cta-fg shadow-orange/20 inline-flex items-center gap-2.5 rounded-full px-8 py-4 text-sm font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-orange/40 active:scale-[0.98] sm:text-base"
         >
           {{ t('hero.ctaPrimary') }}
-          <lucide-icon [img]="ArrowRightIcon" [size]="17" class="rtl-flip" aria-hidden="true" />
+          <lucide-icon [img]="ArrowRightIcon" [size]="18" class="rtl-flip transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
         </a>
 
         <a
           routerLink="/products"
-          class="inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-3.5 text-sm font-bold text-white transition-colors duration-200 hover:border-white hover:bg-white/10 sm:text-base"
+          class="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white/15 hover:-translate-y-0.5 sm:text-base"
         >
           {{ t('hero.ctaSecondary') }}
         </a>
       </div>
+
+      <!-- Trust Micro-Stats Strip -->
+      <div class="mt-12 flex items-center gap-8 border-t border-white/10 pt-6">
+        <div>
+          <span class="block text-xl font-black text-white sm:text-2xl">+100%</span>
+          <span class="text-xs text-white/60">جودة وتوريد موثوق</span>
+        </div>
+        <div class="h-8 w-px bg-white/10"></div>
+        <div>
+          <span class="block text-xl font-black text-orange sm:text-2xl">24/7</span>
+          <span class="text-xs text-white/60">دعم واستشارات سريعة</span>
+        </div>
+      </div>
+
     </div>
 
-    <app-brand-arrow class="mx-auto w-full max-w-lg lg:max-w-none" />
+    <!-- Right Column: Animated Visual Section -->
+    <div class="relative flex items-center justify-center">
+      
+      <!-- Animated Glow Behind Visual -->
+      <div class="absolute inset-0 rounded-3xl bg-gradient-to-tr from-orange/20 to-blue-500/10 blur-2xl"></div>
+
+      <!-- Main Visual Container with Floating Animation -->
+      <div class="relative w-full max-w-lg animate-float lg:max-w-none">
+        <app-brand-arrow class="w-full drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" />
+      </div>
+
+      <!-- Floating Glass Card 1 (Top Left) -->
+      <div class="absolute -top-4 -start-4 hidden items-center gap-3 rounded-2xl border border-white/15 bg-slate-950/70 p-3.5 shadow-xl backdrop-blur-md animate-bounce-slow sm:flex">
+        <div class="flex size-10 items-center justify-center rounded-xl bg-orange/20 text-orange">
+          <lucide-icon [img]="ShieldCheckIcon" [size]="20" />
+        </div>
+        <div>
+          <p class="text-xs font-bold text-white">موردين معتمدين</p>
+          <p class="text-[10px] text-white/60">ضمان أعلى معايير الجودة</p>
+        </div>
+      </div>
+
+      <!-- Floating Glass Card 2 (Bottom Right) -->
+      <div class="absolute -bottom-6 -end-4 hidden items-center gap-3 rounded-2xl border border-white/15 bg-slate-950/70 p-3.5 shadow-xl backdrop-blur-md animate-bounce-slow-delayed sm:flex">
+        <div class="flex size-10 items-center justify-center rounded-xl bg-blue-500/20 text-blue-400">
+          <lucide-icon [img]="TruckIcon" [size]="20" />
+        </div>
+        <div>
+          <p class="text-xs font-bold text-white">سرعة التوريد</p>
+          <p class="text-[10px] text-white/60">توصيل دقيق للمشروعات</p>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </section>
 
@@ -148,20 +211,10 @@
 <!-- ─────────────────────────  6. Products teaser  ──────────────────────── -->
 <section class="bg-bg" aria-labelledby="home-products-heading">
   <div class="shell py-16 sm:py-20">
-    <div class="flex flex-wrap items-end justify-between gap-6">
       <app-section-heading
         titleKey="products.title"
         headingId="home-products-heading"
       />
-
-      <a
-        routerLink="/products"
-        class="text-orange-ink inline-flex items-center gap-2 text-sm font-bold underline-offset-4 hover:underline"
-      >
-        {{ t('common.viewAll') }}
-        <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
-      </a>
-    </div>
 
     @defer (on viewport) {
       <ul
@@ -236,4 +289,4 @@
     </section>
 
 <!-- ───────────────────────────  8. CTA banner  ─────────────────────────── -->
-<!-- <app-cta-banner /> -->
+<app-cta-banner />

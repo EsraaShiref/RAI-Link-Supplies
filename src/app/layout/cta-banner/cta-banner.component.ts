@@ -6,44 +6,47 @@ import { TranslationService } from '../../core/services';
 import { RevealOnScrollDirective } from '../../shared/directives';
 
 /**
- * Closing call to action. `full` bleeds edge to edge as a section break;
- * `card` renders the same gradient as an inset rounded panel.
- *
- * The gradient used here is the deep variant: the bright brand orange only
- * reaches 3.15:1 against white, which fails AA for body copy, while the deep
- * end clears 4.6:1.
+ * Tasweeqar-inspired Centered CTA Banner Card for RAI Link Supplies.
  */
 @Component({
   selector: 'app-cta-banner',
   imports: [RouterLink, LucideAngularModule, RevealOnScrollDirective],
   host: { class: 'block' },
   template: `
-    <section [class]="variant() === 'card' ? 'shell py-16 sm:py-20' : ''">
+    <section class="shell py-16 sm:py-20">
       <div
         appReveal
-        class="bg-brand-gradient-deep dot-grid relative overflow-hidden text-white"
-        [class]="variant() === 'card' ? 'rounded-xl' : ''"
+        class="bg-navy relative overflow-hidden rounded-2xl border border-white/10 px-6 py-16 text-center text-white shadow-2xl sm:px-12 sm:py-20 lg:px-16"
       >
-        <div
-          class="relative z-10 flex flex-col items-start gap-8 px-6 py-12 sm:px-10 sm:py-14 lg:flex-row lg:items-center lg:justify-between lg:px-14"
-          [class]="variant() === 'full' ? 'shell' : ''"
-        >
-          <div class="max-w-2xl">
-            <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">{{ t(titleKey()) }}</h2>
-            @if (bodyKey()) {
-              <p class="mt-4 text-sm leading-relaxed text-white/85 sm:text-base">
-                {{ t(bodyKey()) }}
-              </p>
-            }
-          </div>
+        <!-- Subtle Glow Effect in the Center -->
+        <div 
+          class="pointer-events-none absolute left-1/2 top-1/2 size-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-orange/10 blur-[120px]" 
+          aria-hidden="true"
+        ></div>
 
-          <a
-            [routerLink]="routerLink()"
-            class="text-navy inline-flex shrink-0 items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-bold transition-transform duration-200 hover:scale-[1.02] active:scale-[0.99]"
-          >
-            {{ t(ctaKey()) }}
-            <lucide-icon [img]="ArrowRightIcon" [size]="17" class="rtl-flip" aria-hidden="true" />
-          </a>
+        <div class="relative z-10 mx-auto max-w-3xl">
+          <!-- Main Title -->
+          <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-5xl">
+            {{ t(titleKey()) }}
+          </h2>
+
+          <!-- Subtitle / Body Copy -->
+          @if (bodyKey()) {
+            <p class="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/80 sm:text-base lg:text-lg">
+              {{ t(bodyKey()) }}
+            </p>
+          }
+
+          <!-- Centered CTA Action Button -->
+          <div class="mt-8 flex justify-center">
+            <a
+              [routerLink]="routerLink()"
+              class="bg-cta text-cta-fg inline-flex items-center gap-3 rounded-xl px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5 active:scale-[0.98]"
+            >
+              {{ t(ctaKey()) }}
+              <lucide-icon [img]="ArrowRightIcon" [size]="18" class="rtl-flip" aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -58,5 +61,5 @@ export class CtaBannerComponent {
   readonly bodyKey = input('contact.cta');
   readonly ctaKey = input('hero.ctaPrimary');
   readonly routerLink = input('/contact');
-  readonly variant = input<'full' | 'card'>('full');
+  readonly variant = input<'full' | 'card'>('card');
 }

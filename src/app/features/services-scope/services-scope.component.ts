@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { LucideAngularModule, Route } from 'lucide-angular';
-
+import { CtaBannerComponent } from '../../layout';
 import { EXPERTISE_AREAS } from '../../core/content';
 import { TranslationService } from '../../core/services';
 import { CardSkeletonComponent, PageHeaderComponent, SectionHeadingComponent } from '../../shared/components';
@@ -16,6 +16,7 @@ import { ProcessTimelineComponent } from './components/process-timeline.componen
     SectionHeadingComponent,
     ProcessTimelineComponent,
     RevealOnScrollDirective,
+    CtaBannerComponent,
   ],
   template: `
     <app-page-header
@@ -133,6 +134,7 @@ import { ProcessTimelineComponent } from './components/process-timeline.componen
         </div>
       </div>
     </section>
+    <app-cta-banner />
 
   `,
 })

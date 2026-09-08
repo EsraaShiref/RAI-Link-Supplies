@@ -19,6 +19,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
     IconCardComponent,
     PageHeaderComponent,
     RevealOnScrollDirective,
+    CtaBannerComponent,
   ],
   template: `
     <app-page-header
@@ -90,6 +91,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
         }
       </div>
     </section>
+    <app-cta-banner />
 
   `,
 })
