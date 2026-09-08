@@ -1,0 +1,35 @@
+/* The drawer travels along the inline axis. `--brand-inline-sign` is -1 under
+   `[dir="rtl"]` (set globally in styles.css), so the same rule slides the panel
+   in from the right in LTR and from the left in RTL. Custom properties cascade
+   through view encapsulation, so no :host-context override is needed. */
+.drawer {
+  inset-inline-end: 0;
+  transform: translateX(calc(100% * var(--brand-inline-sign, 1)));
+  transition: transform 260ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  box-shadow: -18px 0 48px -24px rgb(10 28 68 / 0.35);
+}
+
+.drawer.is-open {
+  transform: translateX(0);
+}
+
+.drawer-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 200ms ease-out,
+    visibility 200ms linear;
+}
+
+.drawer-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer,
+  .drawer-backdrop {
+    transition: none;
+  }
+}

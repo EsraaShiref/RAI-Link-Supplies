@@ -1,0 +1,244 @@
+@if (status() === 'success') {
+  <!-- Success replaces the form entirely, per spec 4.3 -->
+  <div
+    class="border-border bg-surface shadow-card relative overflow-hidden rounded-xl border p-8 text-center sm:p-12"
+    role="status"
+  >
+    <span class="bg-brand-gradient absolute inset-x-0 top-0 h-[3px]" aria-hidden="true"></span>
+
+    <span
+      class="bg-brand-gradient mx-auto inline-flex size-16 items-center justify-center rounded-full text-white"
+    >
+      <lucide-icon [img]="CheckIcon" [size]="30" [strokeWidth]="2.5" aria-hidden="true" />
+    </span>
+
+    <h3
+      #successHeading
+      tabindex="-1"
+      class="text-text mt-6 text-lg font-bold outline-none sm:text-xl"
+    >
+      {{ t('contact.form.successMessage') }}
+    </h3>
+  </div>
+} @else {
+  <form
+    #formElement
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    novalidate
+    [attr.aria-busy]="isSubmitting()"
+    class="border-border bg-surface shadow-card relative overflow-hidden rounded-xl border p-6 sm:p-8 lg:p-10"
+  >
+    <span class="bg-brand-gradient absolute inset-x-0 top-0 h-[3px]" aria-hidden="true"></span>
+
+    <fieldset [disabled]="isSubmitting()" class="min-w-0 border-0 p-0">
+      <legend class="text-text mb-6 text-lg font-bold sm:text-xl">
+        {{ t('contact.form.title') }}
+      </legend>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <!-- Name -->
+        <div class="sm:col-span-2">
+          <label [for]="fieldId('name')" class="text-text mb-2 block text-sm font-semibold">
+            {{ t('contact.form.name') }}
+            <span class="text-orange-ink" aria-hidden="true">*</span>
+          </label>
+          <input
+            [id]="fieldId('name')"
+            type="text"
+            formControlName="name"
+            autocomplete="name"
+            required
+            [attr.aria-invalid]="errors()['name'] ? 'true' : null"
+            [attr.aria-describedby]="describedBy('name')"
+            class="border-border bg-bg text-text focus:border-orange w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none"
+            [class.border-red-500]="errors()['name']"
+          />
+          @if (errors()['name']; as message) {
+            <p [id]="errorId('name')" class="mt-2 text-xs font-medium text-red-600 dark:text-red-400">
+              {{ message }}
+            </p>
+          }
+        </div>
+
+        <!-- Company (optional) -->
+        <div class="sm:col-span-2">
+          <label [for]="fieldId('company')" class="text-text mb-2 block text-sm font-semibold">
+            {{ t('contact.form.company') }}
+            <span [id]="hintId('company')" class="text-text-muted font-normal">
+              ({{ t('validation.optional') }})
+            </span>
+          </label>
+          <input
+            [id]="fieldId('company')"
+            type="text"
+            formControlName="company"
+            autocomplete="organization"
+            [attr.aria-describedby]="describedBy('company')"
+            class="border-border bg-bg text-text focus:border-orange w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label [for]="fieldId('email')" class="text-text mb-2 block text-sm font-semibold">
+            {{ t('contact.form.email') }}
+            <span class="text-orange-ink" aria-hidden="true">*</span>
+          </label>
+          <input
+            [id]="fieldId('email')"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            dir="ltr"
+            required
+            [attr.aria-invalid]="errors()['email'] ? 'true' : null"
+            [attr.aria-describedby]="describedBy('email')"
+            class="border-border bg-bg text-text focus:border-orange w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none"
+            [class.border-red-500]="errors()['email']"
+          />
+          @if (errors()['email']; as message) {
+            <p [id]="errorId('email')" class="mt-2 text-xs font-medium text-red-600 dark:text-red-400">
+              {{ message }}
+            </p>
+          }
+        </div>
+
+        <!-- Phone -->
+        <div>
+          <label [for]="fieldId('phone')" class="text-text mb-2 block text-sm font-semibold">
+            {{ t('contact.form.phone') }}
+            <span class="text-orange-ink" aria-hidden="true">*</span>
+          </label>
+          <input
+            [id]="fieldId('phone')"
+            type="tel"
+            formControlName="phone"
+            autocomplete="tel"
+            dir="ltr"
+            required
+            [attr.aria-invalid]="errors()['phone'] ? 'true' : null"
+            [attr.aria-describedby]="describedBy('phone')"
+            class="border-border bg-bg text-text focus:border-orange w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none"
+            [class.border-red-500]="errors()['phone']"
+          />
+          @if (errors()['phone']; as message) {
+            <p [id]="errorId('phone')" class="mt-2 text-xs font-medium text-red-600 dark:text-red-400">
+              {{ message }}
+            </p>
+          }
+        </div>
+
+        <!-- Category -->
+        <div>
+          <label [for]="fieldId('category')" class="text-text mb-2 block text-sm font-semibold">
+            {{ t('contact.form.category') }}
+            <span class="text-orange-ink" aria-hidden="true">*</span>
+          </label>
+          <select
+            [id]="fieldId('category')"
+            formControlName="category"
+            required
+            [attr.aria-invalid]="errors()['category'] ? 'true' : null"
+            [attr.aria-describedby]="describedBy('category')"
+            class="border-border bg-bg text-text focus:border-orange w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none"
+            [class.border-red-500]="errors()['category']"
+          >
+            <option value="" disabled>{{ t('contact.form.category') }}</option>
+            @for (option of categoryOptions(); track option) {
+              <option [value]="option">{{ option }}</option>
+            }
+          </select>
+          @if (errors()['category']; as message) {
+            <p
+              [id]="errorId('category')"
+              class="mt-2 text-xs font-medium text-red-600 dark:text-red-400"
+            >
+              {{ message }}
+            </p>
+          }
+        </div>
+
+        <!-- Quantity (optional) -->
+        <div>
+          <label [for]="fieldId('quantity')" class="text-text mb-2 block text-sm font-semibold">
+            {{ t('contact.form.quantity') }}
+            <span [id]="hintId('quantity')" class="text-text-muted font-normal">
+              ({{ t('validation.optional') }})
+            </span>
+          </label>
+          <input
+            [id]="fieldId('quantity')"
+            type="text"
+            inputmode="numeric"
+            formControlName="quantity"
+            [attr.aria-describedby]="describedBy('quantity')"
+            class="border-border bg-bg text-text focus:border-orange w-full rounded-xl border px-4 py-3 text-sm transition-colors outline-none"
+          />
+        </div>
+
+        <!-- Message -->
+        <div class="sm:col-span-2">
+          <label [for]="fieldId('message')" class="text-text mb-2 block text-sm font-semibold">
+            {{ t('contact.form.message') }}
+            <span class="text-orange-ink" aria-hidden="true">*</span>
+          </label>
+          <textarea
+            [id]="fieldId('message')"
+            formControlName="message"
+            rows="5"
+            required
+            [attr.aria-invalid]="errors()['message'] ? 'true' : null"
+            [attr.aria-describedby]="describedBy('message')"
+            class="border-border bg-bg text-text focus:border-orange w-full resize-y rounded-xl border px-4 py-3 text-sm transition-colors outline-none"
+            [class.border-red-500]="errors()['message']"
+          ></textarea>
+          @if (errors()['message']; as message) {
+            <p
+              [id]="errorId('message')"
+              class="mt-2 text-xs font-medium text-red-600 dark:text-red-400"
+            >
+              {{ message }}
+            </p>
+          }
+        </div>
+      </div>
+
+      @if (status() === 'error') {
+        <div
+          role="alert"
+          class="mt-6 flex items-start gap-3 rounded-xl border border-red-300 bg-red-50 p-4 dark:border-red-900 dark:bg-red-950/40"
+        >
+          <lucide-icon
+            [img]="AlertIcon"
+            [size]="18"
+            class="mt-0.5 shrink-0 text-red-600 dark:text-red-400"
+            aria-hidden="true"
+          />
+          <p class="text-sm font-medium text-red-700 dark:text-red-300">
+            {{ t('contact.form.errorMessage') }}
+          </p>
+        </div>
+      }
+
+      <button
+        type="submit"
+        [disabled]="isSubmitting()"
+        class="bg-cta text-cta-fg mt-8 inline-flex w-full items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold transition-[filter,transform] duration-200 hover:brightness-110 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+      >
+        @if (isSubmitting()) {
+          <lucide-icon
+            [img]="SpinnerIcon"
+            [size]="17"
+            class="animate-spin"
+            aria-hidden="true"
+          />
+          <span>{{ t('a11y.submitting') }}</span>
+        } @else {
+          <span>{{ t('contact.form.submit') }}</span>
+          <lucide-icon [img]="SendIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
+        }
+      </button>
+    </fieldset>
+  </form>
+}

@@ -1,0 +1,212 @@
+<!-- ─────────────────────────────  1. Hero  ───────────────────────────── -->
+<section class="bg-navy dot-grid relative overflow-hidden text-white" aria-labelledby="hero-heading">
+  <div
+    class="shell relative z-10 grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-28"
+  >
+    <div>
+      <p class="text-xs font-bold tracking-[0.16em] text-white/70 uppercase sm:text-sm">
+        {{ t('hero.eyebrow') }}
+      </p>
+
+      <h1
+        id="hero-heading"
+        class="mt-5 text-3xl font-extrabold tracking-tight sm:text-4xl lg:text-[3.25rem] lg:leading-[1.08]"
+      >
+        {{ t('hero.headline') }}
+      </h1>
+
+      <p class="mt-6 max-w-xl text-sm leading-relaxed text-white/85 sm:text-base lg:text-lg">
+        {{ t('hero.subheadline') }}
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
+        <a
+          routerLink="/contact"
+          class="bg-cta text-cta-fg inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-sm font-bold transition-[filter,transform] duration-200 hover:brightness-110 active:scale-[0.98] sm:text-base"
+        >
+          {{ t('hero.ctaPrimary') }}
+          <lucide-icon [img]="ArrowRightIcon" [size]="17" class="rtl-flip" aria-hidden="true" />
+        </a>
+
+        <a
+          routerLink="/products"
+          class="inline-flex items-center gap-2 rounded-full border border-white/30 px-7 py-3.5 text-sm font-bold text-white transition-colors duration-200 hover:border-white hover:bg-white/10 sm:text-base"
+        >
+          {{ t('hero.ctaSecondary') }}
+        </a>
+      </div>
+    </div>
+
+    <app-brand-arrow class="mx-auto w-full max-w-lg lg:max-w-none" />
+  </div>
+</section>
+
+<!-- ─────────────────────────  2. About snapshot  ───────────────────────── -->
+<section class="bg-bg" aria-labelledby="home-about-heading">
+  <div class="shell grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:gap-14">
+    <div appReveal="start">
+      <app-section-heading
+        eyebrowKey="about.eyebrow"
+        titleKey="about.title"
+        headingId="home-about-heading"
+        [centered]="false"
+      />
+
+      <p class="text-text-muted mt-6 text-sm leading-relaxed sm:text-base">
+        {{ aboutSnapshot() }}
+      </p>
+
+      <a
+        routerLink="/about"
+        class="text-orange-ink mt-7 inline-flex items-center gap-2 text-sm font-bold underline-offset-4 hover:underline"
+      >
+        {{ t('common.learnMore') }}
+        <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
+      </a>
+    </div>
+
+    <app-network-visual appReveal="end" />
+  </div>
+</section>
+
+<!-- ────────────────────────  3. Expertise preview  ──────────────────────── -->
+<section class="bg-bg-subtle" aria-labelledby="home-expertise-heading">
+  <div class="shell py-16 sm:py-20">
+    <app-section-heading
+      eyebrowKey="expertise.eyebrow"
+      titleKey="expertise.title"
+      headingId="home-expertise-heading"
+    />
+
+    @defer (on viewport) {
+      <ul class="mt-12 grid gap-6 md:grid-cols-3">
+        @for (area of expertiseAreas; track area.id; let index = $index) {
+          <li appReveal [revealDelay]="index * 80">
+            <app-icon-card [icon]="area.icon" [titleKey]="area.titleKey" [bodyKey]="area.bodyKey" />
+          </li>
+        }
+      </ul>
+    } @placeholder {
+      <app-card-skeleton class="mt-12" [count]="3" columnClass="md:grid-cols-3" />
+    }
+  </div>
+</section>
+
+<!-- ─────────────────────────  4. Values strip  ─────────────────────────── -->
+<section class="bg-bg" aria-labelledby="home-values-heading">
+  <div class="shell py-16 sm:py-20">
+    <app-section-heading
+      eyebrowKey="values.eyebrow"
+      titleKey="values.title"
+      headingId="home-values-heading"
+    />
+
+    <ul
+      class="mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0"
+    >
+      @for (value of brandValues; track value.id; let index = $index) {
+        <li class="shrink-0 snap-start" appReveal [revealDelay]="index * 60">
+          <app-highlight-chip [icon]="value.icon" [labelKey]="value.titleKey" />
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ────────────────────────  5. Why Choose Us  ─────────────────────────── -->
+<section class="bg-bg-subtle" aria-labelledby="home-why-heading">
+  <div class="shell py-16 sm:py-20">
+    <app-section-heading titleKey="whyChooseUs.title" headingId="home-why-heading" />
+
+    <ul
+      class="mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0"
+    >
+      @for (item of whyChooseUs; track item.id; let index = $index) {
+        <li class="shrink-0 snap-start" appReveal [revealDelay]="index * 60">
+          <app-highlight-chip [icon]="item.icon" [labelKey]="item.labelKey" />
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────────────────────  6. Products teaser  ──────────────────────── -->
+<section class="bg-bg" aria-labelledby="home-products-heading">
+  <div class="shell py-16 sm:py-20">
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <app-section-heading
+        eyebrowKey="products.eyebrow"
+        titleKey="products.title"
+        headingId="home-products-heading"
+        [centered]="false"
+      />
+
+      <a
+        routerLink="/products"
+        class="text-orange-ink inline-flex items-center gap-2 text-sm font-bold underline-offset-4 hover:underline"
+      >
+        {{ t('common.viewAll') }}
+        <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
+      </a>
+    </div>
+
+    @defer (on viewport) {
+      <ul
+        class="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4"
+        [attr.aria-label]="t('products.title')"
+      >
+        @for (category of productCategories; track category.id) {
+          <li class="w-[17rem] shrink-0 snap-start sm:w-[19rem]">
+            <app-icon-card
+              [icon]="category.icon"
+              [titleKey]="category.titleKey"
+              [bodyKey]="category.bodyKey"
+            />
+          </li>
+        }
+      </ul>
+    } @placeholder {
+      <app-card-skeleton class="mt-10" [count]="3" columnClass="sm:grid-cols-2 lg:grid-cols-3" />
+    }
+  </div>
+</section>
+
+<!-- ──────────────────────  7. Target audience strip  ───────────────────── -->
+<section class="bg-bg-subtle" aria-labelledby="home-audience-heading">
+  <div class="shell py-16 sm:py-20">
+    <app-section-heading
+      eyebrowKey="targetAudience.eyebrow"
+      titleKey="targetAudience.title"
+      headingId="home-audience-heading"
+    />
+
+    <ul class="mt-12 grid gap-6 md:grid-cols-3">
+      @for (segment of audienceSegments; track segment.id; let index = $index) {
+        <li appReveal [revealDelay]="index * 80">
+          <a
+            routerLink="/target-audience"
+            class="group border-border bg-surface shadow-card hover:border-orange hover:shadow-card-hover flex h-full items-center gap-4 rounded-xl border p-5 transition-[transform,box-shadow,border-color] duration-200 hover:-translate-y-1"
+          >
+            <span
+              class="bg-brand-gradient inline-flex size-11 shrink-0 items-center justify-center rounded-xl text-white"
+            >
+              <lucide-icon [img]="segment.icon" [size]="20" aria-hidden="true" />
+            </span>
+            <span class="text-text text-sm font-bold sm:text-[0.9375rem]">
+              {{ t(segment.titleKey) }}
+            </span>
+            <lucide-icon
+              [img]="ArrowRightIcon"
+              [size]="17"
+              class="rtl-flip text-text-muted group-hover:text-orange-ink ms-auto shrink-0 transition-colors"
+              aria-hidden="true"
+            />
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
+
+<!-- ───────────────────────────  8. CTA banner  ─────────────────────────── -->
+<app-cta-banner />

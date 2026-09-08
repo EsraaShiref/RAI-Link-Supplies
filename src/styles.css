@@ -1,0 +1,426 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   RAI Link Supplies — Brand Design System
+   ----------------------------------------------------------------------------
+   Tailwind v4 (CSS-first config). The `tailwind.config.js` described in the
+   build spec is Tailwind v3 syntax; v4 replaces it with `@theme`. Semantics are
+   identical: every Tailwind colour utility resolves to a CSS custom property,
+   so `.dark` overrides propagate automatically with zero per-component work.
+   ========================================================================== */
+
+/* Class-based dark mode (spec 1.4: `darkMode: 'class'`). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Utility classes applied to <html> by the pre-paint script in index.html are
+   not statically analysable, so they are safelisted here. */
+@source inline("font-ar font-en dark");
+
+/* ---------------------------------------------------------------------------
+   1. Raw brand tokens — the single place a colour value is ever written.
+   ------------------------------------------------------------------------- */
+:root {
+  /* Brand core */
+  --brand-navy: #0a1c44;
+  --brand-navy-light: #16295e;
+  --brand-orange: #f26522;
+  --brand-orange-light: #ff8a3d;
+
+  /* Accessible orange variants.
+     `--brand-orange` is 3.15:1 on white — valid for graphics and large text,
+     but it fails WCAG AA (4.5:1) for body copy and for white-on-orange fills.
+     These two tokens carry the accent into text/fill roles without failing. */
+  --brand-orange-ink: #c2410c; /* 5.18:1 on white — small orange text        */
+  --brand-cta: #cc4a15; /* 4.61:1 vs white — filled CTA background   */
+  --brand-cta-fg: #ffffff;
+
+  /* Surfaces & type */
+  --brand-bg: #ffffff;
+  --brand-bg-subtle: #f7f8fa;
+  --brand-surface: #ffffff;
+  --brand-surface-raised: #ffffff;
+  --brand-text: #1e293b;
+  --brand-text-muted: #64748b;
+  --brand-border: #e2e8f0;
+
+  /* Footer always reads as the grounded, darkest band (spec 4.1). */
+  --brand-footer-bg: #0a1c44;
+  --brand-footer-text: #e2e8f0;
+  --brand-footer-heading: #ffffff;
+  --brand-footer-border: #1f3564;
+
+  /* Hero band */
+  --brand-hero-bg: #0a1c44;
+  --brand-hero-bg-end: #16295e;
+
+  /* Elevation */
+  --brand-shadow-card: 0 1px 2px rgb(10 28 68 / 0.04), 0 8px 24px -6px rgb(10 28 68 / 0.12);
+  --brand-shadow-card-hover: 0 2px 4px rgb(10 28 68 / 0.06), 0 18px 40px -10px rgb(10 28 68 / 0.2);
+  --brand-shadow-header: 0 1px 0 0 rgb(10 28 68 / 0.06), 0 8px 24px -12px rgb(10 28 68 / 0.18);
+
+  /* The signature gradient mirrors with writing direction so the navy → orange
+     sweep always points *forward*, matching the logo arrow in both scripts. */
+  --brand-gradient-angle: 90deg;
+
+  /* Fonts */
+  --brand-font-en: 'Plus Jakarta Sans', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --brand-font-ar: 'Cairo', 'Tajawal', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root:dir(rtl),
+[dir='rtl'] {
+  --brand-gradient-angle: 270deg;
+}
+
+.dark {
+  --brand-navy: #4c6fe8;
+  --brand-navy-light: #3f5cc9;
+  --brand-orange: #ff8a3d;
+  --brand-orange-light: #ffa869;
+
+  /* On dark surfaces the bright orange is the readable one (7.6:1), and a
+     navy foreground on an orange fill scores 7.1:1. */
+  --brand-orange-ink: #ff8a3d;
+  --brand-cta: #ff8a3d;
+  --brand-cta-fg: #0a1c44;
+
+  --brand-bg: #0f172a;
+  --brand-bg-subtle: #0b1220;
+  --brand-surface: #1c2740;
+  --brand-surface-raised: #22304e;
+  --brand-text: #e2e8f0;
+  --brand-text-muted: #94a3b8;
+  --brand-border: #2a3a5c;
+
+  --brand-footer-bg: #0b1220;
+  --brand-footer-text: #cbd5e1;
+  --brand-footer-heading: #f1f5f9;
+  --brand-footer-border: #23314e;
+
+  --brand-hero-bg: #0b1220;
+  --brand-hero-bg-end: #16224a;
+
+  --brand-shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -6px rgb(0 0 0 / 0.45);
+  --brand-shadow-card-hover: 0 2px 4px rgb(0 0 0 / 0.35), 0 18px 40px -10px rgb(0 0 0 / 0.55);
+  --brand-shadow-header: 0 1px 0 0 rgb(255 255 255 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.6);
+}
+
+/* ---------------------------------------------------------------------------
+   2. Tailwind theme mapping. `inline` makes utilities emit `var(--brand-*)`
+      directly, so a `.dark` override is picked up at the point of use.
+   ------------------------------------------------------------------------- */
+@theme inline {
+  --color-navy: var(--brand-navy);
+  --color-navy-light: var(--brand-navy-light);
+  --color-orange: var(--brand-orange);
+  --color-orange-light: var(--brand-orange-light);
+  --color-orange-ink: var(--brand-orange-ink);
+  --color-cta: var(--brand-cta);
+  --color-cta-fg: var(--brand-cta-fg);
+
+  --color-bg: var(--brand-bg);
+  --color-bg-subtle: var(--brand-bg-subtle);
+  --color-surface: var(--brand-surface);
+  --color-surface-raised: var(--brand-surface-raised);
+  --color-text: var(--brand-text);
+  --color-text-muted: var(--brand-text-muted);
+  --color-border: var(--brand-border);
+
+  --color-footer-bg: var(--brand-footer-bg);
+  --color-footer-text: var(--brand-footer-text);
+  --color-footer-heading: var(--brand-footer-heading);
+  --color-footer-border: var(--brand-footer-border);
+
+  --font-en: var(--brand-font-en);
+  --font-ar: var(--brand-font-ar);
+
+  --shadow-card: var(--brand-shadow-card);
+  --shadow-card-hover: var(--brand-shadow-card-hover);
+  --shadow-header: var(--brand-shadow-header);
+
+  --radius-xl: 0.75rem;
+
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   3. Signature gradient utilities.
+      `bg-brand-gradient`      — bright accent; graphics only (lines, arrows).
+      `bg-brand-gradient-deep` — carries white body text at AA (CTA banners).
+   ------------------------------------------------------------------------- */
+@utility bg-brand-gradient {
+  background-image: linear-gradient(
+    var(--brand-gradient-angle),
+    var(--brand-navy) 0%,
+    var(--brand-orange) 100%
+  );
+}
+
+@utility bg-brand-gradient-deep {
+  background-image: linear-gradient(
+    var(--brand-gradient-angle),
+    #0a1c44 0%,
+    #16295e 45%,
+    var(--brand-cta-banner-end, #cc4a15) 100%
+  );
+}
+
+@utility bg-brand-gradient-y {
+  background-image: linear-gradient(180deg, var(--brand-navy) 0%, var(--brand-orange) 100%);
+}
+
+@utility text-brand-gradient {
+  background-image: linear-gradient(
+    var(--brand-gradient-angle),
+    var(--brand-navy) 0%,
+    var(--brand-orange) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Direction-aware flip for arrows / chevrons (spec 1.3). */
+@utility rtl-flip {
+  [dir='rtl'] & {
+    transform: scaleX(-1);
+  }
+}
+
+/* Page gutter: one source of truth for horizontal rhythm. */
+@utility shell {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 64rem) {
+    padding-inline: 2rem;
+  }
+}
+
+/* Subtle dot lattice overlay for dark brand bands. Inherits `currentColor`. */
+@utility dot-grid {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(currentcolor 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.13;
+    animation: brand-drift 20s linear infinite;
+    pointer-events: none;
+  }
+}
+
+
+/* ---------------------------------------------------------------------------
+   4. Base layer
+   ------------------------------------------------------------------------- */
+@layer base {
+  html {
+    font-family: var(--brand-font-en);
+    scroll-behavior: smooth;
+    /* Offset in-page anchors for the sticky header. */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  /* Guarantees the correct script font before Angular boots, independent of
+     Tailwind utility generation. */
+  html.font-ar,
+  html:lang(ar) {
+    font-family: var(--brand-font-ar);
+  }
+
+  html.font-en,
+  html:lang(en) {
+    font-family: var(--brand-font-en);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--brand-bg);
+    color: var(--brand-text);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Arabic needs slightly more leading than Latin (spec 2 typography). */
+  html:lang(ar) body {
+    line-height: 1.85;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    line-height: 1.22;
+    text-wrap: balance;
+  }
+
+  html:lang(ar) :is(h1, h2, h3, h4, h5, h6) {
+    line-height: 1.4;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* Logical alignment — never physical left/right (spec 1.3). */
+  body,
+  th,
+  td {
+    text-align: start;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand-orange);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  ::selection {
+    background-color: var(--brand-orange);
+    color: #ffffff;
+  }
+
+  /* Numbers/latin runs inside Arabic copy keep LTR ordering. */
+  .force-ltr {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   5. Motion — subtle only (spec 2). Reveal on scroll: fade + slide.
+   ------------------------------------------------------------------------- */
+@layer components {
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 1.25rem, 0);
+    transition:
+      opacity 250ms var(--ease-brand),
+      transform 250ms var(--ease-brand);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  .reveal-start {
+    transform: translate3d(calc(-1.75rem * var(--brand-inline-sign, 1)), 0, 0);
+  }
+
+  .reveal-end {
+    transform: translate3d(calc(1.75rem * var(--brand-inline-sign, 1)), 0, 0);
+  }
+
+  .reveal-in {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* Brand-gradient skeleton shimmer for @defer placeholders. */
+  .skeleton {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--brand-bg-subtle);
+  }
+
+  .skeleton::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background-image: linear-gradient(
+      var(--brand-gradient-angle),
+      transparent 0%,
+      color-mix(in srgb, var(--brand-navy) 12%, transparent) 45%,
+      color-mix(in srgb, var(--brand-orange) 16%, transparent) 70%,
+      transparent 100%
+    );
+    animation: brand-shimmer 1.6s ease-in-out infinite;
+  }
+
+  /* Slow looping sweep along the hero arrow (spec 2 motion: 4–6s). */
+  .arrow-sweep {
+    animation: brand-sweep 5.5s ease-in-out infinite;
+  }
+}
+
+:root {
+  --brand-inline-sign: 1;
+}
+
+[dir='rtl'] {
+  --brand-inline-sign: -1;
+}
+
+@keyframes brand-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes brand-sweep {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(6%);
+  }
+}
+
+@keyframes brand-drift {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal-start,
+  .reveal-end {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .skeleton::after,
+  .arrow-sweep,
+  .dot-grid::before {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,155 @@
+<header
+  class="sticky top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ease-out"
+  [class]="
+    isTransparent()
+      ? 'border-b border-transparent bg-transparent'
+      : 'border-border bg-surface shadow-header border-b'
+  "
+>
+  <div class="shell flex h-16 items-center gap-4 lg:h-20">
+    <a
+      routerLink="/"
+      class="shrink-0 rounded-md"
+      [attr.aria-label]="t('a11y.logoAlt')"
+      (click)="closeDrawer()"
+    >
+      <app-brand-logo
+        [variant]="isTransparent() ? 'onDark' : 'default'"
+        [width]="150"
+        class="lg:hidden"
+      />
+      <app-brand-logo
+        [variant]="isTransparent() ? 'onDark' : 'default'"
+        [width]="182"
+        class="hidden lg:block"
+      />
+    </a>
+
+    <!-- Desktop navigation -->
+    <nav class="ms-auto hidden xl:block" [attr.aria-label]="t('a11y.mainNavigation')">
+      <ul class="flex items-center gap-1">
+        @for (item of navItems; track item.path) {
+          <li>
+            <a
+              [routerLink]="item.path"
+              routerLinkActive
+              #link="routerLinkActive"
+              [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+              [attr.aria-current]="link.isActive ? 'page' : null"
+              class="group relative block rounded-md px-3 py-2 text-sm font-semibold transition-colors duration-200"
+              [class]="
+                isTransparent()
+                  ? link.isActive
+                    ? 'text-white'
+                    : 'text-white/75 hover:text-white'
+                  : link.isActive
+                    ? 'text-text'
+                    : 'text-text-muted hover:text-text'
+              "
+            >
+              {{ t(item.labelKey) }}
+              <span
+                class="bg-brand-gradient absolute inset-x-3 -bottom-0.5 h-[2px] origin-center rounded-full transition-transform duration-200 ease-out"
+                [class]="link.isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"
+                aria-hidden="true"
+              ></span>
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+
+    <div class="ms-auto flex items-center gap-2 xl:ms-0 xl:gap-3">
+      <app-language-toggle />
+      <app-theme-toggle />
+
+      <a
+        routerLink="/contact"
+        class="bg-cta text-cta-fg hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-[filter,transform] duration-200 hover:brightness-110 active:scale-[0.98] lg:inline-flex"
+      >
+        {{ t('hero.ctaPrimary') }}
+        <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
+      </a>
+
+      <button
+        type="button"
+        class="border-border bg-bg-subtle text-text hover:border-orange inline-flex size-9 items-center justify-center rounded-full border transition-colors duration-200 xl:hidden"
+        [attr.aria-label]="drawerOpen() ? t('a11y.closeMenu') : t('a11y.openMenu')"
+        [attr.aria-expanded]="drawerOpen()"
+        aria-controls="mobile-drawer"
+        (click)="toggleDrawer()"
+      >
+        <lucide-icon [img]="drawerOpen() ? CloseIcon : MenuIcon" [size]="18" aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer: enters from the logical end edge, so it slides in from the
+     right in LTR and from the left in RTL with no hardcoded side. -->
+<button
+  type="button"
+  class="drawer-backdrop bg-navy/60 fixed inset-0 z-50 backdrop-blur-sm xl:hidden"
+  [class.is-open]="drawerOpen()"
+  [attr.aria-label]="t('a11y.closeMenu')"
+  [attr.tabindex]="drawerOpen() ? 0 : -1"
+  (click)="closeDrawer()"
+></button>
+
+<aside
+  id="mobile-drawer"
+  class="drawer bg-surface border-border fixed inset-y-0 z-50 flex w-[min(20rem,85vw)] flex-col border-s xl:hidden"
+  [class.is-open]="drawerOpen()"
+  [attr.aria-label]="t('a11y.mainNavigation')"
+  [attr.inert]="drawerOpen() ? null : true"
+>
+  <div class="border-border flex h-16 items-center justify-between gap-3 border-b px-5">
+    <app-brand-logo [width]="132" />
+    <button
+      #closeButton
+      type="button"
+      class="border-border text-text hover:border-orange inline-flex size-9 items-center justify-center rounded-full border transition-colors duration-200"
+      [attr.aria-label]="t('a11y.closeMenu')"
+      (click)="closeDrawer()"
+    >
+      <lucide-icon [img]="CloseIcon" [size]="18" aria-hidden="true" />
+    </button>
+  </div>
+
+  <nav class="flex-1 overflow-y-auto px-3 py-4" [attr.aria-label]="t('a11y.mainNavigation')">
+    <ul class="flex flex-col gap-1">
+      @for (item of navItems; track item.path) {
+        <li>
+          <a
+            [routerLink]="item.path"
+            routerLinkActive
+            #link="routerLinkActive"
+            [routerLinkActiveOptions]="{ exact: item.path === '/' }"
+            [attr.aria-current]="link.isActive ? 'page' : null"
+            class="flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-semibold transition-colors duration-200"
+            [class]="link.isActive ? 'bg-bg-subtle text-text' : 'text-text-muted hover:bg-bg-subtle'"
+            (click)="closeDrawer()"
+          >
+            <span
+              class="h-5 w-[3px] rounded-full transition-opacity"
+              [class]="link.isActive ? 'bg-brand-gradient-y opacity-100' : 'opacity-0'"
+              aria-hidden="true"
+            ></span>
+            {{ t(item.labelKey) }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <div class="border-border border-t p-4">
+    <a
+      routerLink="/contact"
+      class="bg-cta text-cta-fg flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-[filter] duration-200 hover:brightness-110"
+      (click)="closeDrawer()"
+    >
+      {{ t('hero.ctaPrimary') }}
+      <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
+    </a>
+  </div>
+</aside>

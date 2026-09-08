@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <title>RAI Link Supplies</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0A1C44" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    />
+
+    <!--
+      Pre-paint preference bootstrap.
+      Runs before first paint so the stored theme, language, direction and script
+      font are already applied — no flash of unstyled or wrongly-mirrored content
+      (spec section 6). TranslationService / ThemeService read the same keys.
+    -->
+    <script>
+      (function () {
+        var root = document.documentElement;
+        var lang = 'ar';
+        var theme = 'light';
+        try {
+          var storedLang = localStorage.getItem('rai-lang');
+          if (storedLang === 'ar' || storedLang === 'en') {
+            lang = storedLang;
+          }
+          var storedTheme = localStorage.getItem('rai-theme');
+          if (storedTheme === 'light' || storedTheme === 'dark') {
+            theme = storedTheme;
+          } else if (
+            window.matchMedia &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+          ) {
+            theme = 'dark';
+          }
+        } catch (e) {
+          /* storage unavailable (private mode) — fall through to defaults */
+        }
+        root.lang = lang;
+        root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+        root.classList.add(lang === 'ar' ? 'font-ar' : 'font-en');
+        if (theme === 'dark') {
+          root.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
+</html>

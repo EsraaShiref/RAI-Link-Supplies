@@ -1,0 +1,293 @@
+{
+  "brand": {
+    "name": "RAI Link Supplies",
+    "tagline": "Integrated Procurement & Supply Solutions"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "servicesScope": "Services & Scope",
+    "products": "Products",
+    "partners": "Partners & Suppliers",
+    "targetAudience": "Who We Serve",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "eyebrow": "General Supplies · IT & Electronics · Specialized Procurement",
+    "headline": "The Link Between You and the Right Supplier",
+    "subheadline": "RAI Link Supplies connects businesses, organizations, and institutions with trusted suppliers — delivering quality products, competitive sourcing, and dependable delivery.",
+    "ctaPrimary": "Request a Quotation",
+    "ctaSecondary": "Explore Our Products"
+  },
+  "about": {
+    "eyebrow": "About Us",
+    "title": "About RAI Link Supplies",
+    "body": "RAI Link Supplies is an Egyptian provider of integrated procurement and supply solutions for businesses, organizations, and institutions. We specialize in sourcing and supplying high-quality products across general supplies, office requirements, IT and electronics, equipment, facility essentials, and specialized procurement. We connect clients with trusted suppliers, ensuring quality products, competitive sourcing, and dependable delivery. Our flexible supply solutions are designed to meet both routine and specialized requirements with reliability and professionalism."
+  },
+  "mission": {
+    "title": "Mission",
+    "body": "To provide reliable and integrated procurement and supply solutions that meet the diverse needs of businesses and organizations through high-quality products, competitive sourcing, timely delivery, and dependable service."
+  },
+  "vision": {
+    "title": "Vision",
+    "body": "To become a trusted and leading provider of integrated procurement and supply solutions in Egypt, recognized for quality products, competitive sourcing, reliable service, and timely delivery that consistently exceed customer expectations."
+  },
+  "values": {
+    "eyebrow": "Our Values",
+    "title": "What Drives Us",
+    "items": {
+      "reliability": {
+        "title": "Reliability",
+        "body": "We are a dependable partner, committed to accurate orders, consistent quality, and on-time delivery."
+      },
+      "quality": {
+        "title": "Quality",
+        "body": "We carefully source quality products from trusted suppliers to ensure value and long-term satisfaction."
+      },
+      "speedAgility": {
+        "title": "Speed & Agility",
+        "body": "We respond quickly to customer needs and adapt efficiently to changing requirements."
+      },
+      "flexibility": {
+        "title": "Flexibility",
+        "body": "We provide tailored supply solutions, adapting our sourcing and procurement approach to meet both routine and specialized requirements."
+      }
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Us",
+    "items": {
+      "reliableSupply": "Reliable Supply",
+      "qualityAssurance": "Quality Assurance",
+      "competitiveProcurement": "Competitive Procurement",
+      "fastResponse": "Fast Response",
+      "tailoredSolutions": "Tailored Solutions"
+    }
+  },
+  "goals": {
+    "eyebrow": "Our Goals",
+    "title": "Where We're Headed",
+    "items": [
+      {
+        "number": "01",
+        "body": "To provide reliable, high-quality supply solutions across a wide range of products and categories, meeting our clients' needs with accuracy and consistency."
+      },
+      {
+        "number": "02",
+        "body": "To build an efficient procurement process that delivers competitive sourcing, accurate specifications, and timely fulfillment while minimizing operational delays."
+      },
+      {
+        "number": "03",
+        "body": "To build lasting relationships with our clients and suppliers by delivering dependable service, responsive support, and sustainable value."
+      }
+    ]
+  },
+  "howWeWork": {
+    "eyebrow": "How We Work",
+    "title": "Our 6-Step Process",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Request",
+        "body": "We begin by understanding our client's requirements, specifications, quantities, and delivery needs to identify the most suitable products."
+      },
+      {
+        "number": "02",
+        "title": "Quotation",
+        "body": "We prepare a clear and competitive quotation, outlining product specifications, pricing, availability, and delivery timelines."
+      },
+      {
+        "number": "03",
+        "title": "Purchase Order (PO)",
+        "body": "Once approved, the process is formalized through a Purchase Order (PO), confirming the agreed scope, terms, quantities, and delivery requirements."
+      },
+      {
+        "number": "04",
+        "title": "Procurement",
+        "body": "We source and coordinate with trusted suppliers to secure the required products while maintaining quality, competitive pricing, and availability."
+      },
+      {
+        "number": "05",
+        "title": "Delivery",
+        "body": "We ensure accurate and timely delivery, with proper coordination, handling, and follow-up until the order is successfully fulfilled."
+      },
+      {
+        "number": "06",
+        "title": "Support",
+        "body": "We maintain continuous communication and follow-up after delivery, addressing any requirements and ensuring a smooth customer experience."
+      }
+    ]
+  },
+  "projectScope": {
+    "eyebrow": "Project Scope",
+    "title": "How We Manage Every Order",
+    "body": "At RAI Link Supplies, we manage procurement and supply requirements through a structured and reliable process, from sourcing to final delivery. Our scope covers corporate procurement, office and workplace supplies, IT and electronics, equipment, facility essentials, and specialized products. We handle both routine orders and project-based requirements, ensuring accurate specifications, efficient sourcing, coordinated logistics, and timely delivery. Our goal is to simplify procurement and deliver the right products with the right quality, at the right time."
+  },
+  "expertise": {
+    "eyebrow": "Expertise",
+    "title": "Where We Excel",
+    "items": {
+      "generalProcurement": {
+        "title": "General Procurement & Supplies",
+        "body": "Managing a wide range of procurement requirements, including office supplies, workplace essentials, facility products, and general operational needs."
+      },
+      "itElectronics": {
+        "title": "IT, Electronics & Equipment",
+        "body": "Supplying computers, electronics, networking products, equipment, tools, and other technical and operational requirements."
+      },
+      "specializedProjects": {
+        "title": "Specialized & Project Procurement",
+        "body": "Sourcing specialized, customized, and project-based requirements through trusted suppliers, ensuring competitive sourcing and reliable delivery."
+      }
+    }
+  },
+  "products": {
+    "eyebrow": "Products",
+    "title": "What We Supply",
+    "categories": {
+      "office": {
+        "title": "Office Supplies",
+        "body": "Stationery, paper products, printing consumables, office accessories, and everyday workplace essentials."
+      },
+      "furniture": {
+        "title": "Furniture & Workplace",
+        "body": "Office desks, chairs, cabinets, meeting room furniture, and workplace equipment."
+      },
+      "itElectronics": {
+        "title": "IT & Electronics",
+        "body": "Computers, printers, networking products, electronic devices, accessories, and related supplies."
+      },
+      "generalSpecialized": {
+        "title": "General & Specialized Supplies",
+        "body": "General consumables, customized items, and specialized products sourced according to specific customer requirements."
+      },
+      "cleaningFacility": {
+        "title": "Cleaning & Facility",
+        "body": "Cleaning products, janitorial supplies, maintenance items, and facility management essentials."
+      },
+      "safetySecurity": {
+        "title": "Safety & Security",
+        "body": "Personal protective equipment (PPE), safety products, security supplies, and workplace protection essentials."
+      },
+      "electricalTechnical": {
+        "title": "Electrical & Technical",
+        "body": "Electrical products, cables, tools, technical equipment, and operational requirements."
+      }
+    }
+  },
+  "partners": {
+    "eyebrow": "Partners & Suppliers",
+    "title": "Our Supplier Network",
+    "points": [
+      "We work with a trusted network of suppliers and distributors across multiple product categories.",
+      "We carefully select our suppliers based on quality, reliability, availability, and competitive pricing.",
+      "Our supplier network enables us to meet both routine and specialized requirements with flexible sourcing and dependable delivery."
+    ]
+  },
+  "targetAudience": {
+    "eyebrow": "Who We Serve",
+    "title": "Target Audience",
+    "items": {
+      "government": {
+        "number": "01",
+        "title": "Government & Public Sector",
+        "body": "We support government entities and public organizations with reliable procurement and supply solutions for routine and project-based requirements."
+      },
+      "corporate": {
+        "number": "02",
+        "title": "Corporate & Private Enterprise",
+        "body": "We serve companies of all sizes with office, IT, equipment, facility, and general operational supplies."
+      },
+      "education": {
+        "number": "03",
+        "title": "Educational & Healthcare Institutions",
+        "body": "We provide schools, universities, medical centers, and institutions with essential supplies, equipment, and specialized procurement solutions."
+      }
+    }
+  },
+  "contact": {
+    "eyebrow": "Contact Us",
+    "title": "Let's Talk Requirements",
+    "cta": "Contact us today to discuss your requirements and receive a customized quotation.",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "addressLabel": "Address",
+    "phone": "+20 10 4388 1766",
+    "email": "info@railinksupplies.com",
+    "address": "100 Al-Sayed Al-Mirghani Street - Heliopolis - Cairo, Egypt",
+    "form": {
+      "title": "Request a Quotation",
+      "name": "Full Name",
+      "company": "Company / Organization",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "category": "Category of Interest",
+      "categoryOptions": [
+        "Office Supplies",
+        "Furniture & Workplace",
+        "IT & Electronics",
+        "General & Specialized Supplies",
+        "Cleaning & Facility",
+        "Safety & Security",
+        "Electrical & Technical"
+      ],
+      "quantity": "Estimated Quantity",
+      "message": "Requirements / Message",
+      "submit": "Send Request",
+      "successMessage": "Thank you — your request has been received. Our team will contact you shortly.",
+      "errorMessage": "Something went wrong. Please try again or contact us directly."
+    }
+  },
+  "footer": {
+    "rightsReserved": "All rights reserved.",
+    "quickLinks": "Quick Links",
+    "getInTouch": "Get in Touch"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "backToHome": "Back to Home",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "a11y": {
+    "skipToContent": "Skip to main content",
+    "breadcrumb": "Breadcrumb",
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu",
+    "switchToEnglish": "Switch language to English",
+    "switchToArabic": "تغيير اللغة إلى العربية",
+    "switchToDark": "Switch to dark theme",
+    "switchToLight": "Switch to light theme",
+    "logoAlt": "RAI Link Supplies — Integrated Procurement & Supply Solutions",
+    "brandArrowAlt": "Forward-pointing gradient arrow, the RAI Link Supplies brand motif",
+    "submitting": "Sending your request",
+    "requiredField": "Required field",
+    "processStep": "Step",
+    "supplierLogoPlaceholder": "Supplier logo placeholder",
+    "mapPlaceholder": "Map showing the RAI Link Supplies office in Heliopolis, Cairo",
+    "openInMaps": "Open the office location in Google Maps",
+    "searchProducts": "Search product categories",
+    "clearSearch": "Clear search",
+    "noResults": "No matching product categories."
+  },
+  "validation": {
+    "nameRequired": "Please enter your full name.",
+    "nameMinLength": "Please enter at least 2 characters.",
+    "emailRequired": "Please enter your email address.",
+    "emailInvalid": "Please enter a valid email address.",
+    "phoneRequired": "Please enter your phone number.",
+    "phoneInvalid": "Please enter a valid phone number.",
+    "categoryRequired": "Please select a category of interest.",
+    "messageRequired": "Please describe your requirements.",
+    "messageMinLength": "Please enter at least 10 characters.",
+    "optional": "Optional"
+  },
+  "seo": {
+    "titleSuffix": "RAI Link Supplies",
+    "partnersPlaceholderNote": "Placeholder — supplier logos to be provided by the client."
+  }
+}
