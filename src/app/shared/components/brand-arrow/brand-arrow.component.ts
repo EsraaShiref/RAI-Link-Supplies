@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
  */
 @Component({
   selector: 'app-brand-arrow',
-  host: { class: 'block', 'aria-hidden': 'true' },
+  host: { class: 'block max-sm:hidden', 'aria-hidden': 'true' },
   template: `
     <svg viewBox="0 0 560 320" class="h-auto w-full" focusable="false">
       <defs>

@@ -8,7 +8,7 @@ import { Boxes, Headset, PackageCheck, LucideAngularModule, Truck } from 'lucide
 @Component({
   selector: 'app-supply-visual',
   imports: [LucideAngularModule],
-  host: { class: 'block', 'aria-hidden': 'true' },
+  host: { class: 'block max-sm:hidden', 'aria-hidden': 'true' },
   template: `
     <div class="border-border bg-bg-subtle relative overflow-hidden rounded-xl border p-6 sm:p-8">
       <span class="bg-brand-gradient absolute inset-x-0 top-0 h-[3px]" aria-hidden="true"></span>

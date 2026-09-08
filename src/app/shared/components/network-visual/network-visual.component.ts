@@ -16,7 +16,7 @@ import { Boxes, Building2, Cpu, LucideAngularModule, Network, Truck, Users } fro
 @Component({
   selector: 'app-network-visual',
   imports: [LucideAngularModule],
-  host: { class: 'block', 'aria-hidden': 'true' },
+  host: { class: 'block max-sm:hidden', 'aria-hidden': 'true' },
   template: `
     <div
       class="border-border bg-bg-subtle relative overflow-hidden rounded-xl border p-6 sm:p-8"
