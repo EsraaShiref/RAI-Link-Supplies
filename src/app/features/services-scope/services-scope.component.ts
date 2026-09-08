@@ -3,7 +3,6 @@ import { LucideAngularModule, Route } from 'lucide-angular';
 
 import { EXPERTISE_AREAS } from '../../core/content';
 import { TranslationService } from '../../core/services';
-import { CtaBannerComponent } from '../../layout';
 import { CardSkeletonComponent, PageHeaderComponent, SectionHeadingComponent } from '../../shared/components';
 import { RevealOnScrollDirective } from '../../shared/directives';
 import { ProcessTimelineComponent } from './components/process-timeline.component';
@@ -99,39 +98,42 @@ import { ProcessTimelineComponent } from './components/process-timeline.componen
               </div>
 
               <!-- Decorative counterpart: brand geometry, no stock photography -->
-              <div
-                [appReveal]="isEven ? 'end' : 'start'"
-                [class.lg:order-1]="!isEven"
-                class="border-border bg-bg-subtle relative flex aspect-16/10 items-center justify-center overflow-hidden rounded-xl border"
-                aria-hidden="true"
-              >
-                <span
-                  class="bg-brand-gradient absolute inset-x-0 top-0 h-[3px]"
-                  aria-hidden="true"
-                ></span>
-                <span
-                  class="text-orange/15 absolute text-[7rem] leading-none font-extrabold sm:text-[9rem]"
-                >
-                  {{ stepNumber(index) }}
-                </span>
-                <span
-                  class="bg-brand-gradient relative inline-flex size-20 items-center justify-center rounded-xl text-white shadow-lg sm:size-24"
-                >
-                  <lucide-icon
-                    [img]="area.icon"
-                    [size]="34"
-                    [strokeWidth]="1.6"
-                    aria-hidden="true"
-                  />
-                </span>
-              </div>
+              <!-- Interactive Image Container -->
+<div
+  [appReveal]="isEven ? 'end' : 'start'"
+  [class.lg:order-1]="!isEven"
+  class="border-border bg-bg-subtle group relative flex aspect-16/10 items-center justify-center overflow-hidden rounded-xl border shadow-md"
+>
+  <!-- Accent Top Border -->
+  <span
+    class="bg-brand-gradient z-10 absolute inset-x-0 top-0 h-[3px]"
+    aria-hidden="true"
+  ></span>
+
+  <!-- Category Image with Hover Zoom -->
+  <img
+    [src]="area.image"
+    [alt]="t(area.titleKey)"
+    class="size-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+    loading="lazy"
+  />
+
+  <!-- Subtle Dark Gradient Overlay for Contrast -->
+  <div class="bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent absolute inset-0 z-0"></div>
+
+  <!-- Decorative Step Badge on Top of Image -->
+  <span
+    class="bg-bg/80 text-text border-border z-10 absolute bottom-3 start-3 rounded-lg border px-2.5 py-1 text-xs font-extrabold tracking-wider backdrop-blur-md"
+  >
+    {{ stepNumber(index) }}
+  </span>
+</div>
             </article>
           }
         </div>
       </div>
     </section>
 
-    <!-- <app-cta-banner /> -->
   `,
 })
 export class ServicesScopeComponent {

@@ -11,53 +11,76 @@ interface TimelineStep extends ProcessStep {
 }
 
 /**
- * Six-step process timeline: horizontal on desktop, vertical when stacked.
- *
- * Steps are read straight from `howWeWork.steps`, so the copy and the count are
- * dictionary-driven. Rendered as an ordered list, which conveys sequence to
- * assistive tech without relying on the decorative rail.
+ * Creative Vertical Zig-Zag timeline with connecting spine and alternating cards.
  */
 @Component({
   selector: 'app-process-timeline',
   imports: [LucideAngularModule, RevealOnScrollDirective],
-  host: { class: 'block' },
+  host: { class: 'block relative' },
   template: `
-    <ol class="flex flex-col lg:flex-row lg:gap-4">
-      @for (step of steps(); track step.number; let index = $index, isLast = $last) {
-        <li class="flex gap-5 lg:block lg:flex-1" appReveal [revealDelay]="index * 70">
-          <!-- Node + connector rail -->
-          <div class="flex flex-col items-center lg:flex-row lg:items-center lg:gap-3">
-            <span
-              class="border-orange bg-surface text-orange-ink flex size-11 shrink-0 items-center justify-center rounded-full border-2 text-sm font-extrabold"
-            >
-              {{ step.number }}
-            </span>
+    <div class="relative mx-auto max-w-5xl px-4">
+      <!-- Continuous Central Connecting Line (Desktop) -->
+      <div 
+        class="bg-brand-gradient-y absolute inset-y-8 start-1/2 hidden w-[3px] -translate-x-1/2 rounded-full opacity-40 lg:block rtl:translate-x-1/2" 
+        aria-hidden="true"
+      ></div>
 
-            @if (!isLast) {
+      <!-- Timeline Steps Container -->
+      <ol class="relative flex flex-col gap-12 lg:gap-16">
+        @for (step of steps(); track step.number; let index = $index, isEven = $even) {
+          <li 
+            class="relative flex flex-col lg:flex-row lg:items-center"
+            [class.lg:flex-row-reverse]="!isEven"
+            appReveal 
+            [revealDelay]="index * 80"
+          >
+            <!-- Content Card (50% width on Desktop) -->
+            <div class="w-full lg:w-[calc(50%-2.5rem)]">
+              <div 
+                class="border-border bg-bg-subtle group relative rounded-2xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange/50 hover:shadow-xl hover:shadow-orange/5 sm:p-7"
+              >
+                <!-- Top Accent Gradient on Hover -->
+                <span 
+                  class="bg-brand-gradient absolute inset-x-0 top-0 h-[3px] rounded-t-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" 
+                  aria-hidden="true"
+                ></span>
+
+                <div class="flex items-center gap-4">
+                  <!-- Step Icon -->
+                  <span 
+                    class="border-border bg-bg text-orange-ink flex size-12 shrink-0 items-center justify-center rounded-xl border transition-colors duration-300 group-hover:bg-orange group-hover:text-white"
+                  >
+                    <lucide-icon [img]="step.icon" [size]="22" aria-hidden="true" />
+                  </span>
+
+                  <!-- Title -->
+                  <h3 class="text-text text-lg font-bold transition-colors group-hover:text-orange-ink sm:text-xl">
+                    {{ step.title }}
+                  </h3>
+                </div>
+
+                <!-- Body Copy -->
+                <p class="text-text-muted mt-4 text-sm leading-relaxed sm:text-base">
+                  {{ step.body }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Central Number Node Anchor (Center Spine) -->
+            <div class="my-4 flex items-center justify-center lg:my-0 lg:w-20">
               <span
-                class="bg-brand-gradient-y my-2 w-[2px] flex-1 rounded-full lg:hidden"
-                aria-hidden="true"
-              ></span>
-              <span
-                class="bg-brand-gradient hidden h-[2px] flex-1 rounded-full lg:block"
-                aria-hidden="true"
-              ></span>
-            }
-          </div>
+                class="border-orange bg-bg text-orange-ink relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full border-2 text-base font-extrabold shadow-md shadow-orange/10 transition-transform duration-300 hover:scale-110"
+              >
+                {{ step.number }}
+              </span>
+            </div>
 
-          <div class="pb-10 lg:mt-6 lg:pb-0 lg:pe-4">
-            <span
-              class="border-border bg-bg-subtle text-text-muted mb-4 inline-flex size-10 items-center justify-center rounded-xl border"
-            >
-              <lucide-icon [img]="step.icon" [size]="18" aria-hidden="true" />
-            </span>
-
-            <h3 class="text-text text-base font-bold sm:text-lg">{{ step.title }}</h3>
-            <p class="text-text-muted mt-2.5 text-sm leading-relaxed">{{ step.body }}</p>
-          </div>
-        </li>
-      }
-    </ol>
+            <!-- Empty Spacer (Balances the opposite side in desktop layout) -->
+            <div class="hidden w-full lg:block lg:w-[calc(50%-2.5rem)]"></div>
+          </li>
+        }
+      </ol>
+    </div>
   `,
 })
 export class ProcessTimelineComponent {

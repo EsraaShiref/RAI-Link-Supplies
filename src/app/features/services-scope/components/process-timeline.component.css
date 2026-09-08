@@ -1,0 +1,30 @@
+:host {
+  display: block;
+}
+
+/* Glowing dot animation traveling down the timeline line */
+.timeline-glow-dot {
+  animation: pulse-down 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+}
+
+@keyframes pulse-down {
+  0% {
+    top: 0%;
+    opacity: 0.2;
+    transform: translate(-50%, 0) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1.4);
+  }
+  100% {
+    top: 100%;
+    opacity: 0.1;
+    transform: translate(-50%, 0) scale(0.8);
+  }
+}
+
+/* Responsive RTL tweaks for directional layout */
+[dir="rtl"] .timeline-glow-dot {
+  transform: translate(50%, 0);
+}
