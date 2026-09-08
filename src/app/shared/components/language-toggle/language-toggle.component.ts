@@ -1,41 +1,27 @@
 import { Component, computed, inject } from '@angular/core';
+import { Globe, LucideAngularModule } from 'lucide-angular';
 
 import { TranslationService } from '../../../core/services';
 
 /**
- * "EN / عربي" pill switch. Renders as a radio group so screen readers announce
- * both options and which one is active, rather than a nameless toggle.
+ * Compact single-action language switcher. The label shows the language that
+ * will be activated when the button is pressed.
  */
 @Component({
   selector: 'app-language-toggle',
+  imports: [LucideAngularModule],
   host: { class: 'block' },
   template: `
-    <div
-      class="border-border bg-bg-subtle inline-flex items-center rounded-full border p-0.5"
-      role="radiogroup"
-      [attr.aria-label]="t('common.language')"
+    <button
+      type="button"
+      class="inline-flex items-center gap-1.5 rounded-full border border-slate-700/60 bg-slate-800/80 px-3 py-1.5 text-xs font-bold text-slate-200 transition-colors duration-200 hover:border-orange/50 hover:bg-slate-700/80"
+      [attr.aria-label]="nextLanguageLabel()"
+      [attr.title]="nextLanguageLabel()"
+      (click)="toggle()"
     >
-      <button
-        type="button"
-        role="radio"
-        [attr.aria-checked]="!isArabic()"
-        [attr.aria-label]="t('a11y.switchToEnglish')"
-        [class]="isArabic() ? inactiveClass : activeClass"
-        (click)="select('en')"
-      >
-        EN
-      </button>
-      <button
-        type="button"
-        role="radio"
-        [attr.aria-checked]="isArabic()"
-        [attr.aria-label]="t('a11y.switchToArabic')"
-        [class]="isArabic() ? activeClass : inactiveClass"
-        (click)="select('ar')"
-      >
-        عربي
-      </button>
-    </div>
+      <lucide-icon [img]="GlobeIcon" [size]="14" aria-hidden="true" />
+      <span>{{ isArabic() ? 'EN' : 'عربي' }}</span>
+    </button>
   `,
 })
 export class LanguageToggleComponent {
@@ -43,14 +29,13 @@ export class LanguageToggleComponent {
   protected readonly t = this.i18n.t;
 
   protected readonly isArabic = computed(() => this.i18n.currentLang() === 'ar');
+  protected readonly GlobeIcon = Globe;
 
-  private static readonly BASE =
-    'rounded-full px-3 py-1 text-xs font-bold transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange';
+  protected readonly nextLanguageLabel = computed(() =>
+    this.isArabic() ? this.t('a11y.switchToEnglish') : this.t('a11y.switchToArabic'),
+  );
 
-  protected readonly activeClass = `${LanguageToggleComponent.BASE} bg-navy text-white dark:bg-orange dark:text-navy`;
-  protected readonly inactiveClass = `${LanguageToggleComponent.BASE} text-text-muted hover:text-text`;
-
-  protected select(lang: 'ar' | 'en'): void {
-    this.i18n.setLang(lang);
+  protected toggle(): void {
+    this.i18n.setLang(this.isArabic() ? 'en' : 'ar');
   }
 }

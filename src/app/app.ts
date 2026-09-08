@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 
 import { DirectionService, TranslationService } from './core/services';
 import { FooterComponent, HeaderComponent } from './layout';
+import { WhatsappButtonComponent } from './shared/components';
 import { ScrollSentinelDirective } from './shared/directives';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ScrollSentinelDirective],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, ScrollSentinelDirective, WhatsappButtonComponent],
   host: {
     class: 'relative flex min-h-dvh flex-col',
     '[class.font-ar]': 'isArabic()',
@@ -30,6 +31,8 @@ import { ScrollSentinelDirective } from './shared/directives';
     ></span>
 
     <app-header />
+
+    <app-whatsapp-button />
 
     <main id="main-content" class="flex-1">
       <router-outlet />

@@ -10,3 +10,4 @@ export * from './page-header/page-header.component';
 export * from './section-heading/section-heading.component';
 export * from './supply-visual/supply-visual.component';
 export * from './theme-toggle/theme-toggle.component';
+export * from './whatsapp-button/whatsapp-button.component';
