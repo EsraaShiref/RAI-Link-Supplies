@@ -4,8 +4,7 @@ import { Globe, LucideAngularModule } from 'lucide-angular';
 import { TranslationService } from '../../../core/services';
 
 /**
- * Compact single-action language switcher. The label shows the language that
- * will be activated when the button is pressed.
+ * Compact single-action language switcher tailored with brand blue and orange colors.
  */
 @Component({
   selector: 'app-language-toggle',
@@ -13,15 +12,15 @@ import { TranslationService } from '../../../core/services';
   host: { class: 'block' },
   template: `
     <button
-      type="button"
-      class="inline-flex items-center gap-1.5 rounded-full border border-slate-700/60 bg-slate-800/80 px-3 py-1.5 text-xs font-bold text-slate-200 transition-colors duration-200 hover:border-orange/50 hover:bg-slate-700/80"
-      [attr.aria-label]="nextLanguageLabel()"
-      [attr.title]="nextLanguageLabel()"
-      (click)="toggle()"
-    >
-      <lucide-icon [img]="GlobeIcon" [size]="14" aria-hidden="true" />
-      <span>{{ isArabic() ? 'EN' : 'عربي' }}</span>
-    </button>
+  type="button"
+  class="inline-flex items-center gap-1.5 rounded-full border border-[#0F172A] bg-[#0F172A] px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:border-orange hover:bg-orange hover:text-white"
+  [attr.aria-label]="nextLanguageLabel()"
+  [attr.title]="nextLanguageLabel()"
+  (click)="toggle()"
+>
+  <lucide-icon [img]="GlobeIcon" [size]="14" aria-hidden="true" />
+  <span>{{ isArabic() ? 'EN' : 'عربي' }}</span>
+</button>
   `,
 })
 export class LanguageToggleComponent {
