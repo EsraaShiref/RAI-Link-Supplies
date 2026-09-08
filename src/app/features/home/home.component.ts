@@ -10,7 +10,6 @@ import {
 } from '../../core/content';
 import { TranslationService } from '../../core/services';
 import { CtaBannerComponent } from '../../layout';
-import { BrandArrowComponent } from '../../shared/components/brand-arrow/brand-arrow.component';
 import { CardSkeletonComponent } from '../../shared/components/card-skeleton/card-skeleton.component';
 import { IconCardComponent } from '../../shared/components/icon-card/icon-card.component';
 import { NetworkVisualComponent } from '../../shared/components/network-visual/network-visual.component';
@@ -19,13 +18,11 @@ import { SupplyVisualComponent } from '../../shared/components/supply-visual/sup
 import { RevealOnScrollDirective } from '../../shared/directives';
 import { firstSentences } from '../../shared/utils/text';
 
-
 @Component({
   selector: 'app-home',
   imports: [
     RouterLink,
     LucideAngularModule,
-    BrandArrowComponent,
     CardSkeletonComponent,
     IconCardComponent,
     NetworkVisualComponent,
