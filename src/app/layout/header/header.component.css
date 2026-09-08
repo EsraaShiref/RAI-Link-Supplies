@@ -1,7 +1,3 @@
-/* The drawer travels along the inline axis. `--brand-inline-sign` is -1 under
-   `[dir="rtl"]` (set globally in styles.css), so the same rule slides the panel
-   in from the right in LTR and from the left in RTL. Custom properties cascade
-   through view encapsulation, so no :host-context override is needed. */
 .drawer {
   inset-inline-end: 0;
   transform: translateX(calc(100% * var(--brand-inline-sign, 1)));
@@ -25,20 +21,6 @@
 .drawer-backdrop.is-open {
   opacity: 1;
   visibility: visible;
-}
-
-.drawer-language {
-  display: none;
-}
-
-@media (width < 48rem) {
-  .navbar-language-desktop {
-    display: none;
-  }
-
-  .drawer-language {
-    display: flex;
-  }
 }
 
 .app-header {

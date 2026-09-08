@@ -18,7 +18,6 @@ import { ScrollStateService, TranslationService } from '../../core/services';
 import {
   BrandLogoComponent,
   LanguageToggleComponent,
-  ThemeToggleComponent,
 } from '../../shared/components';
 
 @Component({
@@ -29,7 +28,6 @@ import {
     LucideAngularModule,
     BrandLogoComponent,
     LanguageToggleComponent,
-    ThemeToggleComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -68,23 +66,16 @@ export class HeaderComponent {
   protected readonly isTransparent = computed(() => false);
 
   constructor() {
-    // Keep the header state synchronized both on scroll and after navigation,
-    // because the transparent hero state is visually tied to the top-of-page
-    // boundary rather than just to a router URL.
     effect(() => {
       this.router.url;
       this.scrollState.updateFromScroll();
     });
 
-    // Close the drawer on navigation and restore page scrolling.
     effect(() => {
       this.navigationEnd();
       this.drawerOpen.set(false);
     });
 
-    // The header stays transparent only while we are still at the top of the Home
-    // hero; the sentinel updates `scrollState.isScrolled()` as soon as the page
-    // moves beyond the ~8px threshold on any route.
     effect(() => {
       this.scrollState.isScrolled();
     });
@@ -94,7 +85,6 @@ export class HeaderComponent {
       this.document.body.style.overflow = open ? 'hidden' : '';
 
       if (open) {
-        // Move focus into the drawer once it is on screen.
         requestAnimationFrame(() => this.closeButton()?.nativeElement.focus());
       }
     });

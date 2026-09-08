@@ -59,12 +59,12 @@
       </ul>
     </nav>
 
+    <!-- Header Right Actions -->
     <div class="ms-auto flex items-center gap-2 xl:gap-3">
-      <span class="navbar-language-desktop">
-        <app-language-toggle />
-      </span>
-      <app-theme-toggle />
+      <!-- Language Toggle Available for both Desktop & Mobile -->
+      <app-language-toggle />
 
+      <!-- Mobile Menu Button -->
       <button
         type="button"
         class="border-border bg-bg-subtle text-text hover:border-orange inline-flex size-9 items-center justify-center rounded-full border transition-colors duration-200 xl:hidden"
@@ -79,8 +79,7 @@
   </div>
 </header>
 
-<!-- Mobile drawer: enters from the logical end edge, so it slides in from the
-     right in LTR and from the left in RTL with no hardcoded side. -->
+<!-- Mobile drawer -->
 <button
   type="button"
   class="drawer-backdrop bg-navy/60 fixed inset-0 z-50 backdrop-blur-sm xl:hidden"
@@ -110,10 +109,6 @@
     </button>
   </div>
 
-  <div class="drawer-language border-border flex justify-center border-b p-4">
-    <app-language-toggle />
-  </div>
-
   <nav class="flex-1 overflow-y-auto px-3 py-4" [attr.aria-label]="t('a11y.mainNavigation')">
     <ul class="flex flex-col gap-1">
       @for (item of navItems; track item.path) {
@@ -139,5 +134,4 @@
       }
     </ul>
   </nav>
-
 </aside>
