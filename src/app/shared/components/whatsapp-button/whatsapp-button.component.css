@@ -1,6 +1,6 @@
 :host {
   position: fixed;
-  inset-inline-start: 1.5rem;
+  inset-inline-end: 1.5rem;
   inset-block-end: 1.5rem;
   z-index: 999;
   display: block;
@@ -50,7 +50,7 @@
 
 @media (width < 48rem) {
   :host {
-    inset-inline-start: 1rem;
+    inset-inline-end: 1rem;
     inset-block-end: 1rem;
   }
 }
