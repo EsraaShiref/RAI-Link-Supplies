@@ -4,7 +4,14 @@
 
 /* Glowing dot animation traveling down the timeline line */
 .timeline-glow-dot {
-  animation: pulse-down 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  animation: pulse-down 8s infinite linear;
+}
+
+/* على شاشات الديسكتوب ترجع السرعة الطبيعية */
+@media (min-width: 1024px) {
+  .timeline-glow-dot {
+    animation: pulse-down 4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+  }
 }
 
 @keyframes pulse-down {

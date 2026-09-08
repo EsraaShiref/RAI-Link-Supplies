@@ -17,16 +17,18 @@ interface TimelineStep extends ProcessStep {
   selector: 'app-process-timeline',
   imports: [LucideAngularModule, RevealOnScrollDirective],
   host: { class: 'block relative' },
+  styleUrl: './process-timeline.component.css',
   template: `
     <div class="relative mx-auto max-w-5xl px-4">
-      <!-- Continuous Central Connecting Line (Desktop) -->
+      
+      <!-- Continuous Central Connecting Line (Desktop Only) - UNTOUCHED -->
       <div 
         class="bg-brand-gradient-y absolute inset-y-8 start-1/2 hidden w-[3px] -translate-x-1/2 rounded-full opacity-40 lg:block rtl:translate-x-1/2" 
         aria-hidden="true"
       ></div>
 
       <!-- Timeline Steps Container -->
-      <ol class="relative flex flex-col gap-12 lg:gap-16">
+      <ol class="relative flex flex-col gap-8 lg:gap-16">
         @for (step of steps(); track step.number; let index = $index, isEven = $even) {
           <li 
             class="relative flex flex-col lg:flex-row lg:items-center"
@@ -45,18 +47,26 @@ interface TimelineStep extends ProcessStep {
                   aria-hidden="true"
                 ></span>
 
-                <div class="flex items-center gap-4">
-                  <!-- Step Icon -->
-                  <span 
-                    class="border-border bg-bg text-orange-ink flex size-12 shrink-0 items-center justify-center rounded-xl border transition-colors duration-300 group-hover:bg-orange group-hover:text-white"
-                  >
-                    <lucide-icon [img]="step.icon" [size]="22" aria-hidden="true" />
-                  </span>
+                <!-- Header Row (Mobile Step Badge + Icon + Title) -->
+                <div class="flex items-center justify-between gap-3">
+                  <div class="flex items-center gap-3 sm:gap-4">
+                    <!-- Step Icon -->
+                    <span 
+                      class="border-border bg-bg text-orange-ink flex size-11 shrink-0 items-center justify-center rounded-xl border transition-colors duration-300 group-hover:bg-orange group-hover:text-white sm:size-12"
+                    >
+                      <lucide-icon [img]="step.icon" [size]="22" aria-hidden="true" />
+                    </span>
 
-                  <!-- Title -->
-                  <h3 class="text-text text-lg font-bold transition-colors group-hover:text-orange-ink sm:text-xl">
-                    {{ step.title }}
-                  </h3>
+                    <!-- Title -->
+                    <h3 class="text-text text-lg font-bold transition-colors group-hover:text-orange-ink sm:text-xl">
+                      {{ step.title }}
+                    </h3>
+                  </div>
+
+                  <!-- MOBILE ONLY: Clean Step Badge inside the Card -->
+                  <span class="border-orange/30 bg-orange/10 text-orange-ink flex size-8 shrink-0 items-center justify-center rounded-full border text-xs font-black lg:hidden">
+                    {{ step.number }}
+                  </span>
                 </div>
 
                 <!-- Body Copy -->
@@ -66,8 +76,8 @@ interface TimelineStep extends ProcessStep {
               </div>
             </div>
 
-            <!-- Central Number Node Anchor (Center Spine) -->
-            <div class="my-4 flex items-center justify-center lg:my-0 lg:w-20">
+            <!-- Central Number Node Anchor (Desktop Only) - EXACT ORIGINAL DESIGN -->
+            <div class="hidden my-4 items-center justify-center lg:flex lg:my-0 lg:w-20">
               <span
                 class="border-orange bg-bg text-orange-ink relative z-10 flex size-12 shrink-0 items-center justify-center rounded-full border-2 text-base font-extrabold shadow-md shadow-orange/10 transition-transform duration-300 hover:scale-110"
               >
@@ -75,7 +85,7 @@ interface TimelineStep extends ProcessStep {
               </span>
             </div>
 
-            <!-- Empty Spacer (Balances the opposite side in desktop layout) -->
+            <!-- Empty Spacer (Balances the opposite side in desktop layout) - UNTOUCHED -->
             <div class="hidden w-full lg:block lg:w-[calc(50%-2.5rem)]"></div>
           </li>
         }
