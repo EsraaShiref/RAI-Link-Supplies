@@ -8,4 +8,5 @@ export * from './network-visual/network-visual.component';
 export * from './numbered-block/numbered-block.component';
 export * from './page-header/page-header.component';
 export * from './section-heading/section-heading.component';
+export * from './supply-visual/supply-visual.component';
 export * from './theme-toggle/theme-toggle.component';

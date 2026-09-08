@@ -62,14 +62,31 @@ export class HeaderComponent {
     return this.router.url === '/' || this.router.url.startsWith('/?');
   });
 
-  /** Transparent only while sitting over the Home hero. */
-  protected readonly isTransparent = computed(() => this.isHome() && !this.scrollState.isScrolled());
+  /** Keep the navbar in its solid branded treatment at the top of the page and
+   * after scrolling, matching the provided design reference rather than a
+   * transparent hero overlay. */
+  protected readonly isTransparent = computed(() => false);
 
   constructor() {
+    // Keep the header state synchronized both on scroll and after navigation,
+    // because the transparent hero state is visually tied to the top-of-page
+    // boundary rather than just to a router URL.
+    effect(() => {
+      this.router.url;
+      this.scrollState.updateFromScroll();
+    });
+
     // Close the drawer on navigation and restore page scrolling.
     effect(() => {
       this.navigationEnd();
       this.drawerOpen.set(false);
+    });
+
+    // The header stays transparent only while we are still at the top of the Home
+    // hero; the sentinel updates `scrollState.isScrolled()` as soon as the page
+    // moves beyond the ~8px threshold on any route.
+    effect(() => {
+      this.scrollState.isScrolled();
     });
 
     effect(() => {

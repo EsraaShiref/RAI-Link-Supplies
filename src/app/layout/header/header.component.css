@@ -27,6 +27,14 @@
   visibility: visible;
 }
 
+.app-header {
+  backdrop-filter: blur(0);
+}
+
+.app-header:not(.bg-transparent) {
+  backdrop-filter: blur(10px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .drawer,
   .drawer-backdrop {

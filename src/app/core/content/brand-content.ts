@@ -70,17 +70,38 @@ export const EXPERTISE_AREAS: readonly ValueItem[] = [
   },
 ] as const;
 
-/** `whyChooseUs.items.*` — label-only chips, so no body key. */
-export const WHY_CHOOSE_US = [
-  { id: 'reliableSupply', labelKey: 'whyChooseUs.items.reliableSupply', icon: Truck },
-  { id: 'qualityAssurance', labelKey: 'whyChooseUs.items.qualityAssurance', icon: BadgeCheck },
+/** `whyChooseUs.items.*` — all five items carry a title and supporting body. */
+export const WHY_CHOOSE_US: readonly ValueItem[] = [
+  {
+    id: 'reliableSupply',
+    titleKey: 'whyChooseUs.items.reliableSupply.title',
+    bodyKey: 'whyChooseUs.items.reliableSupply.body',
+    icon: Truck,
+  },
+  {
+    id: 'qualityAssurance',
+    titleKey: 'whyChooseUs.items.qualityAssurance.title',
+    bodyKey: 'whyChooseUs.items.qualityAssurance.body',
+    icon: BadgeCheck,
+  },
   {
     id: 'competitiveProcurement',
-    labelKey: 'whyChooseUs.items.competitiveProcurement',
+    titleKey: 'whyChooseUs.items.competitiveProcurement.title',
+    bodyKey: 'whyChooseUs.items.competitiveProcurement.body',
     icon: Search,
   },
-  { id: 'fastResponse', labelKey: 'whyChooseUs.items.fastResponse', icon: Zap },
-  { id: 'tailoredSolutions', labelKey: 'whyChooseUs.items.tailoredSolutions', icon: SlidersHorizontal },
+  {
+    id: 'fastResponse',
+    titleKey: 'whyChooseUs.items.fastResponse.title',
+    bodyKey: 'whyChooseUs.items.fastResponse.body',
+    icon: Zap,
+  },
+  {
+    id: 'tailoredSolutions',
+    titleKey: 'whyChooseUs.items.tailoredSolutions.title',
+    bodyKey: 'whyChooseUs.items.tailoredSolutions.body',
+    icon: SlidersHorizontal,
+  },
 ] as const;
 
 /** `targetAudience.items.*` — Government, Corporate, Education & Healthcare. */

@@ -1,9 +1,9 @@
 <header
-  class="sticky top-0 z-50 transition-[background-color,box-shadow,border-color] duration-300 ease-out"
+  class="app-header sticky top-0 z-50 w-full transition-[background-color,box-shadow,border-color,backdrop-filter] duration-300 ease-out"
   [class]="
     isTransparent()
-      ? 'border-b border-transparent bg-transparent'
-      : 'border-border bg-surface shadow-header border-b'
+      ? 'border-b border-transparent bg-transparent shadow-none'
+      : 'border-border bg-surface/95 shadow-header border-b backdrop-blur-sm'
   "
 >
   <div class="shell flex h-16 items-center gap-4 lg:h-20">

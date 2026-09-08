@@ -6,9 +6,9 @@
   "nav": {
     "home": "Home",
     "about": "About Us",
-    "servicesScope": "Services & Scope",
+    "servicesScope": "Services",
     "products": "Products",
-    "partners": "Partners & Suppliers",
+    "partners": "Partners",
     "targetAudience": "Who We Serve",
     "contact": "Contact Us"
   },
@@ -57,11 +57,26 @@
   "whyChooseUs": {
     "title": "Why Choose Us",
     "items": {
-      "reliableSupply": "Reliable Supply",
-      "qualityAssurance": "Quality Assurance",
-      "competitiveProcurement": "Competitive Procurement",
-      "fastResponse": "Fast Response",
-      "tailoredSolutions": "Tailored Solutions"
+      "reliableSupply": {
+        "title": "Reliable Supply",
+        "body": "Consistent sourcing and dependable fulfillment that keeps operations running smoothly."
+      },
+      "qualityAssurance": {
+        "title": "Quality Assurance",
+        "body": "We carefully vet products and suppliers to protect performance, safety, and long-term value."
+      },
+      "competitiveProcurement": {
+        "title": "Competitive Procurement",
+        "body": "Smart sourcing strategies help clients secure cost-effective solutions without compromising quality."
+      },
+      "fastResponse": {
+        "title": "Fast Response",
+        "body": "Quick turnaround on requests, quotations, and follow-up keeps projects moving without delay."
+      },
+      "tailoredSolutions": {
+        "title": "Tailored Solutions",
+        "body": "Flexible supply arrangements are shaped around the specific needs of each client and requirement."
+      }
     }
   },
   "goals": {

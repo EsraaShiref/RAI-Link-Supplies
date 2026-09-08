@@ -14,4 +14,8 @@ export class ScrollStateService {
   setAtTop(atTop: boolean): void {
     this.atTop.set(atTop);
   }
+
+  updateFromScroll(): void {
+    this.setAtTop(typeof window === 'undefined' || window.scrollY <= 8);
+  }
 }

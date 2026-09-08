@@ -1,5 +1,5 @@
 <!-- ─────────────────────────────  1. Hero  ───────────────────────────── -->
-<section class="bg-navy dot-grid relative overflow-hidden text-white" aria-labelledby="hero-heading">
+<section class="bg-navy dot-grid relative text-white" aria-labelledby="hero-heading">
   <div
     class="shell relative z-10 grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:py-28"
   >
@@ -101,12 +101,14 @@
       headingId="home-values-heading"
     />
 
-    <ul
-      class="mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0"
-    >
+    <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       @for (value of brandValues; track value.id; let index = $index) {
-        <li class="shrink-0 snap-start" appReveal [revealDelay]="index * 60">
-          <app-highlight-chip [icon]="value.icon" [labelKey]="value.titleKey" />
+        <li appReveal [revealDelay]="index * 70">
+          <app-icon-card
+            [icon]="value.icon"
+            [titleKey]="value.titleKey"
+            [bodyKey]="value.bodyKey"
+          />
         </li>
       }
     </ul>
@@ -118,15 +120,28 @@
   <div class="shell py-16 sm:py-20">
     <app-section-heading titleKey="whyChooseUs.title" headingId="home-why-heading" />
 
-    <ul
-      class="mt-10 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-3 sm:flex-wrap sm:justify-center sm:overflow-visible sm:pb-0"
-    >
-      @for (item of whyChooseUs; track item.id; let index = $index) {
-        <li class="shrink-0 snap-start" appReveal [revealDelay]="index * 60">
-          <app-highlight-chip [icon]="item.icon" [labelKey]="item.labelKey" />
-        </li>
-      }
-    </ul>
+    <div class="mt-12 grid items-center gap-12 lg:grid-cols-2 lg:gap-14">
+      <ul class="flex flex-col gap-6">
+        @for (item of whyChooseUs; track item.id; let index = $index) {
+          <li class="flex items-start gap-4" appReveal [revealDelay]="index * 80">
+            <span
+              class="border-border bg-bg-subtle text-orange-ink inline-flex size-12 shrink-0 items-center justify-center rounded-xl border"
+            >
+              <lucide-icon [img]="item.icon" [size]="20" aria-hidden="true" />
+            </span>
+
+            <div class="min-w-0">
+              <h3 class="text-text text-base font-bold sm:text-lg">{{ t(item.titleKey) }}</h3>
+              <p class="text-text-muted mt-1.5 text-sm leading-relaxed sm:text-[0.9375rem]">
+                {{ t(item.bodyKey) }}
+              </p>
+            </div>
+          </li>
+        }
+      </ul>
+
+      <app-supply-visual appReveal="end" />
+    </div>
   </div>
 </section>
 
@@ -152,11 +167,11 @@
 
     @defer (on viewport) {
       <ul
-        class="mt-10 flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4"
+        class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         [attr.aria-label]="t('products.title')"
       >
         @for (category of productCategories; track category.id) {
-          <li class="w-[17rem] shrink-0 snap-start sm:w-[19rem]">
+          <li appReveal [revealDelay]="$index * 55">
             <app-icon-card
               [icon]="category.icon"
               [titleKey]="category.titleKey"
@@ -166,7 +181,11 @@
         }
       </ul>
     } @placeholder {
-      <app-card-skeleton class="mt-10" [count]="3" columnClass="sm:grid-cols-2 lg:grid-cols-3" />
+      <app-card-skeleton
+        class="mt-12"
+        [count]="4"
+        columnClass="sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+      />
     }
   </div>
 </section>
