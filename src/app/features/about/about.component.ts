@@ -115,7 +115,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
       </div>
     </section>
 
-    <app-cta-banner />
+    <!-- <app-cta-banner /> -->
   `,
 })
 export class AboutComponent {

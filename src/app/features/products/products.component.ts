@@ -92,12 +92,12 @@ import { RevealOnScrollDirective } from '../../shared/directives';
       </div>
     </section>
 
-    <app-cta-banner
+    <!-- <app-cta-banner
       titleKey="contact.title"
       bodyKey="contact.cta"
       ctaKey="contact.form.title"
       routerLink="/contact"
-    />
+    /> -->
   `,
 })
 export class ProductsComponent {

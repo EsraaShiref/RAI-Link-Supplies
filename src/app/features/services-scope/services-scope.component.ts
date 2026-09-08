@@ -132,7 +132,7 @@ import { ProcessTimelineComponent } from './components/process-timeline.componen
       </div>
     </section>
 
-    <app-cta-banner />
+    <!-- <app-cta-banner /> -->
   `,
 })
 export class ServicesScopeComponent {
