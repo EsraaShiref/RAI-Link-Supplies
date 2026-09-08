@@ -60,16 +60,10 @@
     </nav>
 
     <div class="ms-auto flex items-center gap-2 xl:ms-0 xl:gap-3">
-      <app-language-toggle />
+      <span class="navbar-language-desktop">
+        <app-language-toggle />
+      </span>
       <app-theme-toggle />
-
-      <a
-        routerLink="/contact"
-        class="bg-cta text-cta-fg hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition-[filter,transform] duration-200 hover:brightness-110 active:scale-[0.98] lg:inline-flex"
-      >
-        {{ t('hero.ctaPrimary') }}
-        <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
-      </a>
 
       <button
         type="button"
@@ -116,6 +110,10 @@
     </button>
   </div>
 
+  <div class="drawer-language border-border flex justify-center border-b p-4">
+    <app-language-toggle />
+  </div>
+
   <nav class="flex-1 overflow-y-auto px-3 py-4" [attr.aria-label]="t('a11y.mainNavigation')">
     <ul class="flex flex-col gap-1">
       @for (item of navItems; track item.path) {
@@ -142,14 +140,4 @@
     </ul>
   </nav>
 
-  <div class="border-border border-t p-4">
-    <a
-      routerLink="/contact"
-      class="bg-cta text-cta-fg flex items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-[filter] duration-200 hover:brightness-110"
-      (click)="closeDrawer()"
-    >
-      {{ t('hero.ctaPrimary') }}
-      <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
-    </a>
-  </div>
 </aside>

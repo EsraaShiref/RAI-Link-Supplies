@@ -27,6 +27,20 @@
   visibility: visible;
 }
 
+.drawer-language {
+  display: none;
+}
+
+@media (width < 48rem) {
+  .navbar-language-desktop {
+    display: none;
+  }
+
+  .drawer-language {
+    display: flex;
+  }
+}
+
 .app-header {
   backdrop-filter: blur(0);
 }
