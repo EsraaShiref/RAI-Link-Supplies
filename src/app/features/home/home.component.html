@@ -67,7 +67,7 @@
         class="bg-cta text-cta-fg group flex w-full items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-bold shadow-lg shadow-orange/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange/50 active:scale-[0.98] sm:w-auto"
       >
         {{ t('hero.ctaPrimary') }}
-        <lucide-icon [img]="ArrowRightIcon" [size]="18" class="rtl-flip transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true" />
+        <lucide-icon [img]="ArrowRightIcon" [size]="18" class="transition-transform duration-300 group-hover:-translate-x-1 rtl:rotate-90"  />
       </a>
 
       <a
@@ -113,13 +113,21 @@
         {{ aboutSnapshot() }}
       </p>
 
-      <a
-        routerLink="/about"
-        class="text-orange-ink mt-7 inline-flex items-center gap-2 text-sm font-bold underline-offset-4 hover:underline"
-      >
-        {{ t('common.learnMore') }}
-        <lucide-icon [img]="ArrowRightIcon" [size]="16" class="rtl-flip" aria-hidden="true" />
-      </a>
+      <!-- حاوية الزر لتحديد مكانه حسب اللغة (أقصى اليسار بالعربية وأقصى اليمين بالإنجليزية) -->
+      <div class="mt-7 flex justify-end">
+        <a
+          routerLink="/about"
+          class="group inline-flex items-center gap-2.5 rounded-full border border-orange/30 bg-orange/10 px-5 py-2.5 text-sm font-bold text-orange-ink transition-all duration-300 hover:border-orange hover:bg-orange hover:text-white"
+        >
+          <span>{{ t('common.learnMore') }}</span>
+          <lucide-icon 
+            [img]="ArrowRightIcon" 
+            [size]="16" 
+            class="transition-transform duration-300 group-hover:-translate-x-1 rtl:rotate-90" 
+            aria-hidden="true" 
+          />
+        </a>
+      </div>
     </div>
 
     <app-network-visual appReveal="end" />

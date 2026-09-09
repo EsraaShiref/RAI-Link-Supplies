@@ -4,7 +4,7 @@ import { Globe, LucideAngularModule } from 'lucide-angular';
 import { TranslationService } from '../../../core/services';
 
 /**
- * Compact single-action language switcher tailored with brand blue and orange colors.
+ * Compact single-action language switcher tailored with brand colors.
  */
 @Component({
   selector: 'app-language-toggle',
@@ -12,15 +12,15 @@ import { TranslationService } from '../../../core/services';
   host: { class: 'block' },
   template: `
     <button
-  type="button"
-  class="inline-flex items-center gap-1.5 rounded-full border border-[#0F172A] bg-[#0F172A] px-3.5 py-1.5 text-xs font-bold text-white shadow-sm transition-all duration-200 hover:border-orange hover:bg-orange hover:text-white"
-  [attr.aria-label]="nextLanguageLabel()"
-  [attr.title]="nextLanguageLabel()"
-  (click)="toggle()"
->
-  <lucide-icon [img]="GlobeIcon" [size]="14" aria-hidden="true" />
-  <span>{{ isArabic() ? 'EN' : 'عربي' }}</span>
-</button>
+      type="button"
+      class="group border-border bg-surface text-text hover:border-orange hover:bg-orange hover:text-white inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-xs font-bold transition-all duration-200 shadow-sm"
+      [attr.aria-label]="nextLanguageLabel()"
+      [attr.title]="nextLanguageLabel()"
+      (click)="toggle()"
+    >
+      <lucide-icon [img]="GlobeIcon" [size]="14" class="text-orange transition-transform duration-300 group-hover:rotate-45 group-hover:text-white" aria-hidden="true" />
+      <span class="tracking-wider uppercase">{{ isArabic() ? 'EN' : 'عربي' }}</span>
+    </button>
   `,
 })
 export class LanguageToggleComponent {

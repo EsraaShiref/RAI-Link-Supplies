@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ArrowRight, ShieldCheck, Truck, LucideAngularModule } from 'lucide-angular';
+import { ArrowRight, ShieldCheck, Truck, LucideAngularModule,ArrowLeft } from 'lucide-angular';
 import {
   AUDIENCE_SEGMENTS,
   BRAND_VALUES,
@@ -38,6 +38,7 @@ export class HomeComponent {
   protected readonly t = this.i18n.t;
 
   protected readonly ArrowRightIcon = ArrowRight;
+  protected readonly ArrowLeftIcon = ArrowLeft;
   protected readonly ShieldCheckIcon = ShieldCheck;
   protected readonly TruckIcon = Truck;
 

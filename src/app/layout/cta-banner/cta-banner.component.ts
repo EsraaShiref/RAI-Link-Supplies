@@ -44,7 +44,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
               class="bg-cta text-cta-fg inline-flex items-center gap-3 rounded-xl px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:brightness-110 hover:-translate-y-0.5 active:scale-[0.98]"
             >
               {{ t(ctaKey()) }}
-              <lucide-icon [img]="ArrowRightIcon" [size]="18" class="rtl-flip" aria-hidden="true" />
+              <lucide-icon [img]="ArrowRightIcon" [size]="18" class="transition-transform duration-300 group-hover:-translate-x-1 rtl:rotate-90"  />
             </a>
           </div>
         </div>
