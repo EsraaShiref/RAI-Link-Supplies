@@ -1,66 +1,96 @@
-<!-- ─────────────────────────────  1. Hero Section (Full Width & About Theme Style)  ───────────────────────────── -->
+<!-- ───────────────────────────── 1. Hero Section (Dynamic Shapes & Faster Motion) ───────────────────────────── -->
 <section class="bg-navy dot-grid relative min-h-[85vh] flex items-center overflow-hidden py-24 text-white sm:py-32 lg:py-40" aria-labelledby="hero-heading">  
-  <!-- Subtle Glowing Background Orbs (Same as About Header) -->
-  <div class="pointer-events-none absolute -top-24 start-1/2 size-96 -translate-x-1/2 rounded-full bg-orange/15 blur-[130px]" aria-hidden="true"></div>
-  <div class="pointer-events-none absolute -bottom-10 end-10 size-80 rounded-full bg-blue-600/10 blur-[100px]" aria-hidden="true"></div>
+  
+  <!-- Glowing Background Orbs -->
+  <div class="animate-orb-1 pointer-events-none absolute -top-20 start-1/2 size-[34rem] -translate-x-1/2 rounded-full bg-orange/25 blur-[120px]" aria-hidden="true"></div>
+  <div class="animate-orb-2 pointer-events-none absolute -bottom-10 end-10 size-[30rem] rounded-full bg-blue-500/25 blur-[110px]" aria-hidden="true"></div>
+
+  <!-- Responsive Floating Background Shapes -->
+<div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+  
+  <!-- 1. حلقة برتقالية (ظاهرة في الموبايل بحركة أبطأ) -->
+  <div class="animate-shape-responsive-1 absolute top-16 start-[5%] size-14 rounded-full border-2 border-orange/60 bg-orange/20 backdrop-blur-md shadow-[0_0_15px_rgba(242,101,34,0.3)] sm:size-20"></div>
+  
+  <!-- 2. مربع زجاجي (موجود في الموبايل بحركة أبطأ) -->
+  <div class="animate-shape-responsive-2 absolute top-1/3 end-[6%] size-12 rotate-45 rounded-xl border border-white/35 bg-white/15 backdrop-blur-md shadow-xl sm:size-18"></div>
+  
+  <!-- 3. نقطة برتقالية نيون (ظاهرة في الموبايل) -->
+  <div class="animate-shape-responsive-1 absolute bottom-24 start-[12%] size-3 rounded-full bg-orange shadow-[0_0_12px_rgba(242,101,34,1)] sm:size-3.5"></div>
+
+
+  <!-- ─── الأشكال التالية تظهر فقط في الشاشات المتوسطة والكبيرة (Hidden on Mobile) ─── -->
+
+  <!-- 4. كبسولة عائمة -->
+  <div class="animate-shape-responsive-2 absolute top-1/2 start-[4%] hidden h-10 w-32 -translate-y-1/2 rounded-full border border-blue-400/50 bg-blue-500/25 backdrop-blur-md md:block"></div>
+  
+  <!-- 5. دائرة نيون يمين -->
+  <div class="animate-shape-responsive-1 absolute top-1/4 end-[12%] hidden size-28 rounded-full border-2 border-orange/50 bg-gradient-to-tr from-orange/25 to-transparent backdrop-blur-lg md:block"></div>
+
+  <!-- 6. مربع زجاجي أسفل اليمين -->
+  <div class="animate-shape-responsive-2 absolute bottom-16 end-[20%] hidden size-16 rotate-12 rounded-2xl border border-white/35 bg-white/10 backdrop-blur-md md:block"></div>
+
+  <!-- 7. نقطة ضوئية زرقاء -->
+  <div class="animate-shape-responsive-1 absolute bottom-1/3 end-[28%] hidden size-4 rounded-full bg-blue-400 shadow-[0_0_18px_rgba(96,165,250,1)] md:block"></div>
+</div>
 
   <div class="shell relative z-10 mx-auto w-full max-w-5xl text-center">
     
     <!-- Top Pill Tag -->
-    <div class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 shadow-sm backdrop-blur-md">
+    <div class="hero-animate-in inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md transition-transform duration-300 hover:scale-105" style="animation-delay: 100ms;">
       <span class="relative flex size-2">
         <span class="absolute inline-flex size-full animate-ping rounded-full bg-orange opacity-75"></span>
         <span class="relative inline-flex size-2 rounded-full bg-orange"></span>
       </span>
-      <p class="text-xs font-bold uppercase tracking-wider text-white/90 sm:text-sm">
+      <p class="text-xs font-bold uppercase tracking-wider text-white sm:text-sm">
         {{ t('hero.eyebrow') }}
       </p>
     </div>
 
-    <!-- Main Heading (Larger & Broader) -->
+    <!-- Main Heading -->
     <h1
       id="hero-heading"
-      class="mt-6 text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl lg:leading-[1.15]"
+      class="hero-animate-in hero-gradient-text mt-6 text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl lg:leading-[1.15]"
+      style="animation-delay: 250ms;"
     >
       {{ t('hero.headline') }}
     </h1>
 
     <!-- Subheadline -->
-    <p class="mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-lg lg:text-xl">
+    <p class="hero-animate-in mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-white/90 sm:text-lg lg:text-xl" style="animation-delay: 400ms;">
       {{ t('hero.subheadline') }}
     </p>
 
     <!-- Action Buttons -->
-    <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5">
+    <div class="hero-animate-in mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5" style="animation-delay: 550ms;">
       <a
         routerLink="/contact"
-        class="bg-cta text-cta-fg shadow-orange/25 flex w-full items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-bold shadow-lg transition-all duration-300 hover:-translate-y-0.5 active:scale-[0.98] sm:w-auto"
+        class="bg-cta text-cta-fg group flex w-full items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-bold shadow-lg shadow-orange/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange/50 active:scale-[0.98] sm:w-auto"
       >
         {{ t('hero.ctaPrimary') }}
-        <lucide-icon [img]="ArrowRightIcon" [size]="18" class="rtl-flip" aria-hidden="true" />
+        <lucide-icon [img]="ArrowRightIcon" [size]="18" class="rtl-flip transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" aria-hidden="true" />
       </a>
 
       <a
         routerLink="/products"
-        class="flex w-full items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition-all duration-300 hover:border-white hover:bg-white/15 sm:w-auto"
+        class="flex w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-8 py-4 text-base font-bold text-white backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-white hover:bg-white/20 sm:w-auto"
       >
         {{ t('hero.ctaSecondary') }}
       </a>
     </div>
 
-    <!-- Stats Cards (Glassy Centered Row) -->
-    <div class="mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-white/10 pt-8 sm:mt-16 sm:gap-10">
+    <!-- Stats Cards -->
+    <div class="hero-animate-in mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-white/10 pt-8 sm:mt-16 sm:gap-10" style="animation-delay: 700ms;">
       
-      <div class="rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-center backdrop-blur-md sm:border-0 sm:bg-transparent sm:p-0">
-        <span class="block text-2xl font-black text-white sm:text-3xl">+100%</span>
-        <span class="mt-1 block text-xs text-white/70 sm:text-sm">{{ t('hero.stats.quality') }}</span>
+      <div class="group rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-center backdrop-blur-md transition-all duration-300 hover:border-orange/40 hover:bg-white/10 sm:border-0 sm:bg-transparent sm:p-0">
+        <span class="block text-2xl font-black text-white transition-transform duration-300 group-hover:scale-110 sm:text-3xl">+100%</span>
+        <span class="mt-1 block text-xs text-white/80 sm:text-sm">{{ t('hero.stats.quality') }}</span>
       </div>
 
       <div class="hidden h-8 w-px bg-white/10 sm:block" aria-hidden="true"></div>
 
-      <div class="rounded-2xl border border-white/10 bg-white/5 px-6 py-3.5 text-center backdrop-blur-md sm:border-0 sm:bg-transparent sm:p-0">
-        <span class="block text-2xl font-black text-orange sm:text-3xl">24/7</span>
-        <span class="mt-1 block text-xs text-white/70 sm:text-sm">{{ t('hero.stats.support') }}</span>
+      <div class="group rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-center backdrop-blur-md transition-all duration-300 hover:border-orange/40 hover:bg-white/10 sm:border-0 sm:bg-transparent sm:p-0">
+        <span class="block text-2xl font-black text-orange transition-transform duration-300 group-hover:scale-110 sm:text-3xl">24/7</span>
+        <span class="mt-1 block text-xs text-white/80 sm:text-sm">{{ t('hero.stats.support') }}</span>
       </div>
 
     </div>
