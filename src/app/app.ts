@@ -1,15 +1,22 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, computed, effect, inject } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { DirectionService, TranslationService } from './core/services';
-import { FooterComponent, HeaderComponent } from './layout';
+import { FooterComponent, HeaderComponent, SplashScreenComponent } from './layout';
 import { WhatsappButtonComponent } from './shared/components';
 import { ScrollSentinelDirective } from './shared/directives';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, ScrollSentinelDirective, WhatsappButtonComponent],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    SplashScreenComponent,
+    ScrollSentinelDirective,
+    WhatsappButtonComponent,
+  ],
   host: {
     class: 'relative flex min-h-dvh flex-col',
     '[class.font-ar]': 'isArabic()',
@@ -30,7 +37,13 @@ import { ScrollSentinelDirective } from './shared/directives';
       aria-hidden="true"
     ></span>
 
-    <app-header />
+    @if (splashVisible()) {
+      <app-splash-screen (completed)="dismissSplash()" />
+    }
+
+    @if (!splashVisible()) {
+      <app-header />
+    }
 
     <app-whatsapp-button />
 
@@ -48,6 +61,7 @@ export class App {
 
   protected readonly t = this.i18n.t;
   protected readonly isArabic = computed(() => this.i18n.currentLang() === 'ar');
+  protected readonly splashVisible = signal(true);
 
   constructor() {
     // Single owner of the document-level language/direction attributes. The
@@ -62,5 +76,9 @@ export class App {
       root.classList.toggle('font-ar', lang === 'ar');
       root.classList.toggle('font-en', lang === 'en');
     });
+  }
+
+  protected dismissSplash(): void {
+    this.splashVisible.set(false);
   }
 }

@@ -1,7 +1,8 @@
 {
   "brand": {
     "name": "RAI Link Supplies",
-    "tagline": "Integrated Procurement & Supply Solutions"
+    "tagline": "Integrated Procurement & Supply Solutions",
+    "splashTagline": "The link to the right supplier"
   },
   "nav": {
     "home": "Home",
@@ -19,9 +20,9 @@
     "ctaPrimary": "Request a Quotation",
     "ctaSecondary": "Explore Our Products",
     "stats": {
-    "quality": "Reliable Quality & Supply",
-    "support": "Fast Support & Consultation"
-  }
+      "quality": "Reliable Quality & Supply",
+      "support": "Fast Support & Consultation"
+    }
   },
   "about": {
     "eyebrow": "About Us",
@@ -272,6 +273,7 @@
     "theme": "Theme"
   },
   "a11y": {
+    "loading": "Loading",
     "skipToContent": "Skip to main content",
     "breadcrumb": "Breadcrumb",
     "mainNavigation": "Main navigation",

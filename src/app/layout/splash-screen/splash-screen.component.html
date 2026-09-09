@@ -1,0 +1,28 @@
+<section
+  class="splash-screen__stage"
+  [class.splash-screen__stage--exiting]="phase() === 'exiting'"
+  [attr.aria-hidden]="isHiddenFromAssistiveTechnology() ? 'true' : null"
+  [attr.aria-label]="t('a11y.loading')"
+>
+  <div class="splash-screen__background" aria-hidden="true"></div>
+  <div class="splash-screen__dot-grid" aria-hidden="true"></div>
+  <div class="splash-screen__glow" aria-hidden="true"></div>
+
+  <div class="splash-screen__logo-wrap">
+    <div class="splash-screen__logo-shine">
+      <app-brand-logo [width]="300" imageClass="splash-screen__logo-image" variant="default" />
+      <span class="splash-screen__shine" aria-hidden="true"></span>
+    </div>
+
+    <p class="splash-screen__tagline">{{ t('brand.splashTagline') }}</p>
+
+    <div class="splash-screen__loader" aria-hidden="true">
+      <div class="splash-screen__track">
+        <span class="splash-screen__fill" [style.width.%]="progress()"></span>
+      </div>
+      <span class="splash-screen__percentage">{{ progress() }}%</span>
+    </div>
+  </div>
+
+  <div class="splash-screen__curtain" aria-hidden="true"></div>
+</section>

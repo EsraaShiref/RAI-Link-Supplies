@@ -4,7 +4,6 @@ import { LucideAngularModule } from 'lucide-angular';
 import { AUDIENCE_SEGMENTS } from '../../core/content';
 import type { NumberedItem } from '../../core/models';
 import { TranslationService } from '../../core/services';
-import { CtaBannerComponent } from '../../layout';
 import {
   NumberedBlockComponent,
   PageHeaderComponent,

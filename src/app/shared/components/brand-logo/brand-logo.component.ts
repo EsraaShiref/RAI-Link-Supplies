@@ -2,8 +2,6 @@ import { Component, computed, inject, input } from '@angular/core';
 
 import { TranslationService } from '../../../core/services';
 
-let instanceCounter = 0;
-
 /**
  * The master logo artwork is a flat PNG wordmark. We keep the image-based
  * rendering here so the one approved asset stays authoritative and the width API
@@ -28,7 +26,7 @@ let instanceCounter = 0;
         [src]="logoSrc()"
         [attr.alt]="t('a11y.logoAlt')"
         [style.width.px]="width()"
-        class="h-auto w-auto"
+        [class]="'h-auto w-auto ' + imageClass()"
       />
     </div>
   `,
@@ -39,6 +37,7 @@ export class BrandLogoComponent {
 
   readonly variant = input<'default' | 'onDark'>('default');
   readonly width = input(200);
+  readonly imageClass = input('');
 
   protected readonly logoSrc = computed(() => `assets/images/logo.png`);
 }

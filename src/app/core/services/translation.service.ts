@@ -30,6 +30,7 @@ export class TranslationService {
   private readonly http = inject(HttpClient);
 
   private readonly dictionaries = signal<DictionaryMap>({ ar: {}, en: {} });
+  readonly isReady = signal(false);
 
   /** Active language. Seeded from storage so it matches the pre-paint script. */
   readonly currentLang = signal<AppLanguage>(readStoredLanguage());
@@ -97,6 +98,7 @@ export class TranslationService {
     );
 
     this.dictionaries.set(Object.fromEntries(entries) as DictionaryMap);
+    this.isReady.set(true);
   }
 
   setLang(lang: AppLanguage): void {

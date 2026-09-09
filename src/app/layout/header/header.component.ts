@@ -67,7 +67,7 @@ export class HeaderComponent {
 
   constructor() {
     effect(() => {
-      this.router.url;
+      this.navigationEnd();
       this.scrollState.updateFromScroll();
     });
 
