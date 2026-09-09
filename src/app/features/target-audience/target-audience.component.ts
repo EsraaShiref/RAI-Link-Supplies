@@ -47,7 +47,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
             <li
               appReveal
               [revealDelay]="index * 80"
-              class="border-border bg-surface shadow-card flex items-center gap-4 rounded-xl border p-6"
+              class="mobile-card-glint border-border bg-surface shadow-card flex items-center gap-4 rounded-xl border p-6"
             >
               <span
                 class="bg-brand-gradient inline-flex size-12 shrink-0 items-center justify-center rounded-xl text-white"

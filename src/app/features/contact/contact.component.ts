@@ -33,7 +33,7 @@ import { QuotationFormComponent } from './quotation-form/quotation-form.componen
 
           <!-- Contact details on the logical end side -->
           <div appReveal="end" class="flex flex-col gap-6">
-            <div class="border-border bg-bg-subtle rounded-xl border p-6 sm:p-8">
+            <div class="mobile-card-glint border-border bg-bg-subtle rounded-xl border p-6 sm:p-8">
               <h3 class="text-text text-lg font-bold sm:text-xl">{{ t('contact.eyebrow') }}</h3>
 
               <ul class="mt-6 flex flex-col gap-6">
@@ -101,7 +101,7 @@ import { QuotationFormComponent } from './quotation-form/quotation-form.componen
               [href]="mapUrl"
               target="_blank"
               rel="noopener noreferrer"
-              class="group border-border bg-navy dot-grid hover:border-orange relative flex min-h-56 flex-1 items-center justify-center overflow-hidden rounded-xl border text-white transition-colors"
+              class="mobile-cta-beacon group border-border bg-navy dot-grid hover:border-orange relative flex min-h-56 flex-1 items-center justify-center overflow-hidden rounded-xl border text-white transition-colors"
               [attr.aria-label]="t('a11y.openInMaps')"
             >
               <span class="relative z-10 flex flex-col items-center gap-3 px-6 text-center">

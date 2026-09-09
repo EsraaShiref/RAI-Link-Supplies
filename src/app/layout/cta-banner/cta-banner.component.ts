@@ -12,11 +12,12 @@ import { RevealOnScrollDirective } from '../../shared/directives';
   selector: 'app-cta-banner',
   imports: [RouterLink, LucideAngularModule, RevealOnScrollDirective],
   host: { class: 'block' },
+  styleUrl: './cta-banner.component.css',
   template: `
     <section class="shell py-16 sm:py-20">
       <div
         appReveal
-        class="bg-navy relative overflow-hidden rounded-2xl border border-white/10 px-6 py-16 text-center text-white shadow-2xl sm:px-12 sm:py-20 lg:px-16"
+        class="mobile-cta-beacon mobile-cta-shimmer bg-navy relative overflow-hidden rounded-2xl border border-white/10 px-6 py-16 text-center text-white shadow-2xl sm:px-12 sm:py-20 lg:px-16"
       >
         <!-- Subtle Glow Effect in the Center -->
         <div 

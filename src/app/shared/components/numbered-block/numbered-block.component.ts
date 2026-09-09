@@ -16,6 +16,7 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
   selector: 'app-numbered-block',
   imports: [RevealOnScrollDirective],
   host: { class: 'block' },
+  styleUrl: './numbered-block.component.css',
   template: `
     <ol class="grid gap-10 md:gap-8" [class]="columnClass()">
       @for (item of items(); track item.number; let index = $index) {
@@ -24,7 +25,7 @@ import { RevealOnScrollDirective } from '../../directives/reveal-on-scroll.direc
             <span class="text-orange/25 text-4xl leading-none font-extrabold sm:text-5xl" aria-hidden="true">
               {{ item.number }}
             </span>
-            <span class="bg-brand-gradient h-px flex-1 rounded-full" aria-hidden="true"></span>
+            <span class="numbered-block__connector bg-brand-gradient h-px flex-1 rounded-full" aria-hidden="true"></span>
           </div>
 
           @if (item.title) {

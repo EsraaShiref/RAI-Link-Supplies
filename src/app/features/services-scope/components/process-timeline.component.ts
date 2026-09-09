@@ -39,7 +39,7 @@ interface TimelineStep extends ProcessStep {
             <!-- Content Card (50% width on Desktop) -->
             <div class="w-full lg:w-[calc(50%-2.5rem)]">
               <div 
-                class="border-border bg-bg-subtle group relative rounded-2xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange/50 hover:shadow-xl hover:shadow-orange/5 sm:p-7"
+                class="mobile-card-glint border-border bg-bg-subtle group relative rounded-2xl border p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-orange/50 hover:shadow-xl hover:shadow-orange/5 sm:p-7"
               >
                 <!-- Top Accent Gradient on Hover -->
                 <span 
@@ -75,6 +75,8 @@ interface TimelineStep extends ProcessStep {
                 </p>
               </div>
             </div>
+
+            <span class="timeline-mobile-connector" aria-hidden="true"></span>
 
             <!-- Central Number Node Anchor (Desktop Only) - EXACT ORIGINAL DESIGN -->
             <div class="hidden my-4 items-center justify-center lg:flex lg:my-0 lg:w-20">

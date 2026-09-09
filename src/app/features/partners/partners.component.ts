@@ -60,9 +60,11 @@ import { RevealOnScrollDirective } from '../../shared/directives';
         />
 
         <ul class="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          @for (slot of logoSlots; track slot) {
+          @for (slot of logoSlots; track slot; let index = $index) {
             <li
-              class="border-border bg-surface flex h-24 items-center justify-center rounded-xl border border-dashed grayscale"
+              appReveal
+              [revealDelay]="index * 70"
+              class="mobile-card-glint border-border bg-surface flex h-24 items-center justify-center rounded-xl border border-dashed grayscale"
             >
               <span class="text-text-muted px-3 text-center text-[0.6875rem] leading-tight">
                 {{ t('a11y.supplierLogoPlaceholder') }}
@@ -108,7 +110,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
                 [revealDelay]="index * 100 + 80"
                 [appReveal]="index % 2 === 0 ? 'end' : 'start'"
                 [class.lg:order-1]="index % 2 === 0"
-                class="border-border bg-bg-subtle overflow-hidden rounded-xl border"
+                class="mobile-image-breathe border-border bg-bg-subtle overflow-hidden rounded-xl border"
               >
                 <img
                   [src]="audience.image"

@@ -41,3 +41,18 @@
     transition: none;
   }
 }
+
+@media (max-width: 767px) {
+  .drawer.is-open nav li {
+    opacity: 0;
+    transform: translateY(0.5rem);
+    animation: drawer-link-in 280ms var(--ease-brand) calc(var(--i, 0) * 40ms + 260ms) forwards;
+  }
+}
+
+@keyframes drawer-link-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

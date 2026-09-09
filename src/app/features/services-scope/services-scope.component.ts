@@ -30,18 +30,19 @@ import { ProcessTimelineComponent } from './components/process-timeline.componen
       <div class="shell py-16 sm:py-20">
         <div
           appReveal
-          class="border-border bg-bg-subtle relative overflow-hidden rounded-xl border p-7 sm:p-10 lg:p-12"
+          class="mobile-card-glint border-border bg-bg-subtle relative overflow-hidden rounded-xl border p-7 sm:p-10 lg:p-12"
         >
           <span class="bg-brand-gradient absolute inset-x-0 top-0 h-[3px]" aria-hidden="true"></span>
 
           <div class="flex flex-col gap-7 lg:flex-row lg:gap-10">
             <span
+              appReveal="start"
               class="bg-brand-gradient inline-flex size-14 shrink-0 items-center justify-center rounded-xl text-white sm:size-16"
             >
               <lucide-icon [img]="RouteIcon" [size]="26" [strokeWidth]="1.75" aria-hidden="true" />
             </span>
 
-            <div>
+            <div appReveal="end">
               <h2 id="scope-heading" class="text-text text-xl font-bold sm:text-2xl">
                 {{ t('projectScope.title') }}
               </h2>
@@ -103,7 +104,7 @@ import { ProcessTimelineComponent } from './components/process-timeline.componen
 <div
   [appReveal]="isEven ? 'end' : 'start'"
   [class.lg:order-1]="!isEven"
-  class="border-border bg-bg-subtle group relative flex aspect-16/10 items-center justify-center overflow-hidden rounded-xl border shadow-md"
+  class="mobile-image-breathe border-border bg-bg-subtle group relative flex aspect-16/10 items-center justify-center overflow-hidden rounded-xl border shadow-md"
 >
   <!-- Accent Top Border -->
   <span

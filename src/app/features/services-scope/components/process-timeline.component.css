@@ -2,6 +2,32 @@
   display: block;
 }
 
+@media (max-width: 767px) {
+  .timeline-mobile-connector {
+    position: absolute;
+    inset-block-start: calc(100% - 0.25rem);
+    inset-inline-start: 1.5rem;
+    width: 0.1875rem;
+    height: 2rem;
+    transform: scaleY(0);
+    transform-origin: top;
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--brand-orange), var(--brand-orange-light));
+    transition: transform 500ms var(--ease-brand);
+  }
+
+  li.reveal-in .timeline-mobile-connector {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-mobile-connector {
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
 /* Glowing dot animation traveling down the timeline line */
 .timeline-glow-dot {
   animation: pulse-down 8s infinite linear;

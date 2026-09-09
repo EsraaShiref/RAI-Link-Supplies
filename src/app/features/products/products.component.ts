@@ -68,7 +68,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
           @if (filtered().length > 0) {
             <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               @for (category of filtered(); track category.id; let index = $index) {
-                <li appReveal [revealDelay]="index * 55">
+                <li appReveal class="mobile-card-glint" [revealDelay]="index * 55">
                   <app-icon-card
                     [icon]="category.icon"
                     [titleKey]="category.titleKey"
@@ -78,7 +78,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
               }
             </ul>
           } @else {
-            <p class="text-text-muted mt-12 text-center text-sm" role="status">
+            <p appReveal class="text-text-muted mt-12 text-center text-sm" role="status">
               {{ t('a11y.noResults') }}
             </p>
           }

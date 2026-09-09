@@ -1,0 +1,18 @@
+@media (max-width: 767px) {
+  .numbered-block__connector {
+    transform: scaleX(0);
+    transform-origin: inline-start;
+    transition: transform 550ms var(--ease-brand);
+  }
+
+  .reveal-in .numbered-block__connector {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .numbered-block__connector {
+    transform: none !important;
+    transition: none !important;
+  }
+}

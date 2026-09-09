@@ -3,16 +3,18 @@ import { RouterLink } from '@angular/router';
 import { ChevronDown, ChevronRight, LucideAngularModule } from 'lucide-angular';
 
 import { TranslationService } from '../../../core/services';
+import { RevealOnScrollDirective } from '../../directives';
 
 /** Shared page opener: breadcrumb, eyebrow, H1 and an optional lead paragraph. */
 @Component({
   selector: 'app-page-header',
-  imports: [RouterLink, LucideAngularModule],
+  imports: [RouterLink, LucideAngularModule, RevealOnScrollDirective],
   host: { class: 'block' },
   styleUrls: ['./page-header.component.css'],
   template: `
     <section
-      class="page-hero"
+      appReveal
+      class="page-hero mobile-page-hero"
       [attr.aria-labelledby]="headingId"
     >
       <div class="page-hero__inner shell">

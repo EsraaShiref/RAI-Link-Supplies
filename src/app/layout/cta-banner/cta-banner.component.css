@@ -1,0 +1,31 @@
+@media (max-width: 767px) {
+  .mobile-cta-shimmer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      115deg,
+      transparent 25%,
+      rgb(255 255 255 / 0.08) 45%,
+      transparent 65%
+    );
+    background-size: 220% 100%;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .mobile-cta-shimmer.reveal-in::before {
+    opacity: 1;
+    animation: mobile-cta-shimmer 6s linear infinite;
+  }
+}
+
+@keyframes mobile-cta-shimmer {
+  from {
+    background-position: 120% 0;
+  }
+
+  to {
+    background-position: -120% 0;
+  }
+}

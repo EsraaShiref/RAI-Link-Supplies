@@ -339,6 +339,21 @@
     transform: translate3d(0, 0, 0);
   }
 
+  @media (max-width: 767px) {
+    .reveal {
+      transform: translate3d(0, 2.5rem, 0);
+      transition-duration: 550ms;
+    }
+
+    .reveal-start {
+      transform: translate3d(calc(-5.5rem * var(--brand-inline-sign, 1)), 0, 0);
+    }
+
+    .reveal-end {
+      transform: translate3d(calc(5.5rem * var(--brand-inline-sign, 1)), 0, 0);
+    }
+  }
+
   /* Brand-gradient skeleton shimmer for @defer placeholders. */
   .skeleton {
     position: relative;
@@ -509,5 +524,100 @@
 
   .animate-shape-responsive-2 {
     animation: float-desktop-2 7s ease-in-out infinite 0.5s;
+  }
+}
+
+/* Mobile-only polish. These hooks intentionally do nothing above 767px so the
+   desktop composition and timing remain unchanged. */
+@keyframes mobile-section-rise {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes mobile-card-glint {
+   0% { transform: translateX(calc(-120% * var(--brand-inline-sign, 1))); opacity: 0; }
+  18%, 62% { opacity: 0.55; }
+  100% { transform: translateX(calc(120% * var(--brand-inline-sign, 1))); opacity: 0; }
+}
+
+@keyframes mobile-image-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.035); }
+}
+
+@keyframes mobile-hero-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes mobile-cta-beacon {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(242 101 34 / 0); }
+  45% { box-shadow: 0 0 0 8px rgb(242 101 34 / 0.14); }
+}
+
+@keyframes mobile-grid-drift {
+  from { background-position: 0 0; }
+  to { background-position: 18px 18px; }
+}
+
+@media (max-width: 767px) {
+  .mobile-section-rise {
+    animation: mobile-section-rise 7s ease-in-out infinite;
+  }
+
+  .mobile-page-hero::before {
+    animation: mobile-grid-drift 14s linear infinite;
+  }
+
+  .mobile-card-glint {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .mobile-card-glint::after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: -45%;
+    width: 32%;
+    background: linear-gradient(
+      105deg,
+      transparent,
+      rgb(255 255 255 / 0.18),
+      transparent
+    );
+    pointer-events: none;
+    animation: mobile-card-glint 6.5s ease-in-out infinite;
+  }
+
+  .mobile-image-breathe img {
+    animation: mobile-image-breathe 9s ease-in-out infinite;
+  }
+
+  .mobile-hero-stagger {
+    animation: mobile-hero-enter 650ms var(--mobile-delay, 0ms) var(--ease-brand) both;
+  }
+
+  .mobile-cta-beacon {
+    animation: mobile-cta-beacon 4.5s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-section-rise,
+  .mobile-card-glint::after,
+  .mobile-image-breathe img,
+  .mobile-hero-stagger,
+  .mobile-cta-beacon {
+    animation: none !important;
+  }
+
+  .mobile-page-hero::before {
+    animation: none !important;
+  }
+
+  .animate-shape-responsive-1,
+  .animate-shape-responsive-2 {
+    animation: none !important;
   }
 }

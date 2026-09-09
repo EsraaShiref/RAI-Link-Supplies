@@ -1,5 +1,5 @@
 <!-- ───────────────────────────── 1. Hero Section (Dynamic Shapes & Faster Motion) ───────────────────────────── -->
-<section class="bg-navy dot-grid relative min-h-[85vh] flex items-center overflow-hidden py-24 text-white sm:py-32 lg:py-40" aria-labelledby="hero-heading">  
+<section appReveal class="bg-navy dot-grid mobile-section-rise relative min-h-[85vh] flex items-center overflow-hidden py-24 text-white sm:py-32 lg:py-40" aria-labelledby="hero-heading">
   
   <!-- Glowing Background Orbs -->
   <div class="animate-orb-1 pointer-events-none absolute -top-20 start-1/2 size-[34rem] -translate-x-1/2 rounded-full bg-orange/25 blur-[120px]" aria-hidden="true"></div>
@@ -36,7 +36,7 @@
   <div class="shell relative z-10 mx-auto w-full max-w-5xl text-center">
     
     <!-- Top Pill Tag -->
-    <div class="hero-animate-in inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md transition-transform duration-300 hover:scale-105" style="animation-delay: 100ms;">
+    <div class="hero-animate-in mobile-hero-stagger inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 shadow-md backdrop-blur-md transition-transform duration-300 hover:scale-105" style="--mobile-delay: 100ms;">
       <span class="relative flex size-2">
         <span class="absolute inline-flex size-full animate-ping rounded-full bg-orange opacity-75"></span>
         <span class="relative inline-flex size-2 rounded-full bg-orange"></span>
@@ -49,19 +49,19 @@
     <!-- Main Heading -->
     <h1
       id="hero-heading"
-      class="hero-animate-in hero-gradient-text mt-6 text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl lg:leading-[1.15]"
-      style="animation-delay: 250ms;"
+      class="hero-animate-in mobile-hero-stagger hero-gradient-text mt-6 text-3xl font-black leading-tight tracking-tight sm:text-5xl lg:text-6xl lg:leading-[1.15]"
+      style="--mobile-delay: 250ms;"
     >
       {{ t('hero.headline') }}
     </h1>
 
     <!-- Subheadline -->
-    <p class="hero-animate-in mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-white/90 sm:text-lg lg:text-xl" style="animation-delay: 400ms;">
+    <p class="hero-animate-in mobile-hero-stagger mx-auto mt-6 max-w-3xl text-sm leading-relaxed text-white/90 sm:text-lg lg:text-xl" style="--mobile-delay: 400ms;">
       {{ t('hero.subheadline') }}
     </p>
 
     <!-- Action Buttons -->
-    <div class="hero-animate-in mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5" style="animation-delay: 550ms;">
+    <div class="hero-animate-in mobile-hero-stagger mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-5" style="--mobile-delay: 550ms;">
       <a
         routerLink="/contact"
         class="bg-cta text-cta-fg group flex w-full items-center justify-center gap-2.5 rounded-full px-8 py-4 text-base font-bold shadow-lg shadow-orange/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-orange/50 active:scale-[0.98] sm:w-auto"
@@ -79,7 +79,7 @@
     </div>
 
     <!-- Stats Cards -->
-    <div class="hero-animate-in mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-white/10 pt-8 sm:mt-16 sm:gap-10" style="animation-delay: 700ms;">
+    <div class="hero-animate-in mobile-hero-stagger mt-12 flex flex-wrap items-center justify-center gap-4 border-t border-white/10 pt-8 sm:mt-16 sm:gap-10" style="--mobile-delay: 700ms;">
       
       <div class="group rounded-2xl border border-white/15 bg-white/5 px-6 py-3.5 text-center backdrop-blur-md transition-all duration-300 hover:border-orange/40 hover:bg-white/10 sm:border-0 sm:bg-transparent sm:p-0">
         <span class="block text-2xl font-black text-white transition-transform duration-300 group-hover:scale-110 sm:text-3xl">+100%</span>
@@ -146,7 +146,7 @@
     @defer (on viewport) {
       <ul class="mt-12 grid gap-6 md:grid-cols-3">
         @for (area of expertiseAreas; track area.id; let index = $index) {
-          <li appReveal [revealDelay]="index * 80">
+          <li appReveal class="mobile-card-glint" [revealDelay]="index * 80">
             <app-icon-card [icon]="area.icon" [titleKey]="area.titleKey" [bodyKey]="area.bodyKey" />
           </li>
         }
@@ -168,7 +168,7 @@
 
     <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       @for (value of brandValues; track value.id; let index = $index) {
-        <li appReveal [revealDelay]="index * 70">
+        <li appReveal class="mobile-card-glint" [revealDelay]="index * 70">
           <app-icon-card
             [icon]="value.icon"
             [titleKey]="value.titleKey"
@@ -224,7 +224,7 @@
         [attr.aria-label]="t('products.title')"
       >
         @for (category of productCategories; track category.id) {
-          <li appReveal [revealDelay]="$index * 55">
+          <li appReveal class="mobile-card-glint" [revealDelay]="$index * 55">
             <app-icon-card
               [icon]="category.icon"
               [titleKey]="category.titleKey"
@@ -275,7 +275,7 @@
             [revealDelay]="index * 100 + 80"
             [appReveal]="index % 2 === 0 ? 'end' : 'start'"
             [class.lg:order-1]="index % 2 === 0"
-            class="border-border bg-bg-subtle overflow-hidden rounded-xl border"
+            class="mobile-image-breathe border-border bg-bg-subtle overflow-hidden rounded-xl border"
           >
             <img
               [src]="audience.image"

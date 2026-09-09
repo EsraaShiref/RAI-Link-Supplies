@@ -57,7 +57,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
             <article
               appReveal
               [revealDelay]="pillar.delay"
-              class="border-border bg-surface shadow-card relative flex flex-col overflow-hidden rounded-xl border p-7 sm:p-9"
+              class="mobile-card-glint border-border bg-surface shadow-card relative flex flex-col overflow-hidden rounded-xl border p-7 sm:p-9"
             >
               <span class="bg-brand-gradient absolute inset-x-0 top-0 h-[3px]" aria-hidden="true"></span>
 
@@ -88,7 +88,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
 
         <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           @for (value of brandValues; track value.id; let index = $index) {
-            <li appReveal [revealDelay]="index * 70">
+            <li appReveal class="mobile-card-glint" [revealDelay]="index * 70">
               <app-icon-card
                 [icon]="value.icon"
                 [titleKey]="value.titleKey"
@@ -150,7 +150,7 @@ import { RevealOnScrollDirective } from '../../shared/directives';
 
                 <!-- Light Mode Glass Card -->
                 <div class="w-full ps-14 sm:w-1/2 sm:ps-0" [class.sm:pe-12]="index % 2 === 0" [class.sm:ps-12]="index % 2 !== 0">
-                  <div class="group border-border/80 bg-surface shadow-card relative rounded-3xl border p-7 transition-all duration-500 hover:-translate-y-2 hover:border-orange/60 hover:shadow-xl hover:shadow-orange/5">
+                  <div class="mobile-card-glint group border-border/80 bg-surface shadow-card relative rounded-3xl border p-7 transition-all duration-500 hover:-translate-y-2 hover:border-orange/60 hover:shadow-xl hover:shadow-orange/5">
                     
                     <!-- Phase Badge Tag -->
                     <div class="inline-flex items-center gap-2 rounded-full border border-orange/20 bg-orange/10 px-3 py-1 text-xs font-bold tracking-widest text-orange-ink">
